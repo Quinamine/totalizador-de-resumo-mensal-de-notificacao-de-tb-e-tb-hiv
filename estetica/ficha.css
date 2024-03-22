@@ -6,18 +6,43 @@ main * {
 input {
 	border: none;
 	outline: none;
-	font-size: 11.50px;
+	font-size: 11px;
 	cursor: text;
 }
 
-input[type=text]:focus {
+input[readonly] {
+	cursor: default;
+}
+
+input:focus {
 	border-bottom: 2px solid var(--anchor-color) !important;
+}
+
+input[readonly]:focus {
+	border-bottom: none !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number]{
+	appearance: textfield;
 }
 
 div.container {
 	min-width: 1290px;
 	max-width: 1290px;
 	margin: 30px auto;
+}
+
+@media print {
+	.container {
+		visibility: visible;
+		margin: 5px auto 0 auto !important;
+	}
 }
 
 div.contentor-de-emblema {
@@ -62,8 +87,8 @@ div.ficha {
 div.ficha div.linha.de-localizacao {
 	border-bottom: 1px solid var(--border-color);
 	display: grid;
-    	grid-template-columns: repeat(3, 260px);
-    	justify-content: center;
+	grid-template-columns: repeat(3, 260px);
+	justify-content: center;
 	align-items: center;
 }
 
@@ -187,6 +212,7 @@ div.linha-de-indicadores-y div span {
 		box-shadow: 0 0 8px var(--gray);
 		border-radius: 4px;
 		line-height: 1.5;
+
 	}
 
 	div.linha-de-indicadores-y div:nth-child(n+20):hover span,
@@ -232,7 +258,7 @@ div.ficha header div.linha.de-faixas-etarias span.np {
 }
 
 div.body div.body-row {
-	grid-template-rows: 24px;
+	grid-template-rows: 22px;
 }
 
 div.body-row input {
@@ -241,14 +267,23 @@ div.body-row input {
 	text-align: center;
 }
 
+div.body-row.total input {
+	background-color: var(--gray-light-2);
+}
+
+div.body-row.total input:first-child {
+	display: flex;
+	align-items: center;
+	text-align: left;
+	font-weight: 700;
+}
+
 footer.da-ficha {
 	padding-left: 2px;
 	border: 2px solid var(--border-color);
 	border-top: none;
 }
 
-@media print {
-	.container {
-		visibility: visible;
-	}
+footer.da-ficha div {
+	min-height: 18px;
 }
