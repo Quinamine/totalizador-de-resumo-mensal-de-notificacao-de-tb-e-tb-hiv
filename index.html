@@ -1,1197 +1,922 @@
-<!doctype html>
-<html lang="pt-MZ" dir="ltr">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Totalizador de Resumo Mensal de Tuberculose</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="author" content="Adérito Félix Quinamine" />
-		<link rel="stylesheet" href="estetica/reset.css" />
-		<link rel="stylesheet" href="estetica/layout.css" />
-		<link rel="stylesheet" href="estetica/ficha.css" />
-		<link rel="stylesheet" href="estetica/aside.css" />
-		
-		<script src="totalizador-rmtb.js"></script>
-	</head>
-	<body ontouchstart="" id="ficha">
-        <header>
-            <div class="linha do-cabecalho">
-                <a href="index.html" class="logo">
-                    Totalizador de Resumo <spa>Mensal</spa> de Tuberculose
-                </a>                                        
-                <section class="menu" role="navigation">
-                    <ul>
-                        <li class="destacar-as-celulas-automaticas" title="Adicionar um fundo opaco às celulas dos totais">
-                            <input type="checkbox" id="readonlyinputs-darker"/> 
-                            <label for="readonlyinputs-darker">Destacar&nbsp;o&nbsp;fundo&nbsp;dos&nbsp;totais</label>
-                        </li>
-                        <li title="Migrar até uma determinada linha">
-                            <button class="ir-para">Ir&nbsp;para&nbsp;a&nbsp;linha...</button>
-                        </li>                             
-                        <li title="Limpar os dados da ficha">
-                            <button class="esvaziar-ficha">Esvaziar&nbsp;a&nbsp;ficha</button>
-                        </li>
-                        <li title="Imprimir a ficha" class="impressao">
-                            <button class="imprimir">Imprimir</button>
-                        </li>
-                        <li title="Tutorial">
-                            <button class="salvar-como-pdf">
-                                Salvar&nbsp;como&nbsp;PDF <span class="question-mark">?</span>
+<!doctypehtml>
+<html dir=ltr lang=pt-MZ id="root">
+    <meta charset=UTF-8>
+    <meta content="IE=edge" http-equiv=X-UA-Compatible>
+    <meta content="width=device-width,initial-scale=1" name=viewport>
+    <title>Totalizador de Resumo Mensal de Tuberculose</title>
+    <meta content="index, follow" name=robots>
+    <meta content="Serviço online gratuito que auxilia na elaboração do resumo mensal de rastreio, notificação de casos de tuberculose (TB) e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV actualmente vigente no Serviço Nacional de Saúde em Moçambique." name=description>
+    <meta content="Totalizador de Resumo Mensal de Tuberculose, Totalizador de Relatório Mensal de Tuberculose, Ficha de Resumo Mensal de Tuberculose, Ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV." name=keywords>
+    <meta content="Adérito Félix Quinamine" name=author>
+    <meta content=https://quinamine.github.io/totalizador-de-resumo-mensal-de-tuberculose/index.html property=og:url>
+    <meta content="Serviço online gratuito que auxilia na elaboração do resumo mensal de rastreio, notificação de casos de tuberculose (TB) e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV actualmente vigente no Serviço Nacional de Saúde em Moçambique." property=og:description>
+    <meta content=https://quinamine.github.io/totalizador-de-resumo-mensal-de-tuberculose/imagens/totalizador-de-resumo-mensal-de-tuberculose.png property=og:image>
+    <link href=favicon.ico rel="shortcut icon" type=image/x-icon>
+    <link href=anatomia/reset.css rel=stylesheet>
+    <link href=anatomia/layout.css rel=stylesheet>
+    <link href=anatomia/ficha.css rel=stylesheet>
+    <script src="fisiologia/menu.js"></script>
+    <script src="fisiologia/main.js"></script>
+    <script src="fisiologia/multifuncoes.js"></script>
+    <script src="fisiologia/db.js"></script>
+    <script src="fisiologia/referencia.js"></script>
+    
+    <noscript>O seu navegador está com o JavaScript desabilitado e isso bloqueia as funcionalidades do totalizador. Habilite-o nas configurações do navegador e recarregue a página.</noscript>
+
+    <body ontouchstart="">
+        <header class="header --no-print">
+            <div class="layout-row layout-row--header">
+                <a href=index.html class=header__logo>
+                    Totalizador de Resumo Mensal
+                    de <span class="logo__span--hide-on-screen-s">Tuberculose</span><span class="logo__span--hide-on-screen-l">TB</span>
+                </a>
+                <div role="navigation" class="header__menu --display-flex-y-center">
+                    <ul class="header__menu__ul --display-flex-y-center">
+                        <li class="header__menu__li header__menu__li--realcar-totais header__menu__li--first-child">
+                            <input type=checkbox id="checkbox-realcar-totais" class="header__menu__checkbox header__child--cursor">
+                            <label for="checkbox-realcar-totais" class="header__menu__label --display-flex-y-center header__child--cursor">
+                                Realçar&nbsp;totais
+                            </label>
+                        <li class="header__menu__li --display-none">
+                            <button class="header__menu__btn header__menu__btn--ir-para">Ir para a linha...</button>
+                        <li class="header__menu__li">
+                            <button class="header__menu__btn header__menu__btn--esvaziar-ficha">Esvaziar ficha</button>
+                        <li class="header__menu__li">
+                            <button class="header__menu__btn header__menu__btn--imprimir">
+                                <span class="header__menu__item--desktop header__child--cursor">Imprimir</span>
+                                <span class="header__menu__item--mobile header__child--cursor">Salvar&nbsp;como&nbsp;PDF</span>
                             </button>
-                        </li>
-                        <li title="Sobre o totalizador" class="sobre">
-                            <button class="abrir-artigo-sobre">Sobre</button>
-                        </li>
-                        <li title="Partilhar o endereço do totalizador" class="partilha">
-                            <button class="partilhar">Partilhar...</button>
-                        </li>
+                        <li class="header__menu__li header__menu__item--desktop">
+                            <button class="header__menu__btn header__menu__btn--sobre">Sobre</button>
+                        <li class="header__menu__li">
+                            <button class="header__menu__btn header__menu__btn--ajuda">
+                                Ajuda
+                            </button>
+                        <li class="header__menu__li header__menu__item--mobile">
+                            <button class="header__menu__btn header__menu__btn--partilhar">Partilhar...</button>
                     </ul>
-                </section>
+                </div>
             </div>
         </header>
-
         <main>
-            <div class="container">
-				<div class="contentor-de-emblema">
-				<figure>	
-					<img src="imagens/emblema.png" alt="Emblema de Moçambique" />
-				</figure>
-				<span>República de Moçambique</span>
-				<span>Ministério da Saúde</span>
-				<span>Direcção Provincial de Saúde</span>
-				<span>Repartição Provincial de Controlo da Tuberculose</span>
-	
-				<h1>Resumo Mensal da Tuberculose</h1>
-				</div>
-	
-				<div class="ficha">
-					<header>
-						<div class="linha de-localizacao">
-							<div class="provincia">
-								<label for="provincia">Província:</label>
-								<input type="text" name="provincia" id="provincia" />
-							</div>
-							<div class="mes">
-								<label for="mes">Mês:</label>
-								<input type="text" name="mes" id="mes" />
-							</div>
-							<div class="data">
-								<label for="data">Data:</label>
-								<input type="date" name="data" id="data" />
-							</div>
-						</div>
-						<div class="linha de-todos-indicadores">
-							<div class="coluna de-distrito">
-								<span>Distrito</span>
-							</div>
-							<div class="coluna de-todos-indicadores">
-								<div class="linha-de-indicadores-x">
-									<span>TB todas formas</span>
-									<span>Tuberculose Pulmonar clinicamente e bacteriologicamente confirmado diagnosticado pelo Genexpert</span>
-									<span>Comunidade</span>
-									<span>TPT em Contactos de TB</span>
-									<span>Seguimento da TB MR e XR</span>
-								
-								</div>
-								<div class="linha-de-enumeracao-das-colunas">
-									<span>1</span>
-									<span>2</span>
-									<span>3</span>
-									<span>4</span>
-									<span>5</span>
-									<span>6</span>
-									<span>7</span>
-									<span>8</span>
-									<span>9</span>
-									<span>10</span>
-									<span>11</span>
-									<span>12</span>
-									<span>13</span>
-									<span>14</span>
-									<span>15</span>
-									<span>16</span>
-									<span>17</span>
-									<span>18</span>
-									<span>19</span>
-									<span>20</span>
-									<span>21</span>
-								</div>
-								<div class="linha-de-indicadores-y">
-									<div>
-										<span class="top-112 left--78">N<sup>o</sup> de casos TB todas as formas que <br/> iniciaram tratamento de TB</span>
-									</div>
-									<div>
-										<span>N<sup>o</sup> de aparelhos de Genexpert que <br/> tiveram avarias de módulos por mais de <br/> 15  dias consecutivos</span>
-									</div>
-									<div>
-										<span>N<sup>o</sup> de amostras do distrito transportadas <br/> para Genexpert usando a motorizada do <br/> Supervisor distrital</span>
-									</div>
-									<div>
-										<span class="top-112">N<sup>o</sup> de casos TB todas as formas <br/> submetidos ao exame bacteriológico</span>
-									</div>
-									<div>
-										<span>N<sup>o</sup> de casos TB bacteriologicamente <br/> confirmado diagnosticados por <br/> Genexpert (MTB detectado)</span>
-									</div>
-									<div>
-										<span>N<sup>o</sup> de casos TB bacteriologicamente <br/> confirmado diagnosticados por <br/> microscopia</span>
-									</div>
-									<div>
-										<span class="top-112">N<sup>o</sup> de casos TB todas as formas <br/> submetidos a baciloscopia diagnóstica</span>
-									</div>	
-									<div>
-										<span class="left--78">Total de contactos de pacientes TB <br/> todas as formas rastreiados <br/> na comunidade.</span>
-									</div>
-									<div>
-										<span class="top-112">Crianças menores de 5 anos referidas <br/> pela comunidade para o início de TPI</span>
-									</div>
-									<div>
-										<span class="top-112 left--78">N<sup>o</sup> de casos de TB-MR referidos pela <br/> comunidade</span>
-									</div>
-									<div>
-										<span>N<sup>o</sup> de casos confirmados de TB todas as <br/> formas entre os presuntivos referidos <br/> pelos oficiais da tosse</span>
-									</div>
-									<div>
-										<span>N<sup>o</sup> de casos confirmados de TB todas as <br/> formas entre os presuntivos rastreiados <br/> nos dias mensais da tosse</span>
-									</div>
-									<div>
-										<span class="top-112 left--78">N<sup>o</sup> de casos de TB-MR que iniciaram <br/> tratamento da 2<sup>a</sup> linha regime longo</span>
-									</div>
-									<div class="top-112">
-										<span class="top-112 left--78">N<sup>o</sup> de casos de TB-MR que iniciaram <br/> tratamento da 2<sup>a</sup> linha regime curto</span>
-									</div>
-									<div>
-										<span class="top-112">N<sup>o</sup> de pacientes de TB-MR que se <br/> beneficiaram de apoio psicológico</span>
-									</div>
-									<div>
-										<span class="top-112">N<sup>o</sup> de pacientes de TB-MR que se <br/> beneficiaram de apoio social</span>
-									</div>
-									<div class="dupla-coluna">
-										<span class="top-112 left--95">N<sup>o</sup> de pacientes contacto de TB que <br/> inciaram TPT com Isoniazida</span>
-									</div>
-									<div class="dupla-coluna">
-										<span class="top-112 left--95">N<sup>o</sup> de pacientes contacto de TB que <br/> inciaram TPT com 3HP</span>
-									</div>
-									<div class="top-112">
-										<span class="top-112 left--78">N<sup>o</sup> de pacientes contacto de TB que <br/> inciaram TPT com Levofloxacina</span>
-									</div>
-									<div>
-										<span class="top-112">N<sup>o</sup> de perdas de seguimento de pacientes <br/> TB-MR/XR</span>
-									</div>
-									<div>
-										<span class="top-112">N<sup>o</sup> de perdas de seguimento de pacientes <br/> TB-MR/XR recuperados</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="linha de-faixas-etarias">
-							<span class="np"></span>
-							<span>0-4</span>
-							<span>5-14</span>
-							<span>&gt;15</span>
-	
-							<span class="np"></span>
-							<span class="np"></span>
-							<span class="np"></span>
-							<span class="np"></span>
-							<span class="np"></span>
-							<span class="np"></span>
-	
-							<span>0-4</span>
-							<span>5-14</span>
-							<span>&gt;15</span>
-							
-							<span class="np"></span>
-	
-							<span>0-4</span>
-							<span>5-14</span>
-							<span>&gt;15</span>
-	
-							<span class="np"></span>
-							<span class="np"></span>
-	
-							<span>0-4</span>
-							<span>5-14</span>
-							<span>&gt;15</span>
-	
-							<span>0-4</span>
-							<span>5-14</span>
-							<span>&gt;15</span>
-	
-							<span class="np"></span>
-							<span class="np"></span>
-			
-							<span>0-4</span>
-							<span>5-14</span>
-							<span>0-4</span>
-							<span>5-14</span>
-	
-							<span>0-4</span>
-							<span>5-14</span>
-							<span>&gt;15</span>
-	
-							<span class="np"></span>
-							<span class="np"></span>
-						</div>
-					</header>
-					<div class="body">
-						<div class="body-row _1">
-							<input type="text" name="linha1-c1" id="linha1-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha2-c2" id="linha2-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha1-c3" id="linha1-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha1-c4" id="linha1-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha1-c5" id="linha1-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha1-c6" id="linha1-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha1-c7" id="linha1-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha1-c8" id="linha1-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha1-c9" id="linha1-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha1-c10" id="linha1-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha1-c11" id="linha1-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha1-c12" id="linha1-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha1-c13" id="linha1-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha1-c14" id="linha1-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha1-c15" id="linha1-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha1-c16" id="linha1-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha1-c17" id="linha1-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha1-c18" id="linha1-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha1-c19" id="linha1-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha1-c20" id="linha1-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha1-c21" id="linha1-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha1-c22" id="linha1-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha1-c23" id="linha1-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha1-c24" id="linha1-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha1-c25" id="linha1-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha1-c26" id="linha1-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha1-c27" id="linha1-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha1-c28" id="linha1-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha1-c29" id="linha1-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha1-c30" id="linha1-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha1-c31" id="linha1-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha1-c32" id="linha1-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha1-c33" id="linha1-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha1-c34" id="linha1-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha1-c35" id="linha1-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha1-c36" id="linha1-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _2">
-							<input type="text" name="linha2-c1" id="linha2-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha2-c2" id="linha2-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha2-c3" id="linha2-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha2-c4" id="linha2-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha2-c5" id="linha2-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha2-c6" id="linha2-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha2-c7" id="linha2-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha2-c8" id="linha2-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha2-c9" id="linha2-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha2-c10" id="linha2-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha2-c11" id="linha2-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha2-c12" id="linha2-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha2-c13" id="linha2-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha2-c14" id="linha2-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha2-c15" id="linha2-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha2-c16" id="linha2-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha2-c17" id="linha2-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha2-c18" id="linha2-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha2-c19" id="linha2-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha2-c20" id="linha2-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha2-c21" id="linha2-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha2-c22" id="linha2-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha2-c23" id="linha2-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha2-c24" id="linha2-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha2-c25" id="linha2-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha2-c26" id="linha2-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha2-c27" id="linha2-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha2-c28" id="linha2-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha2-c29" id="linha2-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha2-c30" id="linha2-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha2-c31" id="linha2-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha2-c32" id="linha2-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha2-c33" id="linha2-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha2-c34" id="linha2-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha2-c35" id="linha2-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha2-c36" id="linha2-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _3">
-							<input type="text" name="linha3-c1" id="linha3-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha3-c2" id="linha3-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha3-c3" id="linha3-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha3-c4" id="linha3-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha3-c5" id="linha3-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha3-c6" id="linha3-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha3-c7" id="linha3-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha3-c8" id="linha3-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha3-c9" id="linha3-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha3-c10" id="linha3-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha3-c11" id="linha3-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha3-c12" id="linha3-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha3-c13" id="linha3-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha3-c14" id="linha3-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha3-c15" id="linha3-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha3-c16" id="linha3-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha3-c17" id="linha3-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha3-c18" id="linha3-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha3-c19" id="linha3-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha3-c20" id="linha3-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha3-c21" id="linha3-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha3-c22" id="linha3-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha3-c23" id="linha3-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha3-c24" id="linha3-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha3-c25" id="linha3-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha3-c26" id="linha3-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha3-c27" id="linha3-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha3-c28" id="linha3-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha3-c29" id="linha3-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha3-c30" id="linha3-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha3-c31" id="linha3-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha3-c32" id="linha3-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha3-c33" id="linha3-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha3-c34" id="linha3-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha3-c35" id="linha3-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha3-c36" id="linha3-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-						
-						<div class="body-row _4">
-							<input type="text" name="linha4-c1" id="linha4-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha4-c2" id="linha4-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha4-c3" id="linha4-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha4-c4" id="linha4-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha4-c5" id="linha4-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha4-c6" id="linha4-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha4-c7" id="linha4-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha4-c8" id="linha4-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha4-c9" id="linha4-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha4-c10" id="linha4-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha4-c11" id="linha4-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha4-c12" id="linha4-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha4-c13" id="linha4-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha4-c14" id="linha4-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha4-c15" id="linha4-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha4-c16" id="linha4-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha4-c17" id="linha4-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha4-c18" id="linha4-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha4-c19" id="linha4-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha4-c20" id="linha4-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha4-c21" id="linha4-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha4-c22" id="linha4-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha4-c23" id="linha4-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha4-c24" id="linha4-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha4-c25" id="linha4-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha4-c26" id="linha4-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha4-c27" id="linha4-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha4-c28" id="linha4-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha4-c29" id="linha4-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha4-c30" id="linha4-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha4-c31" id="linha4-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha4-c32" id="linha4-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha4-c33" id="linha4-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha4-c34" id="linha4-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha4-c35" id="linha4-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha4-c36" id="linha4-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _5">
-							<input type="text" name="linha5-c1" id="linha5-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha5-c2" id="linha5-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha5-c3" id="linha5-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha5-c4" id="linha5-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha5-c5" id="linha5-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha5-c6" id="linha5-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha5-c7" id="linha5-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha5-c8" id="linha5-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha5-c9" id="linha5-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha5-c10" id="linha5-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha5-c11" id="linha5-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha5-c12" id="linha5-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha5-c13" id="linha5-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha5-c14" id="linha5-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha5-c15" id="linha5-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha5-c16" id="linha5-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha5-c17" id="linha5-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha5-c18" id="linha5-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha5-c19" id="linha5-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha5-c20" id="linha5-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha5-c21" id="linha5-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha5-c22" id="linha5-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha5-c23" id="linha5-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha5-c24" id="linha5-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha5-c25" id="linha5-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha5-c26" id="linha5-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha5-c27" id="linha5-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha5-c28" id="linha5-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha5-c29" id="linha5-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha5-c30" id="linha5-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha5-c31" id="linha5-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha5-c32" id="linha5-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha5-c33" id="linha5-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha5-c34" id="linha5-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha5-c35" id="linha5-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha5-c36" id="linha5-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _6">
-							<input type="text" name="linha6-c1" id="linha6-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha6-c2" id="linha6-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha6-c3" id="linha6-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha6-c4" id="linha6-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha6-c5" id="linha6-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha6-c6" id="linha6-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha6-c7" id="linha6-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha6-c8" id="linha6-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha6-c9" id="linha6-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha6-c10" id="linha6-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha6-c11" id="linha6-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha6-c12" id="linha6-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha6-c13" id="linha6-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha6-c14" id="linha6-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha6-c15" id="linha6-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha6-c16" id="linha6-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha6-c17" id="linha6-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha6-c18" id="linha6-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha6-c19" id="linha6-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha6-c20" id="linha6-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha6-c21" id="linha6-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha6-c22" id="linha6-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha6-c23" id="linha6-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha6-c24" id="linha6-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha6-c25" id="linha6-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha6-c26" id="linha6-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha6-c27" id="linha6-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha6-c28" id="linha6-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha6-c29" id="linha6-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha6-c30" id="linha6-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha6-c31" id="linha6-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha6-c32" id="linha6-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha6-c33" id="linha6-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha6-c34" id="linha6-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha6-c35" id="linha6-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha6-c36" id="linha6-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _7">
-							<input type="text" name="linha7-c1" id="linha7-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha7-c2" id="linha7-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha7-c3" id="linha7-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha7-c4" id="linha7-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha7-c5" id="linha7-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha7-c6" id="linha7-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha7-c7" id="linha7-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha7-c8" id="linha7-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha7-c9" id="linha7-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha7-c10" id="linha7-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha7-c11" id="linha7-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha7-c12" id="linha7-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha7-c13" id="linha7-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha7-c14" id="linha7-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha7-c15" id="linha7-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha7-c16" id="linha7-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha7-c17" id="linha7-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha7-c18" id="linha7-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha7-c19" id="linha7-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha7-c20" id="linha7-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha7-c21" id="linha7-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha7-c22" id="linha7-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha7-c23" id="linha7-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha7-c24" id="linha7-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha7-c25" id="linha7-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha7-c26" id="linha7-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha7-c27" id="linha7-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha7-c28" id="linha7-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha7-c29" id="linha7-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha7-c30" id="linha7-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha7-c31" id="linha7-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha7-c32" id="linha7-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha7-c33" id="linha7-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha7-c34" id="linha7-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha7-c35" id="linha7-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha7-c36" id="linha7-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _8">
-							<input type="text" name="linha8-c1" id="linha8-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha8-c2" id="linha8-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha8-c3" id="linha8-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha8-c4" id="linha8-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha8-c5" id="linha8-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha8-c6" id="linha8-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha8-c7" id="linha8-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha8-c8" id="linha8-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha8-c9" id="linha8-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha8-c10" id="linha8-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha8-c11" id="linha8-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha8-c12" id="linha8-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha8-c13" id="linha8-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha8-c14" id="linha8-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha8-c15" id="linha8-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha8-c16" id="linha8-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha8-c17" id="linha8-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha8-c18" id="linha8-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha8-c19" id="linha8-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha8-c20" id="linha8-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha8-c21" id="linha8-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha8-c22" id="linha8-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha8-c23" id="linha8-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha8-c24" id="linha8-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha8-c25" id="linha8-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha8-c26" id="linha8-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha8-c27" id="linha8-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha8-c28" id="linha8-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha8-c29" id="linha8-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha8-c30" id="linha8-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha8-c31" id="linha8-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha8-c32" id="linha8-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha8-c33" id="linha8-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha8-c34" id="linha8-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha8-c35" id="linha8-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha8-c36" id="linha8-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _9">
-							<input type="text" name="linha9-c1" id="linha9-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha9-c2" id="linha9-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha9-c3" id="linha9-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha9-c4" id="linha9-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha9-c5" id="linha9-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha9-c6" id="linha9-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha9-c7" id="linha9-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha9-c8" id="linha9-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha9-c9" id="linha9-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha9-c10" id="linha9-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha9-c11" id="linha9-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha9-c12" id="linha9-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha9-c13" id="linha9-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha9-c14" id="linha9-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha9-c15" id="linha9-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha9-c16" id="linha9-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha9-c17" id="linha9-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha9-c18" id="linha9-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha9-c19" id="linha9-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha9-c20" id="linha9-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha9-c21" id="linha9-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha9-c22" id="linha9-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha9-c23" id="linha9-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha9-c24" id="linha9-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha9-c25" id="linha9-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha9-c26" id="linha9-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha9-c27" id="linha9-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha9-c28" id="linha9-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha9-c29" id="linha9-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha9-c30" id="linha9-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha9-c31" id="linha9-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha9-c32" id="linha9-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha9-c33" id="linha9-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha9-c34" id="linha9-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha9-c35" id="linha9-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha9-c36" id="linha9-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _10">
-							<input type="text" name="linha10-c1" id="linha10-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha10-c2" id="linha10-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha10-c3" id="linha10-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha10-c4" id="linha10-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha10-c5" id="linha10-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha10-c6" id="linha10-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha10-c7" id="linha10-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha10-c8" id="linha10-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha10-c9" id="linha10-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha10-c10" id="linha10-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha10-c11" id="linha10-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha10-c12" id="linha10-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha10-c13" id="linha10-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha10-c14" id="linha10-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha10-c15" id="linha10-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha10-c16" id="linha10-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha10-c17" id="linha10-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha10-c18" id="linha10-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha10-c19" id="linha10-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha10-c20" id="linha10-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha10-c21" id="linha10-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha10-c22" id="linha10-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha10-c23" id="linha10-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha10-c24" id="linha10-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha10-c25" id="linha10-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha10-c26" id="linha10-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha10-c27" id="linha10-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha10-c28" id="linha10-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha10-c29" id="linha10-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha10-c30" id="linha10-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha10-c31" id="linha10-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha10-c32" id="linha10-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha10-c33" id="linha10-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha10-c34" id="linha10-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha10-c35" id="linha10-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha10-c36" id="linha10-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _11">
-							<input type="text" name="linha11-c1" id="linha11-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha11-c2" id="linha11-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha11-c3" id="linha11-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha11-c4" id="linha11-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha11-c5" id="linha11-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha11-c6" id="linha11-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha11-c7" id="linha11-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha11-c8" id="linha11-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha11-c9" id="linha11-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha11-c10" id="linha11-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha11-c11" id="linha11-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha11-c12" id="linha11-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha11-c13" id="linha11-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha11-c14" id="linha11-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha11-c15" id="linha11-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha11-c16" id="linha11-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha11-c17" id="linha11-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha11-c18" id="linha11-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha11-c19" id="linha11-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha11-c20" id="linha11-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha11-c21" id="linha11-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha11-c22" id="linha11-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha11-c23" id="linha11-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha11-c24" id="linha11-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha11-c25" id="linha11-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha11-c26" id="linha11-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha11-c27" id="linha11-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha11-c28" id="linha11-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha11-c29" id="linha11-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha11-c30" id="linha11-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha11-c31" id="linha11-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha11-c32" id="linha11-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha11-c33" id="linha11-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha11-c34" id="linha11-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha11-c35" id="linha11-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha11-c36" id="linha11-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _12">
-							<input type="text" name="linha12-c1" id="linha12-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha12-c2" id="linha12-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha12-c3" id="linha12-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha12-c4" id="linha12-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha12-c5" id="linha12-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha12-c6" id="linha12-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha12-c7" id="linha12-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha12-c8" id="linha12-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha12-c9" id="linha12-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha12-c10" id="linha12-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha12-c11" id="linha12-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha12-c12" id="linha12-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha12-c13" id="linha12-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha12-c14" id="linha12-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha12-c15" id="linha12-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha12-c16" id="linha12-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha12-c17" id="linha12-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha12-c18" id="linha12-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha12-c19" id="linha12-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha12-c20" id="linha12-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha12-c21" id="linha12-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha12-c22" id="linha12-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha12-c23" id="linha12-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha12-c24" id="linha12-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha12-c25" id="linha12-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha12-c26" id="linha12-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha12-c27" id="linha12-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha12-c28" id="linha12-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha12-c29" id="linha12-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha12-c30" id="linha12-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha12-c31" id="linha12-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha12-c32" id="linha12-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha12-c33" id="linha12-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha12-c34" id="linha12-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha12-c35" id="linha12-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha12-c36" id="linha12-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _13">
-							<input type="text" name="linha13-c1" id="linha13-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha13-c2" id="linha13-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha13-c3" id="linha13-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha13-c4" id="linha13-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha13-c5" id="linha13-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha13-c6" id="linha13-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha13-c7" id="linha13-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha13-c8" id="linha13-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha13-c9" id="linha13-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha13-c10" id="linha13-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha13-c11" id="linha13-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha13-c12" id="linha13-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha13-c13" id="linha13-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha13-c14" id="linha13-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha13-c15" id="linha13-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha13-c16" id="linha13-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha13-c17" id="linha13-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha13-c18" id="linha13-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha13-c19" id="linha13-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha13-c20" id="linha13-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha13-c21" id="linha13-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha13-c22" id="linha13-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha13-c23" id="linha13-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha13-c24" id="linha13-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha13-c25" id="linha13-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha13-c26" id="linha13-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha13-c27" id="linha13-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha13-c28" id="linha13-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha13-c29" id="linha13-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha13-c30" id="linha13-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha13-c31" id="linha13-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha13-c32" id="linha13-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha13-c33" id="linha13-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha13-c34" id="linha13-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha13-c35" id="linha13-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha13-c36" id="linha13-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _14">
-							<input type="text" name="linha14-c1" id="linha14-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha14-c2" id="linha14-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha14-c3" id="linha14-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha14-c4" id="linha14-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha14-c5" id="linha14-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha14-c6" id="linha14-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha14-c7" id="linha14-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha14-c8" id="linha14-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha14-c9" id="linha14-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha14-c10" id="linha14-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha14-c11" id="linha14-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha14-c12" id="linha14-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha14-c13" id="linha14-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha14-c14" id="linha14-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha14-c15" id="linha14-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha14-c16" id="linha14-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha14-c17" id="linha14-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha14-c18" id="linha14-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha14-c19" id="linha14-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha14-c20" id="linha14-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha14-c21" id="linha14-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha14-c22" id="linha14-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha14-c23" id="linha14-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha14-c24" id="linha14-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha14-c25" id="linha14-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha14-c26" id="linha14-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha14-c27" id="linha14-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha14-c28" id="linha14-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha14-c29" id="linha14-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha14-c30" id="linha14-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha14-c31" id="linha14-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha14-c32" id="linha14-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha14-c33" id="linha14-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha14-c34" id="linha14-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha14-c35" id="linha14-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha14-c36" id="linha14-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _15">
-							<input type="text" name="linha15-c1" id="linha15-c1" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c1"/>
-							<input type="number" name="linha15-c2" id="linha15-c2" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c2"/>
-							<input type="number" name="linha15-c3" id="linha15-c3" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c3"/>
-							<input type="number" name="linha15-c4" id="linha15-c4" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c4"/>
-							<input type="number" name="linha15-c5" id="linha15-c5" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c5"/>
-							<input type="number" name="linha15-c6" id="linha15-c6" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c6"/>
-							<input type="number" name="linha15-c7" id="linha15-c7" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c7"/>
-							<input type="number" name="linha15-c8" id="linha15-c8" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c8"/>
-							<input type="number" name="linha15-c9" id="linha15-c9" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c9"/>
-							<input type="number" name="linha15-c10" id="linha15-c10" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c10"/>
-							<input type="number" name="linha15-c11" id="linha15-c11" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c11"/>
-							<input type="number" name="linha15-c12" id="linha15-c12" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c12"/>
-							<input type="number" name="linha15-c13" id="linha15-c13" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c13"/>
-							<input type="number" name="linha15-c14" id="linha15-c14" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c14"/>
-							<input type="number" name="linha15-c15" id="linha15-c15" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c15"/>
-							<input type="number" name="linha15-c16" id="linha15-c16" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c16"/>
-							<input type="number" name="linha15-c17" id="linha15-c17" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c17"/>
-							<input type="number" name="linha15-c18" id="linha15-c18" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c18"/>
-							<input type="number" name="linha15-c19" id="linha15-c19" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c19"/>
-							<input type="number" name="linha15-c20" id="linha15-c20" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c20"/>
-							<input type="number" name="linha15-c21" id="linha15-c21" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c21"/>
-							<input type="number" name="linha15-c22" id="linha15-c22" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c22"/>
-							<input type="number" name="linha15-c23" id="linha15-c23" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c23"/>
-							<input type="number" name="linha15-c24" id="linha15-c24" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c24"/>
-							<input type="number" name="linha15-c25" id="linha15-c25" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c25"/>
-							<input type="number" name="linha15-c26" id="linha15-c26" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c26"/>
-							<input type="number" name="linha15-c27" id="linha15-c27" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c27"/>
-							<input type="number" name="linha15-c28" id="linha15-c28" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c28"/>
-							<input type="number" name="linha15-c29" id="linha15-c29" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c29"/>
-							<input type="number" name="linha15-c30" id="linha15-c30" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c30"/>
-							<input type="number" name="linha15-c31" id="linha15-c31" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c31"/>
-							<input type="number" name="linha15-c32" id="linha15-c32" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c32"/>
-							<input type="number" name="linha15-c33" id="linha15-c33" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c33"/>
-							<input type="number" name="linha15-c34" id="linha15-c34" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c34"/>
-							<input type="number" name="linha15-c35" id="linha15-c35" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c35"/>
-							<input type="number" name="linha15-c36" id="linha15-c36" data-total="l1l2l3l4l5l6l7l8l9l10l11l12l13l14l15-c36"/>
-						</div>
-					
-						<div class="body-row _16 total">
-							<input type="text" name="linhatotal-c1" id="linhatotal-c1" value="Província" readonly/>
-							<input type="number" name="linhatotal-c2" id="linhatotal-c2" readonly />
-							<input type="number" name="linhatotal-c3" id="linhatotal-c3" readonly />
-							<input type="number" name="linhatotal-c4" id="linhatotal-c4" readonly />
-							<input type="number" name="linhatotal-c5" id="linhatotal-c5" readonly />
-							<input type="number" name="linhatotal-c6" id="linhatotal-c6" readonly />
-							<input type="number" name="linhatotal-c7" id="linhatotal-c7" readonly />
-							<input type="number" name="linhatotal-c8" id="linhatotal-c8" readonly />
-							<input type="number" name="linhatotal-c9" id="linhatotal-c9" readonly />
-							<input type="number" name="linhatotal-c10" id="linhatotal-c10" readonly />
-							<input type="number" name="linhatotal-c11" id="linhatotal-c11" readonly />
-							<input type="number" name="linhatotal-c12" id="linhatotal-c12" readonly />
-							<input type="number" name="linhatotal-c13" id="linhatotal-c13" readonly />
-							<input type="number" name="linhatotal-c14" id="linhatotal-c14" readonly />
-							<input type="number" name="linhatotal-c15" id="linhatotal-c15" readonly />
-							<input type="number" name="linhatotal-c16" id="linhatotal-c16" readonly />
-							<input type="number" name="linhatotal-c17" id="linhatotal-c17" readonly />
-							<input type="number" name="linhatotal-c18" id="linhatotal-c18" readonly />
-							<input type="number" name="linhatotal-c19" id="linhatotal-c19" readonly />
-							<input type="number" name="linhatotal-c20" id="linhatotal-c20" readonly />
-							<input type="number" name="linhatotal-c21" id="linhatotal-c21" readonly />
-							<input type="number" name="linhatotal-c22" id="linhatotal-c22" readonly />
-							<input type="number" name="linhatotal-c23" id="linhatotal-c23" readonly />
-							<input type="number" name="linhatotal-c24" id="linhatotal-c24" readonly />
-							<input type="number" name="linhatotal-c25" id="linhatotal-c25" readonly />
-							<input type="number" name="linhatotal-c26" id="linhatotal-c26" readonly />
-							<input type="number" name="linhatotal-c27" id="linhatotal-c27" readonly />
-							<input type="number" name="linhatotal-c28" id="linhatotal-c28" readonly />
-							<input type="number" name="linhatotal-c29" id="linhatotal-c29" readonly />
-							<input type="number" name="linhatotal-c30" id="linhatotal-c30" readonly />
-							<input type="number" name="linhatotal-c31" id="linhatotal-c31" readonly />
-							<input type="number" name="linhatotal-c32" id="linhatotal-c32" readonly />
-							<input type="number" name="linhatotal-c33" id="linhatotal-c33" readonly />
-							<input type="number" name="linhatotal-c34" id="linhatotal-c34" readonly />
-							<input type="number" name="linhatotal-c35" id="linhatotal-c35" readonly />
-							<input type="number" name="linhatotal-c36" id="linhatotal-c36" readonly />
-						</div>			
-					</div>
-				</div>
-				<footer class="da-ficha">
-					<div class="l1">
-						<label for="elaborador">Elaborado por:</label>
-						<input type="text" name="elaborador" id="elaborador"/>
-					</div>
-					<div class="l2">
-						<label for="date">Data:</label>	
-						<input type="date" name="date" id="date" />
-					</div>
-				</footer>
-	
-				<!-- seccao de nota -->
-				<div class="linha nota">
-					<textarea id="nota" rows="3" placeholder="Adicionar uma nota..."></textarea>
-				</div>
-	
-				<!-- Referência -->
-				<div class="linha-de-referencia">
-					<div class="coluna-de-referencia">      
-						<div>
-							<span>Linha:</span>
-							<output class="ref-de-linha"></output>
-						</div>
-		
-						<div>
-							<span>Faixa&nbsp;etária:</span>
-							<output class="ref-de-faixa-etaria"></output>
-						</div>
-		
-						<div>
-							<span>Sexo:</span>
-							<output class="ref-de-sexo"></output>
+          <div class="ficha">
+				<header class="ficha__header">
+					<div class="ficha__header-col-de-emblema --display-flex-xy-center --border-t-thick --border-l-thick">
+						<figure class="ficha__moldura-de-emblema">
+							<img src="imagens/emblema.png" alt="Emblema da República de Moçambique" class="ficha__emblema">
+						</figure>
+						<div class="ficha__box-descricao-de-emblema">
+							<span>República de Moçambique</span>
+							<span>Ministério da Saúde</span>
 						</div>
 					</div>
-				</div>
-			</div>
-            <aside class="manipulacao-do-menu">    
-                <!-- Caixa de pesquisa "Ir para" -->
-                <div class="pesquisa">
-                    <div class="caixa-de-pesquisa">
-                        <input type="number" placeholder="Introduza o número da linha" min="1" max="63" class="pesquisar-linha">    
-                        <button class="fechar" title="Fechar">&times;</button>
-                    </div>
-                    
-                    <div class="caixa-de-alerta query-out-of-range">
-                        <p><b class="entered-num"></b> não corresponde à nenhuma linha. A ficha tem no máximo 63 linhas a partir de 1.</p>
+					<div class="ficha__header__col-de-pnct --display-flex-xy-center --border-t-thick --border-l-thick">
+						<h2>Programa Nacional de Controlo da <br> Tuberculose <br> PNCT </h2>
+					</div>
+					<div class="ficha__header__col-de-localizacao --border-t-thick --border-l-thick --border-r-thick">
+						<div class="ficha__col-de-localizacao__linha-mod-sis-pnct-07 --display-flex-xy-center --cor-de-fundo-padrao">
+							<span class="--fw-700">Mod. SIS-PNCT: 07</span>
+						</div>
+						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
+							<label for="input-us">US:</label>
+							<input type="text" id="input-us" class="input-nao-celular --fw-700 --border-b">
+						</div>
+						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
+							<label for="input-distrito">Distrito:</label>
+							<input type="text" id="input-distrito" class="input-nao-celular --fw-700 --border-b">
+						</div>
+						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
+							<label for="input-provincia">Província</label>
+							<input type="text" id="input-provincia" class="input-nao-celular --fw-700 --border-b">
+						</div>
+						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
+							<label for="input-periodo">Período:</label>
+							<input type="text" id="input-periodo" class="input-nao-celular --fw-700 --border-b">
+						</div>
+					</div>
+					<div class="ficha__header__col-de-titulo --border-thick">
+						<h1 class="ficha__titulo">Resumo Mensal de Rastreio, Notificação de Casos da Tuberculose e TB/HIV</h1>
+					</div>
+				</header>
+
+                <section class="ficha__seccao-1">
+                    <header class="ficha__seccao-1__header --cor-de-fundo-padrao">
+                        <div class="seccao-1__header__col-1 --display-flex-xy-center --border-l-thick --border-b">
+                            <span>Secção 1: Notificação de Casos de TB Todas as Formas Registados durante Trimestre (Novos e Retratamentos)</span>
+                        </div>
+
+                        <div class="seccao-1__header__col-2">
+                            <div class="seccao-1__header__linha-de-nums-de-cols --border-b">
+                                <div class="--display-flex-xy-center --border-l-thick"><span>1</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>2</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>3</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>4</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick --border-r-thick"><span>5</span></div>
+                            </div>
+                            <div class="seccao-1__header__linha-de-indicadores --border-b">
+                                <div class="--display-flex-xy-center --border-l-thick"><span>Casos Novos</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>Recaídas</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>Outros Retratamentos</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>Tratamento Prévio de <br> TB Desconhecido</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick --border-r-thick"><span>Total</span></div>
+                            </div>
+                            <div class="seccao-1__header__linha-de-faixas-etarias --border-b">
+                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>15&plus;</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>15&plus;</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>15&plus;</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>15&plus;</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
+                                <div class="--display-flex-xy-center --border-l --border-r-thick"><span>15&plus;</span></div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="ficha__seccao ficha__seccao-1__body">
+                        <div class="ficha__col-de-indicadores --cor-de-fundo-padrao-discreta --border-l-thick">
+                            <div class="ficha__container-de-indicador --display-flex-y-center --border-b">
+                                <span>a) Tuberculose Pulmonar Bacteriologicamente confirmada</span>
+                            </div>     
+                            <div class="ficha__container-de-indicador --display-flex-y-center --border-b">
+                                <span>b) Tuberculose Pulmonar Clinicamente Diagnosticada</span>
+                            </div>    
+                            <div class="ficha__container-de-indicador --display-flex-y-center --border-b">
+                                <span>c) Tuberculose Extrapulmonar (Bacteriologicamente Confirmada ou <br> Clinicamente Diagnosticada)</span>
+                            </div>                          
+                            <div class="ficha__container-de-indicador --display-flex-y-center --border-b-thick">
+                                <span>d) Total</span>
+                            </div>             
+                        </div>
+                        <div class="ficha__col-de-inputs de-0-4-anos --border-l-thick">
+                            <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c1" data-totaleixoyoutput="l4-c1" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c1" data-totaleixoyoutput="l4-c1" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l3-c1c4c7c10c13" data-totaleixoxoutput="l3-c13" data-totaleixoy="l1al4-c1" data-totaleixoyoutput="l4-c1" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+
+                            <input type="number" min="0" readonly class="l4-c1 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-5-14-anos --border-l">
+                            <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c2" data-totaleixoyoutput="l4-c2" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c2" data-totaleixoyoutput="l4-c2" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l3-c2c5c8c11c14" data-totaleixoxoutput="l3-c14" data-totaleixoy="l1al4-c2" data-totaleixoyoutput="l4-c2" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" readonly class="l4-c2 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-15-ou-mais --border-l">
+                            <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c3" data-totaleixoyoutput="l4-c3" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c3" data-totaleixoyoutput="l4-c3" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l3-c3c6c9c12c15" data-totaleixoxoutput="l3-c15" data-totaleixoy="l1al4-c3" data-totaleixoyoutput="l4-c3" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+
+                            <input type="number" min="0" readonly class="l4-c3 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-0-4-anos --border-l-thick">
+                            <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c4" data-totaleixoyoutput="l4-c4" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
                         
-                        <button>OK</button>
-                    </div>
-                </div> 
-    
-                <!-- Esvaziamento da ficha -->
-                <div class="esvaziamento">
-                    <div class="caixa-de-confirmacao">
-                        <h3>Esvaziar a ficha</h3>
-    
-                        <p>Tem certeza de que pretende esvaziar a ficha?</p>
-    
-                        <div class="alerta">
-                            <svg style="width: 40px; height: 40px; ">
-    
-                                <linearGradient id="meuGradiente" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color: gray"></stop>
-                                    <stop offset="100%" style="stop-color: yellow"></stop>
-                                </linearGradient>
-    
-                                <polygon points="20,0 40,40, 0,40" fill="url(#meuGradiente)" stroke-width="1" stroke="#333"></polygon>
-    
-                                <text x="15.335" y="35.5" style="font-weight: bold; font-size: 28px">!</text>
-                            </svg>
-    
-                            <p>Esta acção não pode ser desfeita.</p>
-    
+                            <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c4" data-totaleixoyoutput="l4-c4" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l3-c1c4c7c10c13" data-totaleixoxoutput="l3-c13" data-totaleixoy="l1al4-c4" data-totaleixoyoutput="l4-c4" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+                        
+                            <input type="number" min="0" readonly class="l4-c4 --border-b-thick">
                         </div>
-    
-                        <h4>Dados adicionais</h4>
-                        <ul class="limpadores-de-dados-adicionais">
-                            <li>
-                                <input type="checkbox" id="nome-da-provincia" checked data-for="provincia"/>
-                                <label for="nome-da-provincia">Província</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="nome-do-distrito" checked data-for="distrito"/>
-                                <label for="nome-do-distrito">Distrito</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="nome-da-us" checked data-for="us"/>
-                                <label for="nome-da-us">US</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="month" checked data-for="mes"/>
-                                <label for="month">Mês</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="nome-do-dc" checked data-for="dc"/>
-                                <label for="nome-do-dc">Nome do Director Clínico</label>
-                            </li>
-                            
-                            <li>
-                                <input type="checkbox" id="data-de-elaboracao" checked data-for="data"/>
-                                <label for="data-de-elaboracao">Data de elaboração</label>
-                            </li>
-    
-                            <li>
-                                <input type="checkbox" id="nome-do-compilador" checked data-for="compilador"/>
-                                <label for="nome-do-compilador">Nome do Responsável pelo <br/> compilamento</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="assinatura-do-compilador" checked data-for="assinatura"/>
-                                <label for="assinatura-do-compilador">Assinatura do Responsável pelo <br/> compilamento</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="nota-do-resumo" checked data-for="nota"/>
-                                <label for="nota-do-resumo">Nota do resumo</label>
-                            </li>
-                        </ul>
-    
-                        <div class="botoes-de-confirmacao">
-                            <button class="cancelar">Cancelar</button>
-                            <button class="confirmar">Confirmar</button>
+                        <div class="ficha__col-de-inputs de-5-14-anos --border-l">
+                            <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c5" data-totaleixoyoutput="l4-c5" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c5" data-totaleixoyoutput="l4-c5" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l3-c2c5c8c11c14" data-totaleixoxoutput="l3-c14" data-totaleixoy="l1al4-c5" data-totaleixoyoutput="l4-c5" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" readonly class="l4-c5 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-15-ou-mais --border-l">
+                            <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c6" data-totaleixoyoutput="l4-c6" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c6" data-totaleixoyoutput="l4-c6" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l3-c3c6c9c12c15" data-totaleixoxoutput="l3-c15" data-totaleixoy="l1al4-c6" data-totaleixoyoutput="l4-c6" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" readonly class="l4-c6 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-0-4-anos --border-l-thick">
+                            <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c7" data-totaleixoyoutput="l4-c7" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c7" data-totaleixoyoutput="l4-c7" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l3-c1c4c7c10c13" data-totaleixoxoutput="l3-c13" data-totaleixoy="l1al4-c7" data-totaleixoyoutput="l4-c7" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+                        
+                            <input type="number" min="0" readonly class="l4-c7 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-5-14-anos --border-l">
+                            <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c8" data-totaleixoyoutput="l4-c8" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c8" data-totaleixoyoutput="l4-c8" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l3-c2c5c8c11c14" data-totaleixoxoutput="l3-c14" data-totaleixoy="l1al4-c8" data-totaleixoyoutput="l4-c8" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" readonly class="l4-c8 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-15-ou-mais --border-l">
+                            <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c9" data-totaleixoyoutput="l4-c9" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c9" data-totaleixoyoutput="l4-c9" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l3-c3c6c9c12c15" data-totaleixoxoutput="l3-c15" data-totaleixoy="l1al4-c9" data-totaleixoyoutput="l4-c9" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" readonly class="l4-c9 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-0-4-anos --border-l-thick">
+                            <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c10" data-totaleixoyoutput="l4-c10" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c10" data-totaleixoyoutput="l4-c10" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l3-c1c4c7c10c13" data-totaleixoxoutput="l3-c13" data-totaleixoy="l1al4-c10" data-totaleixoyoutput="l4-c10" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
+                        
+                            <input type="number" min="0" readonly class="l4-c10 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-5-14-anos --border-l">
+                            <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c11" data-totaleixoyoutput="l4-c11" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c11" data-totaleixoyoutput="l4-c11" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" data-totaleixox="l3-c2c5c8c11c14" data-totaleixoxoutput="l3-c14" data-totaleixoy="l1al4-c11" data-totaleixoyoutput="l4-c11" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+
+                            <input type="number" min="0" readonly class="l4-c11 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs de-15-ou-mais --border-l">
+                            <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c12" data-totaleixoyoutput="l4-c12" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c12" data-totaleixoyoutput="l4-c12" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" data-totaleixox="l3-c3c6c9c12c15" data-totaleixoxoutput="l3-c15" data-totaleixoy="l1al4-c12" data-totaleixoyoutput="l4-c12" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
+                        
+                            <input type="number" min="0" readonly class="l4-c12 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs total-0-4-anos --border-l-thick">
+                            <input type="number" min="0" readonly class="l1-c13 --border-b">
+                            <input type="number" min="0" readonly class="l2-c13 --border-b">
+                            <input type="number" min="0" readonly class="l3-c13 --border-b">
+                            <input type="number" min="0" readonly class="l4-c13 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs total-5-14-anos --border-l">
+                            <input type="number" min="0" readonly class="l1-c14 --border-b">
+                            <input type="number" min="0" readonly class="l2-c14 --border-b">
+                            <input type="number" min="0" readonly class="l3-c14 --border-b">
+                            <input type="number" min="0" readonly class="l4-c14 --border-b-thick">
+                        </div>
+                        <div class="ficha__col-de-inputs total-5-14-anos --border-l --border-r-thick">
+                            <input type="number" min="0" readonly class="l1-c15 --border-b">
+                            <input type="number" min="0" readonly class="l2-c15 --border-b">
+                            <input type="number" min="0" readonly class="l3-c15 --border-b">
+                            <input type="number" min="0" readonly class="l4-c15 --border-b-thick">
                         </div>
                     </div>
-                    <div class="caixa-de-alerta ficha-vazia">
-                        <p>A ficha não está preenchida.</p>                    
-                        <button>OK</button>
-                    </div>
-                </div>
-    
-                <!-- Restrição à readonly cels -->
-                <div class="caixa-de-alerta restricao-de-acesso-celular">
-                    <p>As células dos totais têm o acesso interdito para evitar que os resultados sejam acidentalmente modificados.</p>               
-                    <button>OK</button>
-                </div>
-    
-                <div class="caixa-de-alerta indicador-nao-aplicavel">
-                    <p>Indicador não aplicável para o sexo <span class="sexo-output"></span>.</p>               
-                    <button>OK</button>
-                </div>
-    
-                 <!-- Razão pelas células com fundo vermelho  -->
-                 <div class="razao-pelas-celulas-com-fundo-vermelho">
-                    <h2>Por que algumas células ficaram com o fundo vermelho?</h2>
-                    <p class="destaque obs">
-                        Toda célula cujo fundo está vermelho tem um ou mais algarismos omissos por indisponibilidade de espaço na respectiva célula.
-                    </p>
-                    <p>
-                        As células de entrada de dados do Totalizador têm uma largura para 6 algarismos no máximo, portanto, só podem mostrar valores até <strong>999&nbsp;999</strong>. A partir de 1&nbsp;000&nbsp;000, ficam visíveis somente os primeiros 6 algarismos e do 7º em diante, ficam fora da área visível da célula, com excepção das dos totais, que mostram até 7 algarismos (<strong>9&nbsp;999&nbsp;999</strong>).
-                    </p>
-                    <p class="destaque suposicao">
-                         Presumo que actualmente (2022) não haja uma Unidade Sanitária em Moçambique com um número de consultas do Tuberculose maior que 999 999.
-                    </p>
-                    <div class="seccao-de-interatividade">
-                        <div>
-                            <input type="checkbox" id="nao-mostrar-mais" />
-                            <label for="nao-mostrar-mais">Não mostrar mais esta mensagem</label>
+                </section>
+
+                <section class="ficha__seccao ficha__seccao--padding-top ficha__seccao-2 --border-l-thick --border-r-thick">
+                    <header class="ficha__seccao-2__header --cor-de-fundo-padrao">
+                        <div class="ficha__seccao__titulo --border-t-thick --border-b-thick">
+                            <span>Secção 2: Notificação de Casos TB todas as formas (Bacteriologicamente confirmada, clinicamente diagnosticada e Extrapulmonar) por Faixa Etária e Sexo. Casos de TB <br> Bacteriologicamente Confirmada por Faixa Etária</span>
                         </div>
-                        <button class="close-redcels-obs">Fechar</button>
+                        <div class="seccao-2__header__linha-de-sexo">
+                            <div class="seccao-2__header__col-de-sexo --display-flex-xy-center --border-b">
+                                <span>Sexo</span>
+                            </div>
+                            <div class="seccao-2__header__col-de-faixas-etarias">
+                                <div class="seccao-2__header__linha-com-titulo-faixas-etarias --display-flex-xy-center --border-b --border-l-thick">
+                                    <span>Faixas Etárias</span>
+                                </div>
+                                <div class="seccao-2__header__grid-template-cols-4 --border-b">
+                                    <div class="--display-flex-xy-center --border-l-thick"><span>1</span></div>
+                                    <div class="--display-flex-xy-center --border-l"><span>2</span></div>
+                                    <div class="--display-flex-xy-center --border-l"><span>3</span></div>
+                                    <div class="--display-flex-xy-center --border-l"><span>4</span></div>
+                                </div>
+                                <div class="seccao-2__header__grid-template-cols-4 --border-b">
+                                    <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
+                                    <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
+                                    <div class="--display-flex-xy-center --border-l"><span>&ge;15 A.</span></div>
+                                    <div class="--display-flex-xy-center --border-l"><span>Total</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="ficha__seccao-2__body">
+                        <div class="seccao-2__body__linha-sup">
+                            <div class="ficha__col-de-indicadores ficha__col-de-indicadores--grid-template-rows-3 --cor-de-fundo-padrao-discreta">
+                                <div class="ficha__container-de-indicador --display-flex-y-center --border-b"><span>a) Masculino</span></div>
+
+                                <div class="ficha__container-de-indicador --display-flex-y-center --border-b"><span>b) Feminino</span></div>
+
+                                <div class="ficha__container-de-indicador --display-flex-y-center --border-b-thick"><span>c) Total</span></div>
+                            </div>
+
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l-thick">
+                                <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c1" data-totaleixoyoutput="l7-c1" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
+
+                                <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c1" data-totaleixoyoutput="l7-c1" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
+
+                                <input type="number" readonly class="l7-c1 --border-b-thick">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l">
+                                <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c2" data-totaleixoyoutput="l7-c2" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
+
+                                <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c2" data-totaleixoyoutput="l7-c2" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
+
+                                <input type="number" readonly class="l7-c2 --border-b-thick">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l">
+                                <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c3" data-totaleixoyoutput="l7-c3" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
+
+                                <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c3" data-totaleixoyoutput="l7-c3" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
+
+                                <input type="number" readonly class="l7-c3 --border-b-thick">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l">
+                                <input type="number" readonly class="l5-c4 --border-b">
+                                <input type="number" readonly class="l6-c4 --border-b">
+                                <input type="number" readonly class="l7-c4 --border-b-thick">
+                            </div>
+                        </div>
+                        <div class="seccao-2__body__linha-inferior">
+                            <div class="ficha__container-de-indicador --display-flex-y-center --border-t-thick --border-b-thick">
+                                <span>TB Pulmonar Bacteriologicamente Confirmada</span>
+                            </div>
+                            <div class="ficha__col-de-inputs --border-l-thick --border-t-thick --border-b-thick">
+                                <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
+                            </div>
+                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick">
+                                <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
+                            </div>
+                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick">
+                                <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
+                            </div>
+                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick">
+                                <input type="number" readonly class="l8-c4">
+                            </div>
+                        </div>
                     </div>
+                </section>
+
+                <section class="ficha__seccao ficha__seccao--padding-top ficha__seccao-3 --border-l-thick --border-r-thick">
+                    <header class="ficha__seccao-3__header --cor-de-fundo-padrao">
+                        <div class="ficha__seccao__titulo --border-t-thick --border-b-thick">
+                            <span>Secção 3: Actividades de Rastreio de TB</span>
+                        </div>
+                        <div class="ficha__seccao__grid-template-cols-7 ficha__seccao__grid-template-cols-7--small-height-rows">
+                            <div class="--display-flex-xy-center --border-b"><span>1</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>2</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>3</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>4</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>5</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>6</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>7</span></div>
+                        </div>
+
+                        <div class="ficha__seccao__grid-template-cols-7">
+                            <div class="--display-flex-xy-center --border-b">
+                                <span>Total de pacientes <br> presuntivos submetidos a <br> exame Bacteriológico <br> (para Diagnóstico)</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Total de pacientes <br> presuntivos com <br> Bacteriologia Positiva</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Contactos Rastreados <br> (adultos e crianças)</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Contactos com TB</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Contactos <br> (&lt;5 anos) rastreados <br> para TB</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Crianças &lt; 5A. que iniciaram <br> Quimioprofilaxia</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Crianças &lt; 5A. que iniciaram <br> Tratamento de TB sem exame <br> Bacteriológico</span>
+                            </div>
+                        </div>
+
+                        <div class="ficha__seccao__grid-template-cols-18">
+                            <div class="--display-flex-xy-center --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"></div>
+                        </div>
+                    </header>
+                    <div class="ficha__seccao-3__body">
+                        <div class="ficha__seccao__grid-template-cols-18">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" readonly class="l9-c4">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" readonly class="l9-c8">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c10c11c12" data-totaleixoxoutput="l9-c13">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c10c11c12" data-totaleixoxoutput="l9-c13">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" data-totaleixox="l9-c10c11c12" data-totaleixoxoutput="l9-c13">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0" readonly class="l9-c13">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                                <input type="number" min="0">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                                <input type="number" min="0">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                                <input type="number" min="0">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                                <input type="number" min="0">
+                            </div>
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                                <input type="number" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ficha__seccao ficha__seccao--padding-top ficha__seccao-4 --border-l-thick --border-r-thick">
+                    <header class="ficha__seccao-4__header --cor-de-fundo-padrao">
+                        <div class="ficha__seccao__titulo ficha__seccao__titulo--grid-template-cols-2 --border-t-thick --border-b-thick">
+                            <div class="seccao-4__titulo__col-responsabilidade-da-tb">
+                                <span>Secção 4: Actividades colaborativas TB/HIV da Responsabilidade da TB</span>
+                            </div>
+                            <div class="seccao-4__titulo__col-responsabilidade-do-hiv --border-l-thick">
+                                <span>Responsabilidade do HIV</span>
+                            </div>
+                        </div>
+                        <div class="ficha__seccao__grid-template-cols-7 ficha__seccao__grid-template-cols-7--small-height-rows">
+                            <div class="--display-flex-xy-center --border-b"><span>1</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>2</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>3</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>4</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>5</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>6</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>7</span></div>
+                        </div>
+
+                        <div class="ficha__seccao__grid-template-cols-7">
+                            <div class="--display-flex-xy-center --border-b">
+                                <span>Total de pacientes Testados <br/> para o HIV</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Testados dentro do sector <br> da TB</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Pacientes TB/HIV</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Pacientes TB/HIV que iniciaram TPC</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Pacientes TB/HIV que iniciaram TARV</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Pacientes TB/HIV referidos <br> dos serviços TARV</span>
+                            </div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b">
+                                <span>Pacientes HIV positivo que iniciaram TPI (Todos)</span>
+                            </div>
+                        </div>
+
+                        <div class="ficha__seccao__grid-template-cols-26 ficha__seccao-4__linha-de-faixas-etarias">
+                            <div class="--display-flex-xy-center --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+
+                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
+                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+                        </div>
+                    </header>
+
+                    <div class="ficha__seccao__grid-template-cols-26">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" readonly class="l10-c4">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" readonly class="l10-c8">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c10c11c12" data-totaleixoxoutput="l10-c13">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c10c11c12" data-totaleixoxoutput="l10-c13">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c10c11c12" data-totaleixoxoutput="l10-c13">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" readonly class="l10-c13">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <input type="number" min="0">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <input type="number" min="0">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0">
+                        </div>
+
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" readonly class="l10-c22">
+                        </div>
+
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
+                        </div>
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <input type="number" min="0" readonly class="l10-c26">
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="ficha__rodape --border-r-thick --border-b-thick --border-l-thick">
+                    <div class="ficha__rodape__linha-de-nome-e-categoria">
+                        <div class="ficha__rodape__col-de-nome">
+                            <label for="input-nome">Nome legível do Responsável pelo preenchimento:</label>
+                            <input type="text" id="input-nome" class="ficha__rodape__campo-de-nome input-nao-celular --fw-700 --border-b">
+                        </div>
+
+                        <div class="ficha__rodape__col-de-categoria">
+                            <label for="input-nome">Categoria:</label>
+                            <input type="text" id="input-nome" class="input-nao-celular --fw-700 --border-b">
+                        </div>
+                    </div>
+
+                    <div class="ficha__rodape__linha-de-data">
+                        <label for="input-data">Data</label>
+                        <input type="date" class="input-nao-celular --fw-700 --border-b">
+                    </div>
+                </footer>
+          </div>
+
+            <div class="main__container-de-campo-de-nota layout-row">
+                <textarea class="main__campo-de-nota input-nao-celular" id="input-comentarios" placeholder="Comentários sobre o resumo (S.O.S)..." rows=3></textarea>
+            </div>
+
+            <div class="reference-container --no-print">
+                <div class="layout-row reference-row">
+                    <span class="reference-row__label">Indicador:</span> 
+                    <output class="reference-row__output reference-row__output--indicador --display-flex-y-center"></output>
+
+                    <span class="reference-row__label">Coluna:</span> 
+                    <output class="reference-row__output reference-row__output--coluna --display-flex-xy-center --fw-700"></output>
                 </div>
-    
-                <!-- AVISO DE USO DE COOKIES -->
-                <div class="aviso-de-uso-de-cookies">
-                    <p>                    
-                        Ao utilizar o Totalizador de Resumo Mensal de Tuberculose, o usuário concorda com o armazenamento local de dados, a fim de melhorar a sua experiência de utilização. <button class="abrir-artigo-cookies">Saiba mais...</button>
-                    </p>
-        
-                   
-                    <button class="aceitar-cookies">Prosseguir</button>
-                </div> 
-            </aside>
+            </div>
         </main>
+        
+        <section class="dialog-boxes --no-print">
+            <div class="dialog-box-default dialog-box-default--sobre-aqd">
+                <h3 class="dialog-box-default__title">Totalizador de Resumo Mensal de Tuberculose</h3>
+                <p class="dialog-box-default__p">
+                    A utilização do totalizador é, de facto, uma garantia de um resumo correctamente totalizado, porém, isso simplesmente não define a qualidade do resumo. Você é o único responsável pela veracidade, lógica e concordância dos dados preenchidos e, portanto, pela qualidade do resumo. O totalizador só se limita a calcular os totais baseando-se exactamente nos dados que você fornece.
+                </p>
+                <div class="dialog-box-default__btn-container">
+                    <button class="dialog-box-default__btn dialog-box-default__btn--aqd">Entendi</button>
+                </div>
+            </div>
 
-        <!-- Sobre e Cookies  -->
-        <article >
-            <section id="sobre">
-                <h1>Sobre o totalizador</h1>
-                
+            <div class="dialog-box-default dialog-box-default--small">
+                <h3 class="dialog-box-default__title">Totalizador de Resumo Mensal de Tuberculose</h3>
+                <p class="dialog-box-default__p dialog-box-default__p--js-console --display-flex-y-center">
+                    
+                </p>
+                <div class="dialog-box-default__btn-container">
+                    <button class=dialog-box-default__btn>Fechar <span class="dialog-box-default__output-autoclose-loop"></span></button>
+                </div>
+            </div>
+
+            <div class="dialog-box-ir-para --display-flex-y-center">
+                <input type=number min=1 class=dialog-box-ir-para__input-linha max=73 placeholder="Ir para a linha (número da linha)">
+                <button class="dialog-box-ir-para__btn dialog-box-ir-para__btn--fechar" title=Fechar>&times;</button>
+            </div>
+            <div class="dialog-box-esvaziar-ficha">
+                <h3 class="dialog-box-esvaziar-ficha__titulo --fw-700">Esvaziar ficha</h3>
+                <p>Tem certeza de que pretende esvaziar a ficha?
+                <div class=dialog-box-esvaziar-ficha__svg-container>
+                    <svg style=width:40px;height:40px>
+                        <linearGradient id=meuGradiente x1=0% x2=0% y1=0% y2=100%>
+                            <stop offset=0% style=stop-color:gray></stop>
+                            <stop offset=100% style=stop-color:#ff0></stop>
+                        </linearGradient>
+                        <polygon fill=url(#meuGradiente) points="20,0 40,40, 0,40" stroke=#333 stroke-width=1></polygon>
+                        <text style=font-weight:700;font-size:28px x=15.335 y=35.5>!</text>
+                    </svg>
+                    <p class="dialog-box-esvaziar-ficha__last-p">Esta acção não pode ser desfeita.
+                </div>
+                <h4 class="dialog-box-esvaziar-ficha__titulo --fw-700">Incluindo:</h4>
+                <ul class=dialog-box-esvaziar-ficha__ul-dados-adicionais>
+					<li>
+                        <input type=checkbox checked id="checkbox-us" data-for=input-us>
+                        <label for=checkbox-us>US</label>
+					<li>
+						<input type=checkbox checked id="checkbox-distrito" data-for=input-distrito>
+						<label for=checkbox-distrito>Distrito</label>
+                    <li>
+                        <input type=checkbox checked id="checkbox-prov" data-for=input-provincia>
+                        <label for=checkbox-prov>Província</label>
+                    <li>
+                        <input type=checkbox id=checkbox-periodo checked data-for=input-periodo>
+                        <label for=checkbox-periodo>Período</label>
+                    <li>
+                        <input type=checkbox id=checkbox-nome checked data-for=input-nome>
+                        <label for=checkbox-nome>Nome legível do responsável pelo preenchimento</label>
+                    <li>
+                        <input type=checkbox id=checkbox-categoria checked data-for=input-categoria>
+                        <label for=checkbox-categoria>Categoria</label>
+					<li>
+						<input type=checkbox id=checkbox-data checked data-for=input-data>
+						<label for=checkbox-data>Data</label>
+                    <li>
+                        <input type=checkbox id=checkbox-comentarios checked data-for=input-comentarios>
+                        <label for=checkbox-comentarios>Comentários</label>
+                </ul>
+                <div class=dialog-box-esvaziar-ficha__btns-container>
+                    <button class="dialog-box-esvaziar-ficha__btn dialog-box-esvaziar-ficha__btn--cancelar">Cancelar</button>
+                    <button class="dialog-box-esvaziar-ficha__btn dialog-box-esvaziar-ficha__btn--confirmar">Confirmar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="sessao-de-artigos --no-print">
+            <article id="sobre" class="artigo artigo--sobre layout-row layout-row--artigo-sobre">
+                <h2 class="artigo__titulo artigo__titulo--nivel-1">Visão geral sobre o totalizador</h2>
                 <figure>
-                    <img src="imagens/totalizador-de-resumo-mensal-de-tb.png" alt="Totalizador de Resumo Mensal de Tuberculose"/>
+                    <img alt="Totalizador de Resumo Mensal de Tuberculose" src=imagens/totalizador-de-resumo-mensal-de-ccd.png class="artigo__img artigo__img--sobre-o-tot">
                 </figure>
-
-                <p>O <b>Totalizador de Resumo Mensal de Tuberculose</b> é um serviço online gratuito que auxilia na elaboração do respectivo resumo totalizando-o automaticamente com base nos dados preenchidos pelo usuário (Profissional de Saúde). A sua estrutura é baseada na da ficha de resumo mensal de Tuberculose actualmente (2022) vigente no Serviço Nacional de Saúde em Moçambique.</p>
-
-                <p>O propósito é de flexibilizar a elaboração do resumo através do cálculo automático dos totais.</p>
-
-                <p>O Totalizador de Resumo Mensal de Tuberculose reúne os seguintes recursos:</p>
-
-                <ul>
-                    <li>Calcula e autopreenche as células dos totais;</li>
-                    <li>Fornece resultados verdadeiros;</li>
-                    <li>Flexibiliza a elaboração do resumo;</li>
-                    <li>Salva os dados no navegador do usuário até este excluí-los;</li>
-                    <li>Pode ser impresso.</li>
-                </ul>
                 
-                <button class="fechar-artigo" title="Fechar">
-                    &times;
-                </button>
-            </section>
-            <section id="cookies">
-                <h1>Política de Armazenamento de dados</h1>
-
-                <p><b>Web Storage</b> é um recurso para armazenamento local (no navegador do usuário) de informações por meio de pequenos arquivos de texto, útil para guardar predefinições.</p>
-
-                <p class="mb-10">Existem 2 tipos de Web Storage:</p>
-
-                <ul>
-                    <li> <b>Session Storage (Armazenamento de Sessão)</b> – elimina os dados gravados quando a janela da página é fechada.</li>
-    
-                    <li> <b>Local Storage (Armazenamento Local)</b> – mantém os dados salvos por um período determinado ou até que o usuário exclua.</li>
-                </ul>
-                
-    
                 <p>
-                    O Totalizador de Resumo Mensal de Tuberculose utiliza o primeiro para guardar o consentimento do usuário à Política de Armazenamento e o último pelas razões do subtítulo a seguir.
+                    O <strong>Totalizador de Resumo Mensal de Tuberculose</strong> é um serviço online gratuito que auxilia na elaboração do resumo mensal de rastreio, notificação de casos de tuberculose (TB) e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV actualmente vigente no Serviço Nacional de Saúde em Moçambique.
                 </p>
 
-                <h2>Por que armazeno dados?</h2>
+                <h3 class="artigo__titulo artigo__titulo--nivel-2">Objectivos</h3>
 
-                <p class="mb-10">Por 3 razões, enumeradamente:</p>
+                <ul class="artigo__lista artigo__lista--ul">
+                    <li>Auxiliar os Profissionais de Saúde na totalização do resumo mensal de rastreio, notificação de casos de TB e TB/HIV com exatidão e prontidão;</li>
+                    <li>Minimizar possíveis erros de totalização (por exemplo, somar inconscientemente células não correspondentes ou registar o total da linha A, na linha B);</li>
+                    <li >Expandir o acesso à ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV.</li>
+                </ul>
 
-                <dl>
-                    <dt id="um">Fazer um backup local</dt>
+                <h3 class="artigo__titulo artigo__titulo--nivel-2 ">O que eu preciso dispor para, e como utilizar o totalizador?</h3>
 
-                    <dd class="mb-10">
-                        Fazer uma cópia de segurança dos dados da ficha no navegador do usuário. Se forem preenchidos, os dados que são salvos incluem:
-                    </dd>
+                <ul class="artigo__lista artigo__lista--ul">
+                    <li>Um celular ou computador com acesso à internet;</li>
+                    <li>Ter colhido os dados de todos os indicadores da ficha nas fontes primárias (livro(s) de registo do sector de TB) da sua Unidade Sanitária;</li>
+                    <li>E por fim, preencher os dados nas células correspondentes em função das variáveis (indicador e faixa etária) e consequentemente os respectivos totais são, em tempo real, correcta e automaticamente calculados.</li>
+                </ul>
+
+                <p class="artigo__p--destaque">A utilização do totalizador é, de facto, uma garantia de um resumo correctamente totalizado, porém, isso simplesmente não define a qualidade do resumo. Você é o único responsável pela veracidade, lógica e concordância dos dados preenchidos e, portanto, pela qualidade do resumo. O totalizador só se limita a calcular os totais baseando-se exactamente nos dados que você fornece.</p>
+
+                <h3 class="artigo__titulo artigo__titulo--nivel-2">Qual é o destino dos dados que eu insiro?</h3>
+
+                <p>São guardados localmente (no navegador que estiver a usar), por meio de um recurso chamado <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API" target="_blank">Web Storage</a> e você tem total controle sobre esses, podendo mantê-los ou apagá-los por meio da opção "<b>Esvaziar ficha</b>" no menu do totalizador ou esvaziando o histórico (inclusíve os cookies) do seu navegador.</p>
+
+                <h3 class="artigo__titulo artigo__titulo--nivel-2">Vantagens do totalizador</h3>
+
+                <ul class="artigo__lista artigo__lista--ul">
+                    <li>Calcula automaticamente os totais;</li>
+                    <li>Preenche automaticamente as células correspondentes aos totais;</li>
+                    <li>Fornece resultados (totais) exactos;</li>
+                    <li>Flexibiliza a elaboração do resumo;</li>
+                    <li>Pode ser impresso, inclusíve como uma simples ficha de resumo mensal;</li>
+                    <li >Pode ser guardado como PDF.</li>
+                </ul>
+
+                <h3 class="artigo__titulo artigo__titulo--nivel-2">Limitações do totalizador</h3>
+                    
+                <ul class="artigo__lista artigo__lista--ul">
+                    <li>Não alerta sobre discrepância de dados, portanto, a análise da concordância dos dados é inteiramente dependente do usuário.</li>
+                </ul>
+                <button class="artigo__btn-fechar artigo__btn-fechar--sobre" title="Fechar">&times;</button>
+            </article>
+
+            <article class="artigo artigo--ajuda layout-row layout-row--artigo-ajuda">
+                <h2 class="artigo__titulo artigo__titulo--nivel-1 artigo__titulo--ajuda-e-procedimentos">Ajuda e Procedimentos</h2>
+
+                <details>
+                    <summary>Realçar totais</summary>
+                    <p>Adiciona um fundo amarelo a todas as células dos totais. Essas têm o acesso interdito e a funcionalidade de realçá-las, permite distingui-las facilmente de outras células. Muito útil em celulares.</p>
+                </details>
+                <details>
+                    <summary >Ir para a linha...</summary>
+                    <p>Abre um campo no qual pode digitar um número de linha no intervalo de 1 à 73 e, uma vez digitado o número, a página rola até a linha correspondente ao número.</p>
+                </details>
+                <details>
+                    <summary>Esvaziar ficha</summary>
+                    <p>Comando para limpar a ficha após a confirmação da acção na caixa de diálogo que abre.</p>
+                    
+                    <p class="artigo__p--destaque">Na sessão "Incluindo" da caixa de diálogo de confirmação, pode desmarcar campos (Província, Distrito, US, etc.) que não deseja excluir. Por padrão, as "checkboxes" dos campos estão marcadas com o sinal de "✔", indicando desse modo que o conteúdo contido neles será eliminado, mas caso queira manter a informação de um campo específico, basta desmarcá-lo clicando directamente sobre a ckeckbox ou sobre a sua descrição.</p> 
+
+                    <figure class="details__moldura details__moldura--esvaziar-ficha">
+                        <img src="imagens/caixa-de-dialogo-para-esvaziamento-da-ficha.png" alt="Caixa de diálogo para esvaziamento da ficha" class="artigo__img"/>
+
+                        <figcaption class="details__moldura__legenda"><b>Legenda:</b> Caixa de diálogo para esvaziamento da ficha. Neste caso, os campos de <b>Província, Distrito e US</b> seriam preservados (por ter suas checkboxes desmarcadas). Todos os outros cujas "checkboxes" estão marcadas seriam esvaziados.</figcaption>
+                    </figure>
+
+                </details>
+                <details class="details-salvar-ficha-como-pdf">
+                    <summary>Salvar ficha como PDF</summary>
+                    <h3 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--cor-discreta">No computador:</h3>
+                    <ol class="artigo__lista artigo__lista--ol">
+                        <li>
+                            Clique na opção <mark>Imprimir</mark> no menu do totalizador.
+                        <li>
+                            Na janela que abrirá, no campo de <mark>Impressora</mark> ou <mark>Destino</mark>
+                            selecione a opção <mark>Salvar&nbsp;como&nbsp;PDF</mark>.
+                        <li >
+                            Por fim, clique em <mark>Salvar</mark> e escolha um destino no seu computador.
+                    </ol>
+
+                    <h3 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--cor-discreta">No celular / tablet:</h3>
+                    <ol class="artigo__lista artigo__lista--ol">
+                        <li>
+                            Toque na opção <mark>Salvar como PDF</mark> no cabeçalho do totalizador.
+                        </li>
+                        <li>
+                            Na janela seguinte, se não vir a opção <mark>Guardar como PDF</mark>, toque em<mark><b>Selec. impressora</b></mark>.
+                        </li>
+
+                        <figure class="details__moldura">
+                            <img src="imagens/salvar-ficha-como-pdf-1.png" alt="Como salvar a ficha em PDF no celular" class="artigo__img" />
+                        </figure>
+                           
+                        <li>
+                          De seguida, selecione a opção <mark>Guardar como PDF</mark> e por fim, toque no simbolo em forma de disquete e escolha um destino no seu celular para salvar o resumo.
+                        </li>
+
+                        <figure class="details__moldura">
+                            <img src="imagens/salvar-ficha-como-pdf-2.png" alt="Como salvar a ficha em PDF no celular" class="artigo__img" />
+                        </figure>
+                    </ol>
+                </details>
+                <details class="artigo__details-motivo-de-red-cells">
+                    <summary>Algumas células mudaram de cor de fundo para vermelho</summary>
+                    <p>As células do totalizador têm um tamanho para conter visivelmente 7 algarismos no máximo, isto é, mostram valores até, no máximo, <span class="number-format">9999999</span>. Quando uma célula recebe um número com mais de 7 algarismos, dá um alerta ficando vermelha e eventualmente mostrando esta mensagem de texto para alertá-lo sobre a omissão dos algarismos e o real motivo.</p>
+
+                    <p class="artigo__p artigo__p--destaque">Para um país como Moçambique, onde o número de habitantes é de pouco mais de 30 milhões (<a href="https://energypedia.info/wiki/Moçambique:_Informação_sobre_o_País" target="_blank">dados demográficos de 2019</a>), podemos presumir que nenhuma Unidade Sanitária actualmente tem um número mensal de dados de algum indicador, de qualquer que seja a sua natureza, acima de <span class="number-format">9999999</span>.</p>
+                </details>
+                <button class="artigo__btn-fechar artigo__btn-fechar--ajuda" title="Fechar">&times;</button>
+            </article>
+        </section>
+        <footer class="footer --no-print">
+            <div class="layout-row footer__row">
+                <nav class=footer__nav>
+                    <h4 class="footer__nav__title">Hiperligações para outros serviços afins</h4>
                     <ul>
                         <li>
-                            <b>Os dados da ficha propriamente dita.</b>
-                        </li>
+                            <a href=https://quinamine.github.io/totalizador-de-resumo-trimestral-de-apss-e-pp/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Trimestral de APSS/PP</a>
                         <li>
-                            <b>Dados adicionais como:</b>
-                            <ul>
-                                <li>Província;</li>
-                                <li>Distrito;</li>
-                                <li>Unidade Sanitária;</li>
-                                <li>Mês;</li>
-                                <li>Nome do Director da US;</li>
-                                <li>Data de elaboração;</li>
-                                <li>Nome do Responsável pelo compilamento;</li>
-                                <li>Assinatura do Responsável pelo compilamento.</li>
-                            </ul>  
-                        </li>
-                                                
+                            <a href=https://quinamine.github.io/totalizador-de-resumo-mensal-de-consultas/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Mensal de Consultas</a>
+                        <li>
+                            <a href=https://quinamine.github.io/totalizador-de-resumo-mensal-de-hiv-e-sida/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Mensal de HIV/SIDA</a>
+                        <li>
+                            <a href=https://quinamine.github.io/totalizador-de-resumo-mensal-de-malaria/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Mensal de Malária</a>
+                        <li>
+                            <a href=https://quinamine.github.io/totalizador-de-resumo-mensal-de-prn-ii/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Mensal de PRN II</a>
+                        <li>
+                            <a href=https://quinamin.github.io/totalizador-de-resumo-mensal-de-prn-i/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Mensal de PRN I</a>
+                        <li>
+                            <a href=https://quinamine.github.io/totalizador-de-resumo-mensal-de-saaj/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Mensal de SAAJ</a>
+                        <li>
+                            <a href=https://quinamine.github.io/totalizador-de-resumo-mensal-de-ccd/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Mensal de CCD</a>
+                        <li>
+                            <a href=https://quinamine.github.io/totalizador-de-resumo-mensal-de-ats/index.html target=_blank class="footer__nav__link">Totalizador de Resumo Mensal de ATS</a>
+                        <li>
+                            <a href=https://quinamine.github.io/calculadora-de-doses-pediatricas/index.html target=_blank class="footer__nav__link">Calculadora de Doses Pediátricas</a>
+                        <li>
+                            <a href=https://quinamine.github.io/tarv-pediatrico/index.html target=_blank class="footer__nav__link">Doseador de Antirretrovirais</a>
+                        <li>
+                            <a href=https://quinamin.github.io/requisicao-balancete/index.html target=_blank class="footer__nav__link">Requisição/Balancete</a>
                     </ul>
-
-                    <dt id="dois">Durabilidade dos dados</dt>
-                    <dd>
-                        Manter salvos os dados previamente inseridos no acto de preenchimento da ficha por tempo suficiente para serem aproveitáveis. Isso é importante, pois possibilita o Profissional interromper sem o risco de voltar à estaca zero, a elaboração do resumo para continuar num outro momento oportuno, sobretudo se ainda lhe faltar dados de alguns indicadores para preencher nas respectivas células da ficha.
-                    </dd>
-
-                    <dt id="tres">Salvar preferências</dt>
-
-                    <dd>
-                        Por exemplo, quando o usuário marca a opção <b>“Destacar o fundo dos totais"</b>, essa escolha é salva na Web Storage para manter nas suas próximas visitas à plataforma.
-                    </dd>
-                </dl>
-
-                <h2>Destino dos dados</h2>  
-
-                <p>Todos os dados são salvos localmente (no navegador do usuário). O armazenamento local é para fins de memorização e com isso tornar os dados suficientemente duráveis.</p>
-
-                <h2>Gerenciamento dos dados pelo usuário</h2>  
-
-                <p>No menu do Totalizador, existe a opção <strong>“Esvaziar a ficha”</strong>, que permite ao usuário apagar todos os dados da ficha salvos pelo Totalizador na Web Storage.</p>
-
-                <div class="consentimento">
-                    <p class="destaque">
-                        A aceitação dos termos de armazenamento apresentados neste bloco é dada pela utilização do Totalizador de Resumo Mensal de Tuberculose.
-                    </p>
-                </div>
-                                
-                <button class="fechar-artigo" title="Fechar">
-                    <span class="times">
-                        &times;
-                    </span>
-                   
-
-                    <svg style="width: 16px; height: 16px; ">
-                        <line x1="0%" x2="50%" y1="50%" y2="0" stroke-width="2px" stroke="#333"></line>
-                        <line x1="0%" x2="50%" y1="50%" y2="100%" stroke-width="2px" stroke="#333"></line>
-                        <line x1="-1" x2="100%" y1="50%" y2="50%" stroke-width="2px" stroke="#333"></line>
-                    </svg>
-                </button>
-            </section>
-            <section id="conversao-pdf">
-                <h1>Como salvar a ficha em PDF?</h1>
-            
-                <ol>
-                    <li>Clique na opção "<b>Imprimir</b>".</li>
-            
-                    <li>Na janela que abrirá, no campo de <b>Impressora</b> ou <b>Destino</b> selecione a opção “<b>Salvar como PDF</b>”.</li>
-            
-                    <li>No campo de <b>Layout</b> ou <b>Orientação</b>, selecione "<b>Paisagem</b>". Isso é para que toda ficha caiba no papel A4 e não haja omissão das últimas colunas.</li>
-            
-                    <li>Por fim, clique em <b>salvar</b> e escolha o destino no seu computador.</li>
-                </ol>
-            
-                <p class="destaque">Se no navegador Firefox haver omissão das últimas colunas no modo paisagem, teste no modo retrato.</p>
-
-                <button class="fechar-artigo" title="Fechar">
-                    &times;
-                </button>
-            </section>
-        </article>
-        
-        <footer>
-            <div class="linha do-rodape">
-                <div class="hiperligacoes">
-                    <h4>Links para outros serviços afins</h4>
-                    <ul>
-                        <li>
-                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-hiv-e-sida/index.html" target="_blank">Totalizador de Resumo Mensal de HIV/SIDA</a>
-                        </li>
-                        <li>
-                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-consultas/index.html" target="_blank">Totalizador de Resumo Mensal de Consultas</a>
-                        </li>
-                        <li>
-                            <a href="https://quinamine.github.io/tarv-pediatrico/index.html" target="_blank">Doseador Pediátrico de Antirretrovirais</a>
-                        </li>
-                        <li>
-                            <a href="https://quinamine.github.io/calculadora-de-doses-pediatricas/index.html" target="_blank">Calculadora de Doses Pediátricas</a>
-                        </li>                  
-                    </ul>   
-                </div>
-                <p>Desenvolvido com &#128153; por <a href="https://quinamine.github.io/aderito-felix-quinamine/index.html">Adérito Félix Quinamine</a> |&nbsp;&copy;&nbsp;2022 -&nbsp;Totalizador&nbsp;de&nbsp;Resumo&nbsp;Mensal&nbsp;de&nbsp;Tuberculose</p>
-
-                <a href="#ficha" class="voltar">&uarr;</a>
+                </nav>
+                <p class="footer__p footer__p--created-by">
+                    Criado com atenção e 💙 por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a>
+                    | © <span class="footer__current-year"></span> - Totalizador de Resumo Mensal de Tuberculose</abbr>
+                </p>
+                <a href=#root class=footer__link-back-to-top>Voltar ao topo</a>
             </div>
+            <p class="footer__p footer__p--available-since">Disponível desde <time datetime="2024-05">05/2024</time></p>
         </footer>
-
         <div class="desfoque"></div>
     </body>
-
-</html>
 </html>
