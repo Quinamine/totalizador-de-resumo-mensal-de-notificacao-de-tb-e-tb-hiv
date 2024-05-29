@@ -121,7 +121,7 @@ window.addEventListener("load", () => {
     }));
 
     const inputsCelulares = document.querySelectorAll(".ficha__col-de-inputs input");
-    inputsCelulares.forEach (inputCelular => inputCelular.addEventListener("input", destacarCelulasSaturadas));
+    inputsCelulares.forEach (inputCelular => inputCelular.addEventListener("input", destacarCelulasComConteudoOmisso));
     destacarCelulasComConteudoOmisso();
 
     // Indicador nao aplicavel para APEs

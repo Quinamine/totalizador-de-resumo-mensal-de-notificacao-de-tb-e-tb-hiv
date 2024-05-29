@@ -18,7 +18,7 @@ const menu = {
         return {  
             dialogBox: document.querySelector(".dialog-box-esvaziar-ficha"),
             abrirDialogBox() { 
-                const inputsDaFicha = document.querySelectorAll("[data-totaleixox], [readonly], .input-nao-celular");
+                const inputsDaFicha = document.querySelectorAll(".ficha input");
 
                 let inputFilled = 0;
                 for(const input of inputsDaFicha) {
@@ -42,7 +42,7 @@ const menu = {
             },
 
             confirmar() {
-                const inputsCelulares  = document.querySelectorAll("[data-totaleixox], [readonly]");
+                const inputsCelulares  = document.querySelectorAll(".ficha__col-de-inputs input");
                 const checkboxesParaInputsNaoCelulares = document.querySelectorAll("[data-for]");
        
                 for (let i = 0; i < inputsCelulares.length; i++) {
@@ -171,7 +171,7 @@ function eventos() {
 
     // PARTILHAR 
     const data = {
-        title: "Totalizador de Resumo Mensal de Malária",
+        title: "Totalizador de Resumo Mensal de Tuberculose",
         text: "O Totalizador de Resumo Mensal de Tuberculose é um serviço online gratuito que auxilia na elaboração do resumo mensal de rastreio, notificação de casos de tuberculose (TB) e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV actualmente vigente no Serviço Nacional de Saúde em Moçambique.",
         url: "https://quinamine.github.io/totalizador-de-resumo-mensal-de-tuberculose/index.html"
     }
