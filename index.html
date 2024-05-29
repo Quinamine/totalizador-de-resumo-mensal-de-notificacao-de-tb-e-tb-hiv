@@ -102,7 +102,7 @@
                 <section class="ficha__seccao-1">
                     <header class="ficha__seccao-1__header --cor-de-fundo-padrao">
                         <div class="seccao-1__header__col-1 --display-flex-xy-center --border-l-thick --border-b">
-                            <span>Secção 1: Notificação de Casos de TB Todas as Formas Registados durante Trimestre (Novos e Retratamentos)</span>
+                            <span>Secção 1: Notificação de Casos de TB Todas as Formas Registados <br> durante Trimestre (Novos e Retratamentos)</span>
                         </div>
 
                         <div class="seccao-1__header__col-2">
@@ -658,14 +658,14 @@
                         </div>
 
                         <div class="ficha__rodape__col-de-categoria">
-                            <label for="input-nome">Categoria:</label>
-                            <input type="text" id="input-nome" class="input-nao-celular --fw-700 --border-b">
+                            <label for="input-categoria">Categoria:</label>
+                            <input type="text" id="input-categoria" class="input-nao-celular --fw-700 --border-b">
                         </div>
                     </div>
 
                     <div class="ficha__rodape__linha-de-data">
                         <label for="input-data">Data</label>
-                        <input type="date" class="input-nao-celular --fw-700 --border-b">
+                        <input type="date" id="input-data" class="input-nao-celular --fw-700 --border-b">
                     </div>
                 </footer>
           </div>
@@ -762,7 +762,7 @@
             <article id="sobre" class="artigo artigo--sobre layout-row layout-row--artigo-sobre">
                 <h2 class="artigo__titulo artigo__titulo--nivel-1">Visão geral sobre o totalizador</h2>
                 <figure>
-                    <img alt="Totalizador de Resumo Mensal de Tuberculose" src=imagens/totalizador-de-resumo-mensal-de-ccd.png class="artigo__img artigo__img--sobre-o-tot">
+                    <img alt="Totalizador de Resumo Mensal de Tuberculose" src=imagens/totalizador-de-resumo-mensal-de-tuberculose.png class="artigo__img artigo__img--sobre-o-tot">
                 </figure>
                 
                 <p>
@@ -817,7 +817,7 @@
                     <summary>Realçar totais</summary>
                     <p>Adiciona um fundo amarelo a todas as células dos totais. Essas têm o acesso interdito e a funcionalidade de realçá-las, permite distingui-las facilmente de outras células. Muito útil em celulares.</p>
                 </details>
-                <details>
+                <details class="--display-none">
                     <summary >Ir para a linha...</summary>
                     <p>Abre um campo no qual pode digitar um número de linha no intervalo de 1 à 73 e, uma vez digitado o número, a página rola até a linha correspondente ao número.</p>
                 </details>
@@ -871,9 +871,9 @@
                 </details>
                 <details class="artigo__details-motivo-de-red-cells">
                     <summary>Algumas células mudaram de cor de fundo para vermelho</summary>
-                    <p>As células do totalizador têm um tamanho para conter visivelmente 7 algarismos no máximo, isto é, mostram valores até, no máximo, <span class="number-format">9999999</span>. Quando uma célula recebe um número com mais de 7 algarismos, dá um alerta ficando vermelha e eventualmente mostrando esta mensagem de texto para alertá-lo sobre a omissão dos algarismos e o real motivo.</p>
+                    <p>A maioria das células do totalizador têm um tamanho para conter visivelmente 6 algarismos no máximo, isto é, mostram valores até, no máximo, <span class="number-format">999999</span>, embora outras excepcionalmente possam mostrar números com mais de 22 algarismos. Quando uma célula recebe um número com mais de 6 algarismos, dá um alerta ficando vermelha e eventualmente mostrando esta mensagem de texto para alertá-lo sobre a omissão dos algarismos e o real motivo.</p>
 
-                    <p class="artigo__p artigo__p--destaque">Para um país como Moçambique, onde o número de habitantes é de pouco mais de 30 milhões (<a href="https://energypedia.info/wiki/Moçambique:_Informação_sobre_o_País" target="_blank">dados demográficos de 2019</a>), podemos presumir que nenhuma Unidade Sanitária actualmente tem um número mensal de dados de algum indicador, de qualquer que seja a sua natureza, acima de <span class="number-format">9999999</span>.</p>
+                    <p class="artigo__p artigo__p--destaque">Para um país como Moçambique, onde o número de habitantes é de pouco mais de 30 milhões (<a href="https://energypedia.info/wiki/Moçambique:_Informação_sobre_o_País" target="_blank">dados demográficos de 2019</a>), podemos presumir que nenhuma Unidade Sanitária actualmente tem um número mensal de dados de algum indicador, de qualquer que seja a sua natureza, acima de <span class="number-format">999999</span>.</p>
                 </details>
                 <button class="artigo__btn-fechar artigo__btn-fechar--ajuda" title="Fechar">&times;</button>
             </article>

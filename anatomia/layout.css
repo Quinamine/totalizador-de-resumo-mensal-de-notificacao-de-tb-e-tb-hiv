@@ -134,7 +134,7 @@ body.--overflow-h {
     display: none;
 }
 
-@media screen and (min-width: 371px) {
+@media screen and (min-width: 360px) {
     .logo__span--hide-on-screen-s {
         display: initial;
     }
@@ -271,7 +271,7 @@ main {
 .main__campo-de-nota {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
-    width: 986px;
+    width: 1114px;
     padding: 5px;
     border: var(--thin-border-style);
     height: 55px;
@@ -279,6 +279,7 @@ main {
 
 .main__campo-de-nota:focus {
     border: 2px solid var(--blue);
+    background-color: var(--greenyellow);
 }
 
 @media print {
