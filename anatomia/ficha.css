@@ -203,6 +203,10 @@
     width: 540px;
 }
 
+.ficha__rodape__campo-de-categoria {
+    width: 196px;
+}
+
 .ficha__rodape__linha-de-data {
     margin-top: 10px;
     min-height: 20px;

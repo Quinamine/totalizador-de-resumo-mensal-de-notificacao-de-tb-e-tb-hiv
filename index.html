@@ -79,15 +79,18 @@
 						</div>
 						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
 							<label for="input-us">US:</label>
-							<input type="text" id="input-us" class="input-nao-celular --fw-700 --border-b">
+							<input type="text" id="input-us" list="datalist-us" class="input-nao-celular --fw-700 --border-b">
+                            <datalist id="datalist-us"></datalist>
 						</div>
 						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
 							<label for="input-distrito">Distrito:</label>
-							<input type="text" id="input-distrito" class="input-nao-celular --fw-700 --border-b">
+							<input type="text" id="input-distrito" list="datalist-distritos" class="input-nao-celular --fw-700 --border-b">
+                            <datalist id="datalist-distritos"></datalist>
 						</div>
 						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
 							<label for="input-provincia">Província:</label>
-							<input type="text" id="input-provincia" class="input-nao-celular --fw-700 --border-b">
+							<input type="text" id="input-provincia" list="datalist-provincias" class="input-nao-celular --fw-700 --border-b">
+                            <datalist id="datalist-provincias"></datalist>
 						</div>
 						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
 							<label for="input-periodo">Período:</label>
@@ -102,7 +105,7 @@
                 <section class="ficha__seccao-1">
                     <header class="ficha__seccao-1__header --cor-de-fundo-padrao">
                         <div class="seccao-1__header__col-1 --display-flex-xy-center --border-l-thick --border-b">
-                            <span>Secção 1: Notificação de Casos de TB Todas as Formas Registados <br> durante Trimestre (Novos e Retratamentos)</span>
+                            <span class="s1-title">Secção 1: Notificação de Casos de TB Todas as Formas Registados <br> durante o Trimestre (Novos e Retratamentos)</span>
                         </div>
 
                         <div class="seccao-1__header__col-2">
@@ -114,10 +117,10 @@
                                 <div class="--display-flex-xy-center --border-l-thick --border-r-thick"><span>5</span></div>
                             </div>
                             <div class="seccao-1__header__linha-de-indicadores --border-b">
-                                <div class="--display-flex-xy-center --border-l-thick"><span>Casos Novos</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>Recaídas</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>Outros Retratamentos</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>Tratamento Prévio de <br> TB Desconhecido</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span class="title-s1c1">Casos Novos</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span class="title-s1c2">Recaídas</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span class="title-s1c3">Outros Retratamentos</span></div>
+                                <div class="--display-flex-xy-center --border-l-thick"><span class="title-s1c4">Tratamento Prévio de <br> TB Desconhecido</span></div>
                                 <div class="--display-flex-xy-center --border-l-thick --border-r-thick"><span>Total</span></div>
                             </div>
                             <div class="seccao-1__header__linha-de-faixas-etarias --border-b">
@@ -141,7 +144,7 @@
                     </header>
 
                     <div class="ficha__seccao ficha__seccao-1__body">
-                        <div class="ficha__col-de-indicadores --cor-de-fundo-padrao-discreta --border-l-thick">
+                        <div class="ficha__col-de-indicadores s1-indicadores --cor-de-fundo-padrao-discreta --border-l-thick">
                             <div class="ficha__container-de-indicador --display-flex-y-center --border-b">
                                 <span>a) Tuberculose Pulmonar Bacteriologicamente confirmada</span>
                             </div>     
@@ -155,7 +158,7 @@
                                 <span>d) Total</span>
                             </div>             
                         </div>
-                        <div class="ficha__col-de-inputs de-0-4-anos --border-l-thick">
+                        <div class="ficha__col-de-inputs --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s1c1" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c1" data-totaleixoyoutput="l4-c1" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
 
                             <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c1" data-totaleixoyoutput="l4-c1" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
@@ -164,7 +167,7 @@
 
                             <input type="number" min="0" readonly class="l4-c1 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-5-14-anos --border-l">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5-14" data-coltitle="title-s1c1" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c2" data-totaleixoyoutput="l4-c2" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
 
                             <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c2" data-totaleixoyoutput="l4-c2" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
@@ -173,7 +176,7 @@
 
                             <input type="number" min="0" readonly class="l4-c2 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-15-ou-mais --border-l">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15+" data-coltitle="title-s1c1" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c3" data-totaleixoyoutput="l4-c3" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
 
                             <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c3" data-totaleixoyoutput="l4-c3" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
@@ -182,7 +185,7 @@
 
                             <input type="number" min="0" readonly class="l4-c3 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-0-4-anos --border-l-thick">
+                        <div class="ficha__col-de-inputs --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s1c2" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c4" data-totaleixoyoutput="l4-c4" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
                         
                             <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c4" data-totaleixoyoutput="l4-c4" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
@@ -191,7 +194,7 @@
                         
                             <input type="number" min="0" readonly class="l4-c4 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-5-14-anos --border-l">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5-14" data-coltitle="title-s1c2" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c5" data-totaleixoyoutput="l4-c5" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
 
                             <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c5" data-totaleixoyoutput="l4-c5" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
@@ -200,7 +203,7 @@
 
                             <input type="number" min="0" readonly class="l4-c5 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-15-ou-mais --border-l">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15+" data-coltitle="title-s1c2" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c6" data-totaleixoyoutput="l4-c6" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
                         
                             <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c6" data-totaleixoyoutput="l4-c6" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
@@ -209,7 +212,7 @@
                         
                             <input type="number" min="0" readonly class="l4-c6 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-0-4-anos --border-l-thick">
+                        <div class="ficha__col-de-inputs --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s1c3" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c7" data-totaleixoyoutput="l4-c7" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
                         
                             <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c7" data-totaleixoyoutput="l4-c7" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
@@ -218,7 +221,7 @@
                         
                             <input type="number" min="0" readonly class="l4-c7 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-5-14-anos --border-l">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5-14" data-coltitle="title-s1c3" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c8" data-totaleixoyoutput="l4-c8" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
 
                             <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c8" data-totaleixoyoutput="l4-c8" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
@@ -227,7 +230,7 @@
 
                             <input type="number" min="0" readonly class="l4-c8 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-15-ou-mais --border-l">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15+" data-coltitle="title-s1c3" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c9" data-totaleixoyoutput="l4-c9" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
                         
                             <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c9" data-totaleixoyoutput="l4-c9" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
@@ -236,7 +239,7 @@
                         
                             <input type="number" min="0" readonly class="l4-c9 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-0-4-anos --border-l-thick">
+                        <div class="ficha__col-de-inputs --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s1c4" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c10" data-totaleixoyoutput="l4-c10" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
                         
                             <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c10" data-totaleixoyoutput="l4-c10" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
@@ -245,7 +248,7 @@
                         
                             <input type="number" min="0" readonly class="l4-c10 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-5-14-anos --border-l">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5-14" data-coltitle="title-s1c4" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c11" data-totaleixoyoutput="l4-c11" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
 
                             <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c11" data-totaleixoyoutput="l4-c11" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
@@ -254,7 +257,7 @@
 
                             <input type="number" min="0" readonly class="l4-c11 --border-b-thick">
                         </div>
-                        <div class="ficha__col-de-inputs de-15-ou-mais --border-l">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15+" data-coltitle="title-s1c4" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
                             <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c12" data-totaleixoyoutput="l4-c12" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
                         
                             <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c12" data-totaleixoyoutput="l4-c12" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
@@ -287,7 +290,7 @@
                 <section class="ficha__seccao ficha__seccao--padding-top ficha__seccao-2 --border-l-thick --border-r-thick">
                     <header class="ficha__seccao-2__header --cor-de-fundo-padrao">
                         <div class="ficha__seccao__titulo --border-t-thick --border-b-thick">
-                            <span>Secção 2: Notificação de Casos TB todas as formas (Bacteriologicamente confirmada, clinicamente diagnosticada e Extrapulmonar) por Faixa Etária e Sexo. Casos de TB <br> Bacteriologicamente Confirmada por Faixa Etária</span>
+                            <span class="s2-title">Secção 2: Notificação de Casos TB todas as formas (Bacteriologicamente confirmada, clinicamente diagnosticada e Extrapulmonar) por Faixa Etária e Sexo. Casos de TB <br> Bacteriologicamente Confirmada por Faixa Etária.</span>
                         </div>
                         <div class="seccao-2__header__linha-de-sexo">
                             <div class="seccao-2__header__col-de-sexo --display-flex-xy-center --border-b">
@@ -298,9 +301,9 @@
                                     <span>Faixas Etárias</span>
                                 </div>
                                 <div class="seccao-2__header__grid-template-cols-4 --border-b">
-                                    <div class="--display-flex-xy-center --border-l-thick"><span>1</span></div>
-                                    <div class="--display-flex-xy-center --border-l"><span>2</span></div>
-                                    <div class="--display-flex-xy-center --border-l"><span>3</span></div>
+                                    <div class="--display-flex-xy-center --border-l-thick"><span class="title-s2c1">1</span></div>
+                                    <div class="--display-flex-xy-center --border-l"><span class="title-s2c2">2</span></div>
+                                    <div class="--display-flex-xy-center --border-l"><span class="title-s2c3">3</span></div>
                                     <div class="--display-flex-xy-center --border-l"><span>4</span></div>
                                 </div>
                                 <div class="seccao-2__header__grid-template-cols-4 --border-b">
@@ -315,7 +318,7 @@
 
                     <div class="ficha__seccao-2__body">
                         <div class="seccao-2__body__linha-sup">
-                            <div class="ficha__col-de-indicadores ficha__col-de-indicadores--grid-template-rows-3 --cor-de-fundo-padrao-discreta">
+                            <div class="ficha__col-de-indicadores ficha__col-de-indicadores--grid-template-rows-3 s2-indicadores s2-indicadores --cor-de-fundo-padrao-discreta">
                                 <div class="ficha__container-de-indicador --display-flex-y-center --border-b"><span>a) Masculino</span></div>
 
                                 <div class="ficha__container-de-indicador --display-flex-y-center --border-b"><span>b) Feminino</span></div>
@@ -323,21 +326,21 @@
                                 <div class="ficha__container-de-indicador --display-flex-y-center --border-b-thick"><span>c) Total</span></div>
                             </div>
 
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s2c1" data-indicadores="s2-indicadores" data-sectiontitle="s2-title">
                                 <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c1" data-totaleixoyoutput="l7-c1" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
 
                                 <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c1" data-totaleixoyoutput="l7-c1" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
 
                                 <input type="number" readonly class="l7-c1 --border-b-thick">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l" data-faixaetaria="5-14" data-coltitle="title-s2c2" data-indicadores="s2-indicadores" data-sectiontitle="s2-title">
                                 <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c2" data-totaleixoyoutput="l7-c2" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
 
                                 <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c2" data-totaleixoyoutput="l7-c2" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
 
                                 <input type="number" readonly class="l7-c2 --border-b-thick">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l" data-faixaetaria="&gE;15 A." data-coltitle="title-s2c3" data-indicadores="s2-indicadores" data-sectiontitle="s2-title">
                                 <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c3" data-totaleixoyoutput="l7-c3" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
 
                                 <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c3" data-totaleixoyoutput="l7-c3" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
@@ -351,16 +354,16 @@
                             </div>
                         </div>
                         <div class="seccao-2__body__linha-inferior">
-                            <div class="ficha__container-de-indicador --display-flex-y-center --border-t-thick --border-b-thick">
+                            <div class="ficha__container-de-indicador s2-indicador-extra --display-flex-y-center --border-t-thick --border-b-thick">
                                 <span>TB Pulmonar Bacteriologicamente Confirmada</span>
                             </div>
-                            <div class="ficha__col-de-inputs --border-l-thick --border-t-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs --border-l-thick --border-t-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s2c1" data-indicadores="s2-indicador-extra" data-sectiontitle="s2-title">
                                 <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
                             </div>
-                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s2c2" data-indicadores="s2-indicador-extra" data-sectiontitle="s2-title">
                                 <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
                             </div>
-                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick" data-faixaetaria="&ge;15 A." data-coltitle="title-s2c3" data-indicadores="s2-indicador-extra" data-sectiontitle="s2-title">
                                 <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
                             </div>
                             <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick">
@@ -387,25 +390,25 @@
 
                         <div class="ficha__seccao__grid-template-cols-7">
                             <div class="--display-flex-xy-center --border-b">
-                                <span>Total de pacientes <br> presuntivos submetidos a <br> exame Bacteriológico <br> (para Diagnóstico)</span>
+                                <span class="title-s3c1">Total de pacientes <br> presuntivos submetidos a <br> exame Bacteriológico <br> (para Diagnóstico)</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Total de pacientes <br> presuntivos com <br> Bacteriologia Positiva</span>
+                                <span class="title-s3c2">Total de pacientes <br> presuntivos com <br> Bacteriologia Positiva</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Contactos Rastreados <br> (adultos e crianças)</span>
+                                <span class="title-s3c3">Contactos Rastreados <br> (adultos e crianças)</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Contactos com TB</span>
+                                <span class="title-s3c4">Contactos com TB</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Contactos <br> (&lt;5 anos) rastreados <br> para TB</span>
+                                <span class="title-s3c5">Contactos <br> (&lt;5 anos) rastreados <br> para TB</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Crianças &lt; 5A. que iniciaram <br> Quimioprofilaxia</span>
+                                <span class="title-s3c6">Crianças &lt; 5A. que iniciaram <br> Quimioprofilaxia</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Crianças &lt; 5A. que iniciaram <br> Tratamento de TB sem exame <br> Bacteriológico</span>
+                                <span class="title-s3c7">Crianças &lt; 5A. que iniciaram <br> Tratamento de TB sem exame <br> Bacteriológico</span>
                             </div>
                         </div>
 
@@ -432,58 +435,58 @@
                     </header>
                     <div class="ficha__seccao-3__body">
                         <div class="ficha__seccao__grid-template-cols-18">
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s3c1">
                                 <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s3c1">
                                 <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s3c1">
                                 <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
                             </div>
                             <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
                                 <input type="number" min="0" readonly class="l9-c4">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s3c2">
                                 <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s3c2">
                                 <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s3c2">
                                 <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
                             </div>
                             <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
                                 <input type="number" min="0" readonly class="l9-c8">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s3c3">
                                 <input type="number" min="0" data-totaleixox="l9-c9c10c11" data-totaleixoxoutput="l9-c12" data-contactosmenoresde5rastreadosoutput="l9-c16">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s3c3">
                                 <input type="number" min="0" data-totaleixox="l9-c9c10c11" data-totaleixoxoutput="l9-c12">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s3c3">
                                 <input type="number" min="0" data-totaleixox="l9-c9c10c11" data-totaleixoxoutput="l9-c12">
                             </div>
                             <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
                                 <input type="number" min="0" readonly class="l9-c12">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s3c4">
                                 <input type="number" min="0">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s3c4">
                                 <input type="number" min="0">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s3c4">
                                 <input type="number" min="0">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-coltitle="title-s3c5">
                                 <input type="number" min="0" class="l9-c16">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-coltitle="title-s3c6">
                                 <input type="number" min="0">
                             </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-coltitle="title-s3c7">
                                 <input type="number" min="0">
                             </div>
                         </div>
@@ -512,25 +515,25 @@
 
                         <div class="ficha__seccao__grid-template-cols-7">
                             <div class="--display-flex-xy-center --border-b">
-                                <span>Total de pacientes Testados <br/> para o HIV</span>
+                                <span class="title-s4c1">Total de pacientes Testados <br/> para o HIV</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Testados dentro do sector <br> da TB</span>
+                                <span class="title-s4c2">Testados dentro do sector <br> da TB</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Pacientes TB/HIV</span>
+                                <span class="title-s4c3">Pacientes TB/HIV</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Pacientes TB/HIV que iniciaram TPC</span>
+                                <span class="title-s4c4">Pacientes TB/HIV que iniciaram TPC</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Pacientes TB/HIV que iniciaram TARV</span>
+                                <span class="title-s4c5">Pacientes TB/HIV que iniciaram TARV</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Pacientes TB/HIV referidos <br> dos serviços TARV</span>
+                                <span class="title-s4c6">Pacientes TB/HIV referidos <br> dos serviços TARV</span>
                             </div>
                             <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span>Pacientes HIV positivo que iniciaram TPI (Todos)</span>
+                                <span class="title-s4c7">Pacientes HIV positivo que iniciaram TPI (Todos)</span>
                             </div>
                         </div>
 
@@ -567,81 +570,81 @@
                     </header>
 
                     <div class="ficha__seccao__grid-template-cols-26">
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c1">
                             <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c1">
                             <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c1">
                             <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
                         </div>
                         <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
                             <input type="number" min="0" readonly class="l10-c4">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c2">
                             <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c2">
                             <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c2">
                             <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
                         </div>
                         <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
                             <input type="number" min="0" readonly class="l10-c8">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c3">
                             <input type="number" min="0" data-totaleixox="l10-c9c10c11" data-totaleixoxoutput="l10-c12">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c3">
                             <input type="number" min="0" data-totaleixox="l10-c9c10c11" data-totaleixoxoutput="l10-c12">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c3">
                             <input type="number" min="0" data-totaleixox="l10-c9c10c11" data-totaleixoxoutput="l10-c12">
                         </div>
                         <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
                             <input type="number" min="0" readonly class="l10-c12">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c4">
                             <input type="number" min="0">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c4">
                             <input type="number" min="0">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c4">
                             <input type="number" min="0">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c5">
                             <input type="number" min="0">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c5">
                             <input type="number" min="0">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c5">
                             <input type="number" min="0">
                         </div>
 
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c6">
                             <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c6">
                             <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c6">
                             <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
                         </div>
                         <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
                             <input type="number" min="0" readonly class="l10-c22">
                         </div>
 
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c7">
                             <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c7">
                             <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
+                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c7">
                             <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
                         </div>
                         <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
@@ -659,7 +662,13 @@
 
                         <div class="ficha__rodape__col-de-categoria">
                             <label for="input-categoria">Categoria:</label>
-                            <input type="text" id="input-categoria" class="input-nao-celular --fw-700 --border-b">
+                            <input type="text" id="input-categoria" list="datalist-categorias" class="ficha__rodape__campo-de-categoria input-nao-celular --fw-700 --border-b">
+                            <datalist id="datalist-categorias">
+                                <option value="Médico de Clínica Geral"></option>
+                                <option value="Técnico de Medicina Geral"></option>
+                                <option value="Agente de Medicina Geral"></option>
+                                <option value="Enfermeiro Geral"></option>
+                            </datalist>
                         </div>
                     </div>
 
@@ -679,8 +688,8 @@
                     <span class="reference-row__label">Indicador:</span> 
                     <output class="reference-row__output reference-row__output--indicador --display-flex-y-center"></output>
 
-                    <span class="reference-row__label">Coluna:</span> 
-                    <output class="reference-row__output reference-row__output--coluna --display-flex-xy-center --fw-700"></output>
+                    <span class="reference-row__label">Faixa etária:</span> 
+                    <output class="reference-row__output reference-row__output--idade --display-flex-xy-center --fw-700"></output>
                 </div>
             </div>
         </main>
@@ -782,7 +791,7 @@
                 <ul class="artigo__lista artigo__lista--ul">
                     <li>Um celular ou computador com acesso à internet;</li>
                     <li>Ter colhido os dados de todos os indicadores da ficha nas fontes primárias (livro(s) de registo do sector de TB) da sua Unidade Sanitária;</li>
-                    <li>E por fim, preencher os dados nas células correspondentes em função das variáveis (indicador e faixa etária) e consequentemente os respectivos totais são, em tempo real, correcta e automaticamente calculados.</li>
+                    <li>E por fim, preencher os dados nas células correspondentes em função das variáveis (indicador, faixa etária e sexo) e consequentemente os respectivos totais são, em tempo real, correcta e automaticamente calculados.</li>
                 </ul>
 
                 <p class="artigo__p--destaque">A utilização do totalizador é, de facto, uma garantia de um resumo correctamente totalizado, porém, isso simplesmente não define a qualidade do resumo. Você é o único responsável pela veracidade, lógica e concordância dos dados preenchidos e, portanto, pela qualidade do resumo. O totalizador só se limita a calcular os totais baseando-se exactamente nos dados que você fornece.</p>
@@ -915,7 +924,7 @@
                 </p>
                 <a href=#root class=footer__link-back-to-top>Voltar ao topo</a>
             </div>
-            <p class="footer__p footer__p--available-since">Disponível desde <time datetime="2024-05">05/2024</time></p>
+            <p class="footer__p footer__p--available-since">Disponível desde <time datetime="2024-05-30">30/05/2024</time></p>
         </footer>
         <div class="desfoque"></div>
     </body>

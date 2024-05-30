@@ -377,13 +377,14 @@ main {
 
 .reference-row {
     display: grid;
-    grid-template-columns: 53px 500px 45px 50px;
+    grid-template-columns: 53px 500px 68px 60px;
     align-items: center;
     min-height: 28px;
     font-size: 12px;
 }
 
 .reference-row__output {
+    line-height: 1.2;
     background-color: var(--black--alpha-5);
     margin-right: 8px;
     margin-left: 4px;
@@ -398,9 +399,9 @@ main {
     color: var(--yt);
 }
 
-@media screen and (max-width: 675px) {
+@media screen and (max-width: 810px) {
     .reference-row {
-        grid-template-columns: 1fr 50px;
+        grid-template-columns: 1fr 60px;
         grid-column-gap: 3px;
         padding-left: 0;
         padding-right: 0;

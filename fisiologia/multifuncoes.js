@@ -123,16 +123,6 @@ window.addEventListener("load", () => {
     const inputsCelulares = document.querySelectorAll(".ficha__col-de-inputs input");
     inputsCelulares.forEach (inputCelular => inputCelular.addEventListener("input", destacarCelulasComConteudoOmisso));
     destacarCelulasComConteudoOmisso();
-
-    // Indicador nao aplicavel para APEs
-    const celulasNaoAplicaveis = document.querySelectorAll(".celula-n-a");  
-    celulasNaoAplicaveis.forEach( celula => {
-        celula.addEventListener("click", () => {
-            const msg = "O indicador não se aplica aos APEs.";
-            alertarSobre(msg);
-        })
-    })
-
     
     aqd.mostrarAviso();
     const dialogBoxAQD__btn = document.querySelector(".dialog-box-default__btn--aqd");

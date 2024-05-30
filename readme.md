@@ -20,7 +20,7 @@ O **Totalizador de Resumo Mensal de Tuberculose** é um serviço online gratuito
 
 * Ter colhido os dados de todos os indicadores da ficha nas fontes primárias (livro(s) de registo do sector de TB) da sua Unidade Sanitária.
 
-* E por fim, preencher os dados nas células correspondentes em função das variáveis (indicador e faixa etária) e consequentemente os respectivos totais são, em tempo real, correcta e automaticamente calculados.
+* E por fim, preencher os dados nas células correspondentes em função das variáveis (indicador, faixa etária e sexo) e consequentemente os respectivos totais são, em tempo real, correcta e automaticamente calculados.
 
 
 >[!NOTE]
