@@ -69,8 +69,8 @@
         </header>
         <main>
           <div class="ficha">
-				<header class="ficha__header">
-					<div class="ficha__header-col-de-emblema --display-flex-xy-center --border-t-thick --border-l-thick">
+				<header class="ficha__header --border-l-thick --border-r-thick">
+					<div class="ficha__header-col-de-emblema --display-flex-xy-center --border-t-thick">
 						<figure class="ficha__moldura-de-emblema">
 							<img src="imagens/emblema.png" alt="Emblema da República de Moçambique" class="ficha__emblema">
 						</figure>
@@ -82,7 +82,7 @@
 					<div class="ficha__header__col-de-pnct --display-flex-xy-center --border-t-thick --border-l-thick">
 						<h2>Programa Nacional de Controlo da <br> Tuberculose <br> PNCT </h2>
 					</div>
-					<div class="ficha__header__col-de-localizacao --border-t-thick --border-l-thick --border-r-thick">
+					<div class="ficha__header__col-de-localizacao --border-t-thick --border-l-thick">
 						<div class="ficha__col-de-localizacao__linha-mod-sis-pnct-07 --display-flex-xy-center --cor-de-fundo-padrao">
 							<span class="--fw-700">Mod. SIS-PNCT: 07</span>
 						</div>
@@ -106,7 +106,7 @@
 							<input type="text" id="input-periodo" class="input-nao-celular --fw-700 --border-b">
 						</div>
 					</div>
-					<div class="ficha__header__col-de-titulo --border-thick">
+					<div class="ficha__header__col-de-titulo --border-t-thick --border-b-thick">
 						<h1 class="ficha__titulo">Resumo Mensal de Rastreio, Notificação de Casos da Tuberculose e TB/HIV</h1>
 					</div>
 				</header>
@@ -153,7 +153,7 @@
                     </header>
 
                     <div class="ficha__seccao ficha__seccao-1__body">
-                        <div class="ficha__col-de-indicadores s1-indicadores --cor-de-fundo-padrao-discreta --border-l-thick">
+                        <div class="ficha__col-de-indicadores s1-indicadores --cor-de-fundo-padrao--discreta --border-l-thick">
                             <div class="ficha__container-de-indicador --display-flex-y-center --border-b">
                                 <span>a) Tuberculose Pulmonar Bacteriologicamente confirmada</span>
                             </div>     
@@ -327,7 +327,7 @@
 
                     <div class="ficha__seccao-2__body">
                         <div class="seccao-2__body__linha-sup">
-                            <div class="ficha__col-de-indicadores ficha__col-de-indicadores--grid-template-rows-3 s2-indicadores s2-indicadores --cor-de-fundo-padrao-discreta">
+                            <div class="ficha__col-de-indicadores ficha__col-de-indicadores--grid-template-rows-3 s2-indicadores s2-indicadores --cor-de-fundo-padrao--discreta">
                                 <div class="ficha__container-de-indicador --display-flex-y-center --border-b"><span>a) Masculino</span></div>
 
                                 <div class="ficha__container-de-indicador --display-flex-y-center --border-b"><span>b) Feminino</span></div>
@@ -730,7 +730,7 @@
             </div>
             <div class="dialog-box-esvaziar-ficha">
                 <h3 class="dialog-box-esvaziar-ficha__titulo --fw-700">Esvaziar ficha</h3>
-                <p>Tem certeza de que pretende esvaziar a ficha?
+                <p class="dialog-box-esvaziar-ficha__p--first">Tem certeza de que pretende esvaziar a ficha?
                 <div class=dialog-box-esvaziar-ficha__svg-container>
                     <svg style=width:40px;height:40px>
                         <linearGradient id=meuGradiente x1=0% x2=0% y1=0% y2=100%>
@@ -740,7 +740,7 @@
                         <polygon fill=url(#meuGradiente) points="20,0 40,40, 0,40" stroke=#333 stroke-width=1></polygon>
                         <text style=font-weight:700;font-size:28px x=15.335 y=35.5>!</text>
                     </svg>
-                    <p class="dialog-box-esvaziar-ficha__last-p">Esta acção não pode ser desfeita.
+                    <p class="dialog-box-esvaziar-ficha__p--last">Esta acção não pode ser desfeita.
                 </div>
                 <h4 class="dialog-box-esvaziar-ficha__titulo --fw-700">Incluindo:</h4>
                 <ul class=dialog-box-esvaziar-ficha__ul-dados-adicionais>
@@ -931,7 +931,7 @@
                     Criado com atenção e 💙 por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a>
                     | © <span class="footer__current-year"></span> - Totalizador de Resumo Mensal de Tuberculose</abbr>
                 </p>
-                <a href=#root class=footer__link-back-to-top>Voltar ao topo</a>
+                <a href=#root class=footer__link-back-to-top>Rolar para o topo</a>
             </div>
             <p class="footer__p footer__p--available-since">Disponível desde <time datetime="2024-05-30">30/05/2024</time></p>
         </footer>
