@@ -569,6 +569,9 @@ main {
     border-radius: 5px;
     position: relative;
 }
+.artigo__p--destaque.--sem-sombra {
+    box-shadow: none;
+}
 
 .artigo__p--destaque::before {
     content: "i";
