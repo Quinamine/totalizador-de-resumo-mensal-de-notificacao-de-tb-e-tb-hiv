@@ -172,7 +172,7 @@ function eventos() {
     // PARTILHAR 
     const data = {
         title: "Totalizador de Resumo Mensal de Tuberculose",
-        text: "O Totalizador de Resumo Mensal de Tuberculose é um serviço online gratuito que auxilia na elaboração do resumo mensal de rastreio, notificação de casos de tuberculose (TB) e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV actualmente vigente no Serviço Nacional de Saúde em Moçambique.",
+        text: "Totaliza automaticamente o resumo mensal de rastreio, notificação de casos de TB e TB/HIV com base nos dados inseridos pelo usuário. Foi desenvolvido de acordo com o modelo da respectiva ficha de resumo mensal actualmente vigente no Serviço Nacional de Saúde em Moçambique.",
         url: "https://quinamine.github.io/totalizador-de-resumo-mensal-de-tuberculose/index.html"
     }
 
