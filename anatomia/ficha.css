@@ -3,215 +3,190 @@
     margin: 30px auto 15px;
     font-weight: 700;
 }
-
 .ficha span {
     line-height: 1.2;
 }
-
 .ficha__header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     min-width: 100%;
 }
-
 .ficha__header-col-de-emblema {
     flex-direction: column;
     padding: 20px 0;
 }
-
 .ficha__emblema {
     margin: auto;
 }
-
 .ficha__box-descricao-de-emblema span {
     display: block;
     text-align: center;
     line-height: 2;
 }
-
 .ficha__header__col-de-pnct h2 {
     font-size: 15px;
     text-align: center;
     text-transform: uppercase;
     line-height: 1.2;
 }
-
 .ficha__header__col-de-localizacao {
     display: grid;
     grid-template-rows: 38px repeat(4, 1fr);
     font-weight: initial;
 }
-
 .ficha__col-de-localizacao__linha {
     padding: 0 10px 0 4px;
 }
-
 .ficha__col-de-localizacao__linha input {
     flex: 1;
 }
-
 .ficha__header__col-de-titulo {
     grid-column: 1/4;
     padding: 7px 0;
 }
-
 .ficha__titulo {
     text-transform: uppercase;
     text-align: center;
     font-size: 13.7px;
 }
-
 .ficha__seccao-1__header {
     display: grid;
     grid-template-columns: 467px 1fr;
 }
-
 .seccao-1__header__col-1 span {
     text-align: center;
 }
-
 .seccao-1__header__col-2 {
     display: grid;
     grid-template-rows: 18px 30px 38px;
     text-align: center;
 }
-
 .seccao-1__header__linha-de-nums-de-cols,
 .seccao-1__header__linha-de-indicadores {
     display: grid;
     grid-template-columns: repeat(5, 132px);
 }
-
 .seccao-1__header__linha-de-faixas-etarias {
     display: grid;
     grid-template-columns: repeat(15, calc(132px / 3));
 }
-
 .ficha__seccao-1__body {
     display: grid;
     grid-template-columns: 467px repeat(15, calc(132px / 3));
 }
-
 .ficha__col-de-indicadores,
 .ficha__col-de-inputs {
     display: grid;
     grid-template-rows: repeat(4, 43px);
     overflow: hidden;
 }
-
 .ficha__container-de-indicador {
     padding-left: 4px;
 }
-
 .ficha__col-de-inputs input {
     display: block;
     width: 100%;
 }
-
+[data-totaleixox]:focus,
+.input-nao-celular:focus {
+    border-bottom: 2px solid var(--blue);
+    background-color: var(--greenyellow);
+}
+@media screen {
+    .input--realcar-totais {
+        background-color: var(--yellow);
+    }
+}
+.input--bg-color-danger {
+    background-color: var(--cor-de-risco);
+    color: var(--yt)
+}
+.input--font-small {
+    font-size: 12px
+}
 .ficha__seccao--padding-top {
     padding-top: 20px;
 }
-
 .ficha__seccao__titulo span {
     padding: 4px;
     display: inline-block;
     font-size: 	13px;
 }
-
 .seccao-2__header__linha-de-sexo {
     display: grid;
     grid-template-columns: 420px 1fr;
 }
-
 .seccao-2__header__col-de-faixas-etarias {
     display: grid;
     grid-template-rows: 18px 15px 30px;
 }
-
 .seccao-2__header__grid-template-cols-4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
-
 .ficha__seccao-2__body {
     display: grid;
     grid-template-rows: calc(43px * 3) 43px;
     grid-row-gap: 8px;
 }
-
 .ficha__col-de-indicadores--grid-template-rows-3,
 .ficha__col-de-inputs--grid-template-rows-3 {
     grid-template-rows: repeat(3, 43px);
 }
-
 .seccao-2__body__linha-inferior .ficha__col-de-inputs {
     grid-template-rows: 43px;
 }
-
-
 .seccao-2__body__linha-sup,
 .seccao-2__body__linha-inferior {
     display: grid;
     grid-template-columns: 420px repeat(4, 1fr);
 }
-
 .ficha__seccao__grid-template-cols-7 {
     display: grid;
     grid-template-columns: repeat(3, 175.75px) repeat(2, 1fr) repeat(2, 175.75px);
     grid-template-rows: 64px !important;
     text-align: center;
 }
-
 .ficha__seccao__grid-template-cols-7--small-height-rows {
     grid-template-rows: 18px;
 }
-
 .ficha__seccao__grid-template-cols-18 {
     display: grid;
     grid-template-columns: repeat(12, calc(175.75px / 4)) repeat(3, calc(122.13px/3)) 1fr repeat(2, 175.75px);
     grid-template-rows: 64px;
 }
-
 .ficha__seccao__titulo--grid-template-cols-2 {
     display: grid;
     grid-template-columns: 1fr calc(2 * 175.75px);
 }
-
 .ficha__seccao__grid-template-cols-26 {
     display: grid;
     grid-template-columns: repeat(12, calc(175.75px / 4)) repeat(3, calc(122.13px/3)) repeat(3, calc(122.20px/3)) repeat(8, calc(175.75px / 4));
     grid-template-rows: 65px;
 }
-
 .ficha__seccao__grid-template-cols-18 .ficha__col-de-inputs,
 .ficha__seccao__grid-template-cols-26 .ficha__col-de-inputs {
     grid-template-rows: 64px;
 }
-
 .ficha__rodape {
     padding: 10px 4px;
     min-height: 71px;
 }
-
 .ficha__rodape__linha-de-nome-e-categoria {
     display: flex;
     justify-content: space-between;
     min-height: 20px;
 }
-
 .ficha__rodape__campo-de-nome {
     width: 540px;
 }
-
 .ficha__rodape__campo-de-categoria {
     width: 196px;
 }
-
 .ficha__rodape__linha-de-data {
     margin-top: 10px;
     min-height: 20px;
 }
-
 /* CLASSES REUTILIZÁVEIS */
 .--cor-de-fundo-padrao {
     background-color: var(--gray--light);

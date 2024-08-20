@@ -35,20 +35,20 @@ function destacarCelulasComConteudoOmisso() {
 
     let celulasSaturadas = 0;
     for(const c of celulas) {
-        c.classList.remove("--font-small");
-        c.classList.remove("celula-saturada");
+        c.classList.remove("input--font-small");
+        c.classList.remove("input--bg-color-danger");
         
         if(c.clientWidth > 100) {
             if(c.value.length > 22) {
-                c.classList.add("celula-saturada");
+                c.classList.add("input--bg-color-danger");
                 celulasSaturadas++;
             }
             
         } else {
             if(c.value.length === 6) {
-                c.classList.add("--font-small");
+                c.classList.add("input--font-small");
             } else if(c.value.length > 6) {
-                c.classList.add("celula-saturada");
+                c.classList.add("input--bg-color-danger");
                 celulasSaturadas++;
             }
         }
@@ -57,7 +57,7 @@ function destacarCelulasComConteudoOmisso() {
     
     if(celulasSaturadas > 0) {
         setTimeout(() => {
-            const motivoDeSaturacao =  document.querySelector(".artigo__details-motivo-de-red-cells");
+            const motivoDeSaturacao =  document.querySelector(".artigo__details--motivo-de-celulas-vermelhas");
 
             menu.abrirArtigo("ajuda");
             motivoDeSaturacao.setAttribute("open", "");
@@ -69,7 +69,7 @@ function destacarCelulasComConteudoOmisso() {
 function removerDestaqueDeRedCells() {
     const celulas = document.querySelectorAll(".ficha__col-de-inputs input");
 
-    for (const c of celulas) c.classList.remove("celula-saturada");
+    for (const c of celulas) c.classList.remove("input--bg-color-danger");
 }
 
 const aqd = {

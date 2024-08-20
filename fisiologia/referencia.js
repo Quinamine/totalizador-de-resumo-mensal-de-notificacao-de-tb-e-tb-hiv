@@ -2,7 +2,7 @@
 
 const referencia = {
     retornarIndicador(inputTarget) {
-        const indicadorOutput = document.querySelector(".reference-row__output--indicador");
+        const indicadorOutput = document.querySelector(".reference__output--indicador");
      
 
         let classeDoIndicadorColunar = inputTarget.parentElement.dataset.coltitle;
@@ -35,7 +35,7 @@ const referencia = {
     },
 
     retornarFaixaEtaria(inputTarget) {
-        const faixaEtariaOutput = document.querySelector(".reference-row__output--idade");
+        const faixaEtariaOutput = document.querySelector(".reference__output--idade");
         let faixaEtaria;
 
         let inputTargetHasFaixaEtaria = inputTarget.parentElement.dataset.faixaetaria
@@ -46,7 +46,7 @@ const referencia = {
     },
 
     retornarVazio() {
-        const outputs = document.querySelectorAll(".reference-row__output");
+        const outputs = document.querySelectorAll(".reference__output");
         for (const o of outputs) o.value = "";
     }
 }
