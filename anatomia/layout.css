@@ -1,5 +1,5 @@
 :root {
-    --cor-de-borda: #888888;
+    --cor-de-borda: #000000;
     --cor-de-link: #1558bc;
     --cor-de-texto: #333333;
     --cor-de-risco: #dd0000;
@@ -29,7 +29,7 @@
     --greenyellow: #adff2f;
     --brown: brown;
     --reference-bgc: var(--blue--light);
-    --layout-width: 1127px;
+    --layout-width: 993px;
     --input-font-size: 14px;
 }
 @media print {

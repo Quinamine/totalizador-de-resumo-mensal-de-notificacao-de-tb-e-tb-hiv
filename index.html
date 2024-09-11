@@ -4,10 +4,10 @@
         <meta charset=UTF-8>
         <meta content="IE=edge" http-equiv=X-UA-Compatible>
         <meta content="width=device-width,initial-scale=1" name=viewport>
-        <title>Totalizador de Resumo Mensal de Tuberculose</title>
+        <title>Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</title>
         <meta content="index, follow" name=robots>
         <meta content="Totaliza automaticamente o resumo mensal de rastreio, notificação de casos de TB e TB/HIV com base nos dados inseridos pelo usuário. Foi desenvolvido de acordo com o modelo da respectiva ficha de resumo mensal actualmente vigente no Serviço Nacional de Saúde em Moçambique." name=description>
-        <meta content="Totalizador de Resumo Mensal de Tuberculose, Totalizador de Relatório Mensal de Tuberculose, Ficha de Resumo Mensal de Tuberculose, Ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV." name=keywords>
+        <meta content="Totalizador de Resumo Mensal de Notificação de TB e TB/HIV, Totalizador de Relatório Mensal de Tuberculose, Ficha de Resumo Mensal de Tuberculose, Ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV." name=keywords>
         <meta content="Adérito Félix Quinamine" name=author>
         <meta content=https://quinamine.github.io/totalizador-de-resumo-mensal-de-tuberculose/index.html property=og:url>
         <meta content="Totaliza automaticamente o resumo mensal de rastreio, notificação de casos de TB e TB/HIV com base nos dados inseridos pelo usuário. Foi desenvolvido de acordo com o modelo da respectiva ficha de resumo mensal actualmente vigente no Serviço Nacional de Saúde em Moçambique." property=og:description>
@@ -36,9 +36,7 @@
     <body id="body" ontouchstart="">
         <header class="header --no-print">
             <div class="layout-row layout-row--of-header layout-row--no-padding">
-                <a href=index.html id="logo">
-                    Totalizador de Resumo Mensal de <span class="logo__snippet--hide-on-screen-til-359px">Tuberculose</span><span class="logo__snippet--hide-on-screen-from-360">TB</span>
-                </a>
+                <a href=index.html id="logo">Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</a>
                 <div role="navigation" class="header__menu --display-flex-y-center">
                     <ul class="header__menu__ul --display-flex-y-center">
                         <li class="header__menu__li header__menu__li--realcar-totais">
@@ -71,9 +69,9 @@
             </div>
         </header>
         <main id="main">
-          <div class="ficha">
-				<header class="ficha__header --border-l-thick --border-r-thick">
-					<div class="ficha__header-col-de-emblema --display-flex-xy-center --border-t-thick">
+          <div class="ficha --border-thick">
+				<header class="ficha__header">
+					<div class="ficha__header-col-de-emblema --display-flex-xy-center">
 						<figure class="ficha__moldura-de-emblema">
 							<img src="imagens/emblema.png" alt="Emblema da República de Moçambique" class="ficha__emblema">
 						</figure>
@@ -82,12 +80,16 @@
 							<span>Ministério da Saúde</span>
 						</div>
 					</div>
-					<div class="ficha__header__col-de-pnct --display-flex-xy-center --border-t-thick --border-l-thick">
-						<h2>Programa Nacional de Controlo da <br> Tuberculose <br> PNCT </h2>
+					<div class="ficha__header__col-de-pnct --display-flex-xy-center --border-l-thick">
+						<h2>Direcção Nacional de Saúde Pública</h2>
+                        <h2>Programa Nacional de Controlo <br> da Tuberculose</h2>
+                        <figure class="ficha__moldura-de-logo-de-pnct">
+                            <img src="imagens/logotipo-de-pnct.png" alt="Logotipo do PNCT" class="logo-de-pnct">
+                        </figure>
 					</div>
-					<div class="ficha__header__col-de-localizacao --border-t-thick --border-l-thick">
+					<div class="ficha__header__col-de-localizacao --border-l-thick">
 						<div class="ficha__col-de-localizacao__linha-mod-sis-pnct-07 --display-flex-xy-center --cor-de-fundo-padrao">
-							<span class="--fw-700">Mod. SIS-PNCT: 07</span>
+							<span class="--fw-700">MOD. SIS - PNCT 07 (Act. 12/2023)</span>
 						</div>
 						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
 							<label for="input-us">US:</label>
@@ -104,527 +106,513 @@
 							<input type="text" id="input-provincia" list="datalist-provincias" class="input-nao-celular --fw-700 --border-b">
                             <datalist id="datalist-provincias"></datalist>
 						</div>
-						<div class="ficha__col-de-localizacao__linha --display-flex-y-center">
-							<label for="input-periodo">Período:</label>
-							<input type="text" id="input-periodo" class="input-nao-celular --fw-700 --border-b">
+						<div class="ficha__col-de-localizacao__linha ficha__col-de-localizacao__linha--border-t --display-flex-y-center">
+							<label for="input-periodo">Mês de Reporte:</label>
+							<input type="month" id="input-periodo" class="input-nao-celular --fw-700 --border-b">
 						</div>
 					</div>
 					<div class="ficha__header__col-de-titulo --border-t-thick --border-b-thick">
-						<h1 class="ficha__titulo">Resumo Mensal de Rastreio, Notificação de Casos da Tuberculose e TB/HIV</h1>
+						<h1 class="ficha__titulo --fw-700">Resumo Mensal de Notificação de TB e TB/HIV</h1>
 					</div>
 				</header>
-                <section class="ficha__seccao-1">
-                    <header class="ficha__seccao-1__header --cor-de-fundo-padrao">
-                        <div class="seccao-1__header__col-1 --display-flex-xy-center --border-l-thick --border-b">
-                            <span class="s1-title">Secção 1: Notificação de Casos de TB Todas as Formas Registados <br> durante o Trimestre (Novos e Retratamentos)</span>
-                        </div>
-                        <div class="seccao-1__header__col-2">
-                            <div class="seccao-1__header__linha-de-nums-de-cols --border-b">
-                                <div class="--display-flex-xy-center --border-l-thick"><span>1</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>2</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>3</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>4</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick --border-r-thick"><span>5</span></div>
+                <section class="ficha__seccao ficha__seccao--1 --border-b-thick">
+                    <h2 class="ficha__seccao__titulo ficha__seccao__titulo--font-size-maior --fw-700">Secção 1: Todos os Casos de Tuberculose Registados durante o Mês (Novos e Retratamentos)</h2>
+                    <header class="ficha__seccao__header --cor-de-fundo-padrao --border-t --border-b-thick">
+                        <div class="ficha__header__col-variaveis --display-flex-xy-center --fw-700"><span>Variáveis</span></div>
+                        <div class="seccao__header__col-faixas-etarias seccao__header__col-faixas-etarias--grid-template-rows-3">
+                            <div class="seccao__header__linha-com-titulo-faixas-etarias --display-flex-xy-center --border-l --border-b"><span>Faixa Etária</span></div>
+                            <div class="seccao__header__linha-com-numeros-das-colunas grid-template-cols-10 --border-b">
+                                <div class="--display-flex-xy-center --border-l"><span>1</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>2</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>3</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>6</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>7</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>8</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>9</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>10</span></div>
                             </div>
-                            <div class="seccao-1__header__linha-de-indicadores --border-b">
-                                <div class="--display-flex-xy-center --border-l-thick"><span class="title-s1c1">Casos Novos</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span class="title-s1c2">Recaídas</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span class="title-s1c3">Outros Retratamentos</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span class="title-s1c4">Tratamento Prévio de <br> TB Desconhecido</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick --border-r-thick"><span>Total</span></div>
+                            <div class="seccao__header__linha-de-faixas-etarias grid-template-cols-10">
+                                <div class="--display-flex-xy-center --border-l"><span>0 - 4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5 - 9</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>10 - 14</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>15 - 19</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>20 - 24</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>25 - 34</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>35 - 44</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>45 - 54</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>55 - 64</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>&ge; 65</span></div>
                             </div>
-                            <div class="seccao-1__header__linha-de-faixas-etarias --border-b">
-                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>15&plus;</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>15&plus;</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>15&plus;</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>15&plus;</span></div>
-                                <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
-                                <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
-                                <div class="--display-flex-xy-center --border-l --border-r-thick"><span>15&plus;</span></div>
-                            </div>
+                            <div class="seccao__header__col-total --display-flex-xy-center --border-l"><span>Total</span></div>
                         </div>
                     </header>
-                    <div class="ficha__seccao ficha__seccao-1__body">
-                        <div class="ficha__col-de-indicadores s1-indicadores --cor-de-fundo-padrao--discreta --border-l-thick">
-                            <div class="ficha__container-de-indicador --display-flex-y-center --border-b">
-                                <span>a) Tuberculose Pulmonar Bacteriologicamente confirmada</span>
-                            </div>     
-                            <div class="ficha__container-de-indicador --display-flex-y-center --border-b">
-                                <span>b) Tuberculose Pulmonar Clinicamente Diagnosticada</span>
-                            </div>    
-                            <div class="ficha__container-de-indicador --display-flex-y-center --border-b">
-                                <span>c) Tuberculose Extrapulmonar (Bacteriologicamente Confirmada ou <br> Clinicamente Diagnosticada)</span>
-                            </div>                          
-                            <div class="ficha__container-de-indicador --display-flex-y-center --border-b-thick">
-                                <span>d) Total</span>
-                            </div>             
+                    <div class="ficha__seccao__body">
+                        <div class="ficha__col-de-indicadores ficha__seccao-1__col-de-indicadores --cor-de-fundo-padrao">
+                            <div class="ficha__seccao-1__subcol-de-indicadores ficha__seccao-1__subcol-de-indicadores--1">
+                                <span class="--display-flex-xy-center --border-b-thick">a) TB Pulmonar <br> Bacteriologicamente <br> confirmada</span>     
+                                <span class="--display-flex-xy-center --border-b-thick">b) Tuberculose <br> Pulmonar <br> Clinicamente <br> Diagnosticada</span>    
+                                <span class="--display-flex-xy-center">c) Tuberculose <br> Extrapulmonar <br> (Bacteriologicamente <br> Confirmada ou <br> Clinicamente <br> Diagnosticada)</span> 
+                            </div>
+                            <div class="ficha__seccao-1__subcol-de-indicadores ficha__seccao-1__subcol-de-indicadores--2 --border-l">
+                                <span class="--display-flex-y-center --border-b">Novos</span>
+                                <span class="--display-flex-y-center --border-b">Recaidas</span>
+                                <span class="--display-flex-y-center --border-b">Retratamentos (excluir <br> Recaidas)</span>
+                                <span class="--display-flex-y-center --border-b-thick">Tratamento Prévio de TB <br> Desconhecido</span>
+                                <span class="--display-flex-y-center --border-b">Novos</span>
+                                <span class="--display-flex-y-center --border-b">Recaidas</span>
+                                <span class="--display-flex-y-center --border-b">Retratamentos (excluir <br> Recaidas)</span>
+                                <span class="--display-flex-y-center --border-b-thick">Tratamento Prévio de TB <br> Desconhecido</span>
+                                <span class="--display-flex-y-center --border-b">Novos</span>
+                                <span class="--display-flex-y-center --border-b">Recaidas</span>
+                                <span class="--display-flex-y-center --border-b">Retratamentos (excluir <br> Recaidas)</span>
+                                <span class="--display-flex-y-center">Tratamento Prévio de TB <br> Desconhecido</span>
+                            </div>        
                         </div>
-                        <div class="ficha__col-de-inputs --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s1c1" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c1" data-totaleixoyoutput="l4-c1" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c1" data-totaleixoyoutput="l4-c1" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l3-c1c4c7c10c13" data-totaleixoxoutput="l3-c13" data-totaleixoy="l1al4-c1" data-totaleixoyoutput="l4-c1" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">
-                            <input type="number" min="0" readonly class="l4-c1 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="0 - 4">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5-14" data-coltitle="title-s1c1" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c2" data-totaleixoyoutput="l4-c2" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c2" data-totaleixoyoutput="l4-c2" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l3-c2c5c8c11c14" data-totaleixoxoutput="l3-c14" data-totaleixoy="l1al4-c2" data-totaleixoyoutput="l4-c2" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" readonly class="l4-c2 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5 - 9">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15+" data-coltitle="title-s1c1" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c3" data-totaleixoyoutput="l4-c3" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c3" data-totaleixoyoutput="l4-c3" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l3-c3c6c9c12c15" data-totaleixoxoutput="l3-c15" data-totaleixoy="l1al4-c3" data-totaleixoyoutput="l4-c3" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">
-                            <input type="number" min="0" readonly class="l4-c3 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="10 - 14">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s1c2" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c4" data-totaleixoyoutput="l4-c4" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                       
-                            <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c4" data-totaleixoyoutput="l4-c4" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                       
-                            <input type="number" min="0" data-totaleixox="l3-c1c4c7c10c13" data-totaleixoxoutput="l3-c13" data-totaleixoy="l1al4-c4" data-totaleixoyoutput="l4-c4" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                       
-                            <input type="number" min="0" readonly class="l4-c4 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15 - 19">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5-14" data-coltitle="title-s1c2" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c5" data-totaleixoyoutput="l4-c5" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c5" data-totaleixoyoutput="l4-c5" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l3-c2c5c8c11c14" data-totaleixoxoutput="l3-c14" data-totaleixoy="l1al4-c5" data-totaleixoyoutput="l4-c5" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" readonly class="l4-c5 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="20 - 24">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15+" data-coltitle="title-s1c2" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c6" data-totaleixoyoutput="l4-c6" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                       
-                            <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c6" data-totaleixoyoutput="l4-c6" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                        
-                            <input type="number" min="0" data-totaleixox="l3-c3c6c9c12c15" data-totaleixoxoutput="l3-c15" data-totaleixoy="l1al4-c6" data-totaleixoyoutput="l4-c6" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                        
-                            <input type="number" min="0" readonly class="l4-c6 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="25 - 34">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s1c3" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c7" data-totaleixoyoutput="l4-c7" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                       
-                            <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c7" data-totaleixoyoutput="l4-c7" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                        
-                            <input type="number" min="0" data-totaleixox="l3-c1c4c7c10c13" data-totaleixoxoutput="l3-c13" data-totaleixoy="l1al4-c7" data-totaleixoyoutput="l4-c7" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                       
-                            <input type="number" min="0" readonly class="l4-c7 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="35 - 44">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5-14" data-coltitle="title-s1c3" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c8" data-totaleixoyoutput="l4-c8" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c8" data-totaleixoyoutput="l4-c8" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l3-c2c5c8c11c14" data-totaleixoxoutput="l3-c14" data-totaleixoy="l1al4-c8" data-totaleixoyoutput="l4-c8" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" readonly class="l4-c8 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="45 - 54">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15+" data-coltitle="title-s1c3" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c9" data-totaleixoyoutput="l4-c9" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                        
-                            <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c9" data-totaleixoyoutput="l4-c9" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                        
-                            <input type="number" min="0" data-totaleixox="l3-c3c6c9c12c15" data-totaleixoxoutput="l3-c15" data-totaleixoy="l1al4-c9" data-totaleixoyoutput="l4-c9" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                        
-                            <input type="number" min="0" readonly class="l4-c9 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="55 - 64">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s1c4" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c1c4c7c10c13" data-totaleixoxoutput="l1-c13" data-totaleixoy="l1al4-c10" data-totaleixoyoutput="l4-c10" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                        
-                            <input type="number" min="0" data-totaleixox="l2-c1c4c7c10c13" data-totaleixoxoutput="l2-c13" data-totaleixoy="l1al4-c10" data-totaleixoyoutput="l4-c10" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                       
-                            <input type="number" min="0" data-totaleixox="l3-c1c4c7c10c13" data-totaleixoxoutput="l3-c13" data-totaleixoy="l1al4-c10" data-totaleixoyoutput="l4-c10" data-totalgeraleixoy="l1al4-c1c4c7c10c13" data-totalgeraleixoyoutput="l4-c13" class="--border-b">                       
-                            <input type="number" min="0" readonly class="l4-c10 --border-b-thick">
+                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="&ge; 65">
+                            <input type="number" min="0" data-totaleixox="l1-c1-a-c10" data-totaleixoxoutput="l1-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l2-c1-a-c10" data-totaleixoxoutput="l2-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l3-c1-a-c10" data-totaleixoxoutput="l3-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l4-c1-a-c10" data-totaleixoxoutput="l4-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l5-c1-a-c10" data-totaleixoxoutput="l5-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l6-c1-a-c10" data-totaleixoxoutput="l6-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l7-c1-a-c10" data-totaleixoxoutput="l7-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l8-c1-a-c10" data-totaleixoxoutput="l8-c11" class="--border-b-thick">
+                            <input type="number" min="0" data-totaleixox="l9-c1-a-c10" data-totaleixoxoutput="l9-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l10-c1-a-c10" data-totaleixoxoutput="l10-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l11-c1-a-c10" data-totaleixoxoutput="l11-c11" class="--border-b">
+                            <input type="number" min="0" data-totaleixox="l12-c1-a-c10" data-totaleixoxoutput="l12-c11">
                         </div>
-                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="5-14" data-coltitle="title-s1c4" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c2c5c8c11c14" data-totaleixoxoutput="l1-c14" data-totaleixoy="l1al4-c11" data-totaleixoyoutput="l4-c11" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l2-c2c5c8c11c14" data-totaleixoxoutput="l2-c14" data-totaleixoy="l1al4-c11" data-totaleixoyoutput="l4-c11" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
-                            <input type="number" min="0" data-totaleixox="l3-c2c5c8c11c14" data-totaleixoxoutput="l3-c14" data-totaleixoy="l1al4-c11" data-totaleixoyoutput="l4-c11" data-totalgeraleixoy="l1al4-c2c5c8c11c14" data-totalgeraleixoyoutput="l4-c14" class="--border-b">
+                        <div class="ficha__col-de-inputs total --border-l">
+                            <input type="number" min="0" readonly class="l1-c11 --border-b">
+                            <input type="number" min="0" readonly class="l2-c11 --border-b">
+                            <input type="number" min="0" readonly class="l3-c11 --border-b">
                             <input type="number" min="0" readonly class="l4-c11 --border-b-thick">
-                        </div>
-                        <div class="ficha__col-de-inputs --border-l" data-faixaetaria="15+" data-coltitle="title-s1c4" data-indicadores="s1-indicadores" data-sectiontitle="s1-title">
-                            <input type="number" min="0" data-totaleixox="l1-c3c6c9c12c15" data-totaleixoxoutput="l1-c15" data-totaleixoy="l1al4-c12" data-totaleixoyoutput="l4-c12" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                        
-                            <input type="number" min="0" data-totaleixox="l2-c3c6c9c12c15" data-totaleixoxoutput="l2-c15" data-totaleixoy="l1al4-c12" data-totaleixoyoutput="l4-c12" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                        
-                            <input type="number" min="0" data-totaleixox="l3-c3c6c9c12c15" data-totaleixoxoutput="l3-c15" data-totaleixoy="l1al4-c12" data-totaleixoyoutput="l4-c12" data-totalgeraleixoy="l1al4-c3c6c9c12c15" data-totalgeraleixoyoutput="l4-c15" class="--border-b">                       
-                            <input type="number" min="0" readonly class="l4-c12 --border-b-thick">
-                        </div>
-                        <div class="ficha__col-de-inputs total-0-4-anos --border-l-thick">
-                            <input type="number" min="0" readonly class="l1-c13 --border-b">
-                            <input type="number" min="0" readonly class="l2-c13 --border-b">
-                            <input type="number" min="0" readonly class="l3-c13 --border-b">
-                            <input type="number" min="0" readonly class="l4-c13 --border-b-thick">
-                        </div>
-                        <div class="ficha__col-de-inputs total-5-14-anos --border-l">
-                            <input type="number" min="0" readonly class="l1-c14 --border-b">
-                            <input type="number" min="0" readonly class="l2-c14 --border-b">
-                            <input type="number" min="0" readonly class="l3-c14 --border-b">
-                            <input type="number" min="0" readonly class="l4-c14 --border-b-thick">
-                        </div>
-                        <div class="ficha__col-de-inputs total-5-14-anos --border-l --border-r-thick">
-                            <input type="number" min="0" readonly class="l1-c15 --border-b">
-                            <input type="number" min="0" readonly class="l2-c15 --border-b">
-                            <input type="number" min="0" readonly class="l3-c15 --border-b">
-                            <input type="number" min="0" readonly class="l4-c15 --border-b-thick">
+                            <input type="number" min="0" readonly class="l5-c11 --border-b">
+                            <input type="number" min="0" readonly class="l6-c11 --border-b">
+                            <input type="number" min="0" readonly class="l7-c11 --border-b">
+                            <input type="number" min="0" readonly class="l8-c11 --border-b-thick">
+                            <input type="number" min="0" readonly class="l9-c11 --border-b">
+                            <input type="number" min="0" readonly class="l10-c11 --border-b">
+                            <input type="number" min="0" readonly class="l11-c11 --border-b">
+                            <input type="number" min="0" readonly class="l12-c11">
                         </div>
                     </div>
                 </section>
-                <section class="ficha__seccao ficha__seccao--padding-top ficha__seccao-2 --border-l-thick --border-r-thick">
-                    <header class="ficha__seccao-2__header --cor-de-fundo-padrao">
-                        <div class="ficha__seccao__titulo --border-t-thick --border-b-thick">
-                            <span class="s2-title">Secção 2: Notificação de Casos TB todas as formas (Bacteriologicamente confirmada, clinicamente diagnosticada e Extrapulmonar) por Faixa Etária e Sexo. Casos de TB <br> Bacteriologicamente Confirmada por Faixa Etária.</span>
-                        </div>
-                        <div class="seccao-2__header__linha-de-sexo">
-                            <div class="seccao-2__header__col-de-sexo --display-flex-xy-center --border-b">
-                                <span>Sexo</span>
+                <section class="ficha__seccao ficha__seccao--2 ficha__seccao--margin-t">
+                    <h2 class="ficha__seccao__titulo --fw-700">Secção 2: Todos os Casos de TB - Novos e Retratamentos - (Bacteriologicamente confirmada e clinicamente diagnosticada) por Faixa Etária e Sexo</h2>
+                    <header class="ficha__seccao__header --cor-de-fundo-padrao --border-b">
+                        <div class="ficha__header__col-variaveis --display-flex-xy-center --fw-700"><span>Sexo</span></div>
+                        <div class="seccao__header__col-faixas-etarias seccao-2__header__col-faixas-etarias">
+                            <div class="seccao__header__linha-com-titulo-faixas-etarias --display-flex-xy-center --border-l --border-b"><span>Faixa Etária</span></div>
+                            <div class="seccao__header__linha-de-faixas-etarias grid-template-cols-10">
+                                <div class="--display-flex-xy-center --border-l"><span>0 - 4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5 - 9</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>10 - 14</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>15 - 19</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>20 - 24</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>25 - 34</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>35 - 44</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>45 - 54</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>55 - 64</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>&ge; 65</span></div>
                             </div>
-                            <div class="seccao-2__header__col-de-faixas-etarias">
-                                <div class="seccao-2__header__linha-com-titulo-faixas-etarias --display-flex-xy-center --border-b --border-l-thick">
-                                    <span>Faixas Etárias</span>
-                                </div>
-                                <div class="seccao-2__header__grid-template-cols-4 --border-b">
-                                    <div class="--display-flex-xy-center --border-l-thick"><span class="title-s2c1">1</span></div>
-                                    <div class="--display-flex-xy-center --border-l"><span class="title-s2c2">2</span></div>
-                                    <div class="--display-flex-xy-center --border-l"><span class="title-s2c3">3</span></div>
-                                    <div class="--display-flex-xy-center --border-l"><span>4</span></div>
-                                </div>
-                                <div class="seccao-2__header__grid-template-cols-4 --border-b">
-                                    <div class="--display-flex-xy-center --border-l-thick"><span>0-4</span></div>
-                                    <div class="--display-flex-xy-center --border-l"><span>5-14</span></div>
-                                    <div class="--display-flex-xy-center --border-l"><span>&ge;15 A.</span></div>
-                                    <div class="--display-flex-xy-center --border-l"><span>Total</span></div>
-                                </div>
-                            </div>
+                            <div class="seccao__header__col-total --display-flex-xy-center --border-l"><span>Total</span></div>
                         </div>
                     </header>
-                    <div class="ficha__seccao-2__body">
-                        <div class="seccao-2__body__linha-sup">
-                            <div class="ficha__col-de-indicadores ficha__col-de-indicadores--grid-template-rows-3 s2-indicadores s2-indicadores --cor-de-fundo-padrao--discreta">
-                                <div class="ficha__container-de-indicador --display-flex-y-center --border-b"><span>a) Masculino</span></div>
-                                <div class="ficha__container-de-indicador --display-flex-y-center --border-b"><span>b) Feminino</span></div>
-                                <div class="ficha__container-de-indicador --display-flex-y-center --border-b-thick"><span>c) Total</span></div>
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l-thick" data-faixaetaria="0-4" data-coltitle="title-s2c1" data-indicadores="s2-indicadores" data-sectiontitle="s2-title">
-                                <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c1" data-totaleixoyoutput="l7-c1" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
-                                <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c1" data-totaleixoyoutput="l7-c1" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
-                                <input type="number" readonly class="l7-c1 --border-b-thick">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l" data-faixaetaria="5-14" data-coltitle="title-s2c2" data-indicadores="s2-indicadores" data-sectiontitle="s2-title">
-                                <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c2" data-totaleixoyoutput="l7-c2" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
-                                <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c2" data-totaleixoyoutput="l7-c2" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
-                                <input type="number" readonly class="l7-c2 --border-b-thick">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l" data-faixaetaria="&gE;15 A." data-coltitle="title-s2c3" data-indicadores="s2-indicadores" data-sectiontitle="s2-title">
-                                <input type="number" min="0" data-totaleixox="l5-c1c2c3" data-totaleixoxoutput="l5-c4" data-totaleixoy="l5l6-c3" data-totaleixoyoutput="l7-c3" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
-                                <input type="number" min="0" data-totaleixox="l6-c1c2c3" data-totaleixoxoutput="l6-c4" data-totaleixoy="l5l6-c3" data-totaleixoyoutput="l7-c3" data-totalgeraleixoy="l5l6-c1c2c3" data-totalgeraleixoyoutput="l7-c4" class="--border-b">
-                                <input type="number" readonly class="l7-c3 --border-b-thick">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-3 --border-l">
-                                <input type="number" readonly class="l5-c4 --border-b">
-                                <input type="number" readonly class="l6-c4 --border-b">
-                                <input type="number" readonly class="l7-c4 --border-b-thick">
-                            </div>
+                    <div class="ficha__seccao__body ficha__seccao__body--display-block">
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b">
+                            <span class="--cor-de-fundo-padrao">a) Masculino</span>
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c1" data-totaleixoyoutput="l15-c1" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c2" data-totaleixoyoutput="l15-c2" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c3" data-totaleixoyoutput="l15-c3" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c4" data-totaleixoyoutput="l15-c4" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c5" data-totaleixoyoutput="l15-c5" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c6" data-totaleixoyoutput="l15-c6" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c7" data-totaleixoyoutput="l15-c7" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c8" data-totaleixoyoutput="l15-c8" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c9" data-totaleixoyoutput="l15-c9" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l13-c1-a-c10" data-totaleixoxoutput="l13-c11" data-totaleixoy="l13l14-c10" data-totaleixoyoutput="l15-c10" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" readonly class="l13-c11">
                         </div>
-                        <div class="seccao-2__body__linha-inferior">
-                            <div class="ficha__container-de-indicador s2-indicador-extra --display-flex-y-center --border-t-thick --border-b-thick">
-                                <span>TB Pulmonar Bacteriologicamente Confirmada</span>
-                            </div>
-                            <div class="ficha__col-de-inputs --border-l-thick --border-t-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s2c1" data-indicadores="s2-indicador-extra" data-sectiontitle="s2-title">
-                                <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
-                            </div>
-                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s2c2" data-indicadores="s2-indicador-extra" data-sectiontitle="s2-title">
-                                <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
-                            </div>
-                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick" data-faixaetaria="&ge;15 A." data-coltitle="title-s2c3" data-indicadores="s2-indicador-extra" data-sectiontitle="s2-title">
-                                <input type="number" data-totaleixox="l8-c1c2c3" data-totaleixoxoutput="l8-c4">
-                            </div>
-                            <div class="ficha__col-de-inputs --border-l --border-t-thick --border-b-thick">
-                                <input type="number" readonly class="l8-c4">
-                            </div>
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b-thick">
+                            <span class="--cor-de-fundo-padrao">b) Feminino</span>
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c1" data-totaleixoyoutput="l15-c1" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c2" data-totaleixoyoutput="l15-c2" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c3" data-totaleixoyoutput="l15-c3" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c4" data-totaleixoyoutput="l15-c4" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c5" data-totaleixoyoutput="l15-c5" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c6" data-totaleixoyoutput="l15-c6" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c7" data-totaleixoyoutput="l15-c7" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c8" data-totaleixoyoutput="l15-c8" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c9" data-totaleixoyoutput="l15-c9" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" data-totaleixox="l14-c1-a-c10" data-totaleixoxoutput="l14-c11" data-totaleixoy="l13l14-c10" data-totaleixoyoutput="l15-c10" data-totalgeraleixoy="l14l15-c1-a-c10" data-totalgeraleixoyoutput="l15-c11">
+                            <input type="number" min="0" readonly class="l14-c11">
+                        </div>
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b-thick">
+                            <span class="--cor-de-fundo-padrao">c) Total</span>
+                            <input type="number" min="0" readonly class="l15-c1">
+                            <input type="number" min="0" readonly class="l15-c2">
+                            <input type="number" min="0" readonly class="l15-c3">
+                            <input type="number" min="0" readonly class="l15-c4">
+                            <input type="number" min="0" readonly class="l15-c5">
+                            <input type="number" min="0" readonly class="l15-c6">
+                            <input type="number" min="0" readonly class="l15-c7">
+                            <input type="number" min="0" readonly class="l15-c8">
+                            <input type="number" min="0" readonly class="l15-c9">
+                            <input type="number" min="0" readonly class="l15-c10">
+                            <input type="number" min="0" readonly class="l15-c11">
+                        </div>
+                        <div class="ficha__seccao-2__grid-template-cols-12 ficha__seccao-2__grid-template-cols-12--margin-y --border-t-thick --border-b-thick">
+                            <span class="--cor-de-fundo-padrao">TB Pulmonar Bacteriologicamente Confirmada</span>
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" data-totaleixox="l16-c1-a-c10" data-totaleixoxoutput="l16-c11">
+                            <input type="number" min="0" readonly class="l16-c11">
                         </div>
                     </div>
                 </section>
-                <section class="ficha__seccao ficha__seccao--padding-top ficha__seccao-3 --border-l-thick --border-r-thick">
-                    <header class="ficha__seccao-3__header --cor-de-fundo-padrao">
-                        <div class="ficha__seccao__titulo --border-t-thick --border-b-thick">
-                            <span>Secção 3: Actividades de Rastreio de TB</span>
-                        </div>
-                        <div class="ficha__seccao__grid-template-cols-7 ficha__seccao__grid-template-cols-7--small-height-rows">
-                            <div class="--display-flex-xy-center --border-b"><span>1</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>2</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>3</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>4</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>5</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>6</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>7</span></div>
-                        </div>
-                        <div class="ficha__seccao__grid-template-cols-7">
-                            <div class="--display-flex-xy-center --border-b">
-                                <span class="title-s3c1">Total de pacientes <br> presuntivos submetidos a <br> exame Bacteriológico <br> (para Diagnóstico)</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s3c2">Total de pacientes <br> presuntivos com <br> Bacteriologia Positiva</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s3c3">Contactos Rastreados <br> (adultos e crianças)</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s3c4">Contactos com TB</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s3c5">Contactos <br> (&lt;5 anos) rastreados <br> para TB</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s3c6">Crianças &lt; 5A. que iniciaram <br> Quimioprofilaxia</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s3c7">Crianças &lt; 5A. que iniciaram <br> Tratamento de TB sem exame <br> Bacteriológico</span>
-                            </div>
-                        </div>
-                        <div class="ficha__seccao__grid-template-cols-18">
-                            <div class="--display-flex-xy-center --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"></div>
-                        </div>
-                    </header>
+                <section class="ficha__seccao ficha__seccao--3 ficha__seccao--margin-t">
+                    <h2 class="ficha__seccao__titulo --fw-700">Secção 3: Exame Bacteriológico em Paciente Clinicamente Diagnosticado</h2>
                     <div class="ficha__seccao-3__body">
-                        <div class="ficha__seccao__grid-template-cols-18">
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s3c1">
-                                <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s3c1">
-                                <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s3c1">
-                                <input type="number" min="0" data-totaleixox="l9-c1c2c3" data-totaleixoxoutput="l9-c4">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
-                                <input type="number" min="0" readonly class="l9-c4">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s3c2">
-                                <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s3c2">
-                                <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s3c2">
-                                <input type="number" min="0" data-totaleixox="l9-c5c6c7" data-totaleixoxoutput="l9-c8">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
-                                <input type="number" min="0" readonly class="l9-c8">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s3c3">
-                                <input type="number" min="0" data-totaleixox="l9-c9c10c11" data-totaleixoxoutput="l9-c12" data-contactosmenoresde5rastreadosoutput="l9-c16">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s3c3">
-                                <input type="number" min="0" data-totaleixox="l9-c9c10c11" data-totaleixoxoutput="l9-c12">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s3c3">
-                                <input type="number" min="0" data-totaleixox="l9-c9c10c11" data-totaleixoxoutput="l9-c12">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
-                                <input type="number" min="0" readonly class="l9-c12">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s3c4">
-                                <input type="number" min="0">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s3c4">
-                                <input type="number" min="0">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s3c4">
-                                <input type="number" min="0">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-coltitle="title-s3c5">
-                                <input type="number" min="0" class="l9-c16">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-coltitle="title-s3c6">
-                                <input type="number" min="0">
-                            </div>
-                            <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-coltitle="title-s3c7">
-                                <input type="number" min="0">
-                            </div>
-                        </div>
+                        <span class="--display-flex-y-center">Pacientes com TB clinicamente diagnosticados notificados com pelo menos um exame bacteriológico (BK, Genexpert, Truenat, LAM, Cultura) feito e registado no <br> livro de Registo de Pacientes com TB</span>
+                        <input type="number" min="0" class="--border-l --cor-de-fundo-padrao --fw-700">
                     </div>
                 </section>
-                <section class="ficha__seccao ficha__seccao--padding-top ficha__seccao-4 --border-l-thick --border-r-thick">
-                    <header class="ficha__seccao-4__header --cor-de-fundo-padrao">
-                        <div class="ficha__seccao__titulo ficha__seccao__titulo--grid-template-cols-2 --border-t-thick --border-b-thick">
-                            <div class="seccao-4__titulo__col-responsabilidade-da-tb">
-                                <span>Secção 4: Actividades colaborativas TB/HIV da Responsabilidade da TB</span>
+                <section class="ficha__seccao ficha__seccao--4">
+                    <h2 class="ficha__seccao__titulo --fw-700">Secção 4: Actividades Colaborativas TB/HIV</h2>
+                    <h3 class="ficha__seccao-4__subtitulo --cor-de-fundo-padrao">Pacientes inscritos até ao último dia do período de reporte</h3>
+                    <header class="ficha__seccao__header --cor-de-fundo-padrao --border-t --border-b">
+                        <div class="ficha__header__col-variaveis --display-flex-xy-center --fw-700"><span>Variável</span></div>
+                        <div class="seccao__header__col-faixas-etarias">
+                            <div class="seccao__header__linha-com-numeros-das-colunas grid-template-cols-10 --border-b">
+                                <div class="--display-flex-xy-center --border-l"><span>1</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>2</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>3</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>6</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>7</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>8</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>9</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>10</span></div>
                             </div>
-                            <div class="seccao-4__titulo__col-responsabilidade-do-hiv --border-l-thick">
-                                <span>Responsabilidade do HIV</span>
+                            <div class="seccao__header__linha-de-faixas-etarias grid-template-cols-10">
+                                <div class="--display-flex-xy-center --border-l"><span>0 - 4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5 - 9</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>10 - 14</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>15 - 19</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>20 - 24</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>25 - 34</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>35 - 44</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>45 - 54</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>55 - 64</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>&ge; 65</span></div>
                             </div>
-                        </div>
-                        <div class="ficha__seccao__grid-template-cols-7 ficha__seccao__grid-template-cols-7--small-height-rows">
-                            <div class="--display-flex-xy-center --border-b"><span>1</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>2</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>3</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>4</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>5</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>6</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>7</span></div>
-                        </div>
-                        <div class="ficha__seccao__grid-template-cols-7">
-                            <div class="--display-flex-xy-center --border-b">
-                                <span class="title-s4c1">Total de pacientes Testados <br/> para o HIV</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s4c2">Testados dentro do sector <br> da TB</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s4c3">Pacientes TB/HIV</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s4c4">Pacientes TB/HIV que iniciaram TPC</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s4c5">Pacientes TB/HIV que iniciaram TARV</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s4c6">Pacientes TB/HIV referidos <br> dos serviços TARV</span>
-                            </div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b">
-                                <span class="title-s4c7">Pacientes HIV positivo que iniciaram TPI (Todos)</span>
-                            </div>
-                        </div>
-                        <div class="ficha__seccao__grid-template-cols-26 ficha__seccao-4__linha-de-faixas-etarias">
-                            <div class="--display-flex-xy-center --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
-                            <div class="--display-flex-xy-center --border-l-thick --border-b"><span>0-4</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>5-14</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>15&plus;</span></div>
-                            <div class="--display-flex-xy-center --border-l --border-b"><span>Total</span></div>
+                            <div class="seccao__header__col-total --display-flex-xy-center --border-l"><span>Total</span></div>
                         </div>
                     </header>
-                    <div class="ficha__seccao__grid-template-cols-26">
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c1">
-                            <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
+                    <div class="ficha__seccao__body ficha__seccao__body--display-block">
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b">
+                            <span>Pacientes Testados para o HIV</span>
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" data-totaleixox="l18-c1-a-c10" data-totaleixoxoutput="l18-c11">
+                            <input type="number" min="0" readonly class="l18-c11">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c1">
-                            <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b">
+                            <span>Pacientes testados dentro do sector da TB</span>
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" data-totaleixox="l19-c1-a-c10" data-totaleixoxoutput="l19-c11">
+                            <input type="number" min="0" readonly class="l19-c11">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c1">
-                            <input type="number" min="0" data-totaleixox="l10-c1c2c3" data-totaleixoxoutput="l10-c4">
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b">
+                            <span>Pacientes TB/HIV</span>
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" data-totaleixox="l20-c1-a-c10" data-totaleixoxoutput="l20-c11">
+                            <input type="number" min="0" readonly class="l20-c11">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
-                            <input type="number" min="0" readonly class="l10-c4">
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b">
+                            <span>Pacientes TB/HIV em TPC</span>
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" data-totaleixox="l21-c1-a-c10" data-totaleixoxoutput="l21-c11">
+                            <input type="number" min="0" readonly class="l21-c11">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c2">
-                            <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b">
+                            <span>Pacientes TB/HIV em TARV</span>
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" data-totaleixox="l22-c1-a-c10" data-totaleixoxoutput="l22-c11">
+                            <input type="number" min="0" readonly class="l22-c11">
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c2">
-                            <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
+                    </div>
+                    <h3 class="ficha__seccao-4__subtitulo --cor-de-fundo-padrao">Pacientes cumulativos inscritos ao longo do Ano em curso*</h3>
+                    <div class="ficha__seccao-4__pseudo-header --border-t --border-b">
+                        <div class="grid-template-cols-4 --border-b">
+                            <span class="--cor-de-fundo-padrao --display-flex-xy-center">1</span>
+                            <span class="--cor-de-fundo-padrao --display-flex-xy-center --border-l">2</span>
+                            <span class="--cor-de-fundo-padrao --display-flex-xy-center --border-l">3</span>
+                            <span class="--cor-de-fundo-padrao --display-flex-xy-center --border-l">4</span>
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c2">
-                            <input type="number" min="0" data-totaleixox="l10-c5c6c7" data-totaleixoxoutput="l10-c8">
+                        <div class="grid-template-cols-4">
+                            <span class="--display-flex-xy-center">Pacientes com sero-estado de HIV conhecido</span>
+                            <span class="--display-flex-xy-center --border-l">Pacientes TB/HIV</span>
+                            <span class=" --display-flex-xy-center --border-l">Pacientes TB/HIV em TPC</span>
+                            <span class=" --display-flex-xy-center --border-l">Pacientes TB/HIV em TARV</span>
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
-                            <input type="number" min="0" readonly class="l10-c8">
+                    </div>
+                    <div class="ficha__seccao-4__pseudo-body grid-template-cols-4 grid-template-cols-4--row-height-greater --border-b">
+                        <input type="number" min="0">
+                        <input type="number" min="0" class="--border-l">
+                        <input type="number" min="0" class="--border-l">
+                        <input type="number" min="0" class="--border-l">
+                    </div>
+                    <div class="ficha__seccao-4__pseudo-footer --border-b">
+                        * Todos os pacientes, incluindo pacientes testados, e que iniciaram TPC e TARV depois dos períodos de reporte anteriores
+                    </div>
+                </section>
+                <section class="ficha__seccao ficha__seccao--4">
+                    <h2 class="ficha__seccao__titulo --fw-700">Secção 5: TB E DIABETES MELITUS</h2>
+                    <h3 class="ficha__seccao-4__subtitulo --cor-de-fundo-padrao">Pacientes inscritos até ao último dia do período de reporte</h3>
+                    <header class="ficha__seccao__header --cor-de-fundo-padrao --border-t --border-b">
+                        <div class="ficha__header__col-variaveis --display-flex-xy-center --fw-700"><span>Variável</span></div>
+                        <div class="seccao__header__col-faixas-etarias">
+                            <div class="seccao__header__linha-com-numeros-das-colunas grid-template-cols-10 --border-b">
+                                <div class="--display-flex-xy-center --border-l"><span>1</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>2</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>3</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>6</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>7</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>8</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>9</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>10</span></div>
+                            </div>
+                            <div class="seccao__header__linha-de-faixas-etarias grid-template-cols-10">
+                                <div class="--display-flex-xy-center --border-l"><span>0 - 4</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>5 - 9</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>10 - 14</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>15 - 19</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>20 - 24</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>25 - 34</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>35 - 44</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>45 - 54</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>55 - 64</span></div>
+                                <div class="--display-flex-xy-center --border-l"><span>&ge; 65</span></div>
+                            </div>
+                            <div class="seccao__header__col-total --display-flex-xy-center --border-l"><span>Total</span></div>
                         </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c3">
-                            <input type="number" min="0" data-totaleixox="l10-c9c10c11" data-totaleixoxoutput="l10-c12">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c3">
-                            <input type="number" min="0" data-totaleixox="l10-c9c10c11" data-totaleixoxoutput="l10-c12">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c3">
-                            <input type="number" min="0" data-totaleixox="l10-c9c10c11" data-totaleixoxoutput="l10-c12">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
-                            <input type="number" min="0" readonly class="l10-c12">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c4">
-                            <input type="number" min="0">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c4">
-                            <input type="number" min="0">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c4">
-                            <input type="number" min="0">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c5">
-                            <input type="number" min="0">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c5">
-                            <input type="number" min="0">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c5">
-                            <input type="number" min="0">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c6">
-                            <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c6">
-                            <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c6">
-                            <input type="number" min="0" data-totaleixox="l10-c19c20c21" data-totaleixoxoutput="l10-c22">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
-                            <input type="number" min="0" readonly class="l10-c22">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l-thick --border-b-thick" data-faixaetaria="0-4" data-coltitle="title-s4c7">
-                            <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="5-14" data-coltitle="title-s4c7">
-                            <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick" data-faixaetaria="15+" data-coltitle="title-s4c7">
-                            <input type="number" min="0" data-totaleixox="l10-c23c24c25" data-totaleixoxoutput="l10-c26">
-                        </div>
-                        <div class="ficha__col-de-inputs ficha__col-de-inputs--grid-template-rows-1 --border-l --border-b-thick">
-                            <input type="number" min="0" readonly class="l10-c26">
+                    </header>
+                    <div class="ficha__seccao__body ficha__seccao__body--display-block">
+                        <div class="ficha__seccao-2__grid-template-cols-12 --border-b">
+                            <span>Pacientes diagnosticados com TB/Diabetes Melitus</span>
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" data-totaleixox="L24-c1-a-c10" data-totaleixoxoutput="L24-c11">
+                            <input type="number" min="0" readonly class="L24-c11">
                         </div>
                     </div>
                 </section>
-                <footer class="ficha__rodape --border-r-thick --border-b-thick --border-l-thick">
-                    <div class="ficha__rodape__linha-de-nome-e-categoria">
-                        <div class="ficha__rodape__col-de-nome">
-                            <label for="input-nome">Nome legível do Responsável pelo preenchimento:</label>
-                            <input type="text" id="input-nome" class="ficha__rodape__campo-de-nome input-nao-celular --fw-700 --border-b">
-                        </div>
-                        <div class="ficha__rodape__col-de-categoria">
-                            <label for="input-categoria">Categoria:</label>
-                            <input type="text" id="input-categoria" list="datalist-categorias" class="ficha__rodape__campo-de-categoria input-nao-celular --fw-700 --border-b">
-                            <datalist id="datalist-categorias">
-                                <option value="Médico de Clínica Geral"></option>
-                                <option value="Técnico de Medicina Geral"></option>
-                                <option value="Enfermeiro Geral"></option>
-                                <option value="Técnico de Estatística Sanitária"></option>
-                            </datalist>
-                        </div>
+                <footer class="ficha__rodape">
+                    <div class="ficha__rodape__col-de-nome">
+                        <label for="input-nome">Nome legível do ténico que reporta:</label>
+                        <input type="text" id="input-nome" class="ficha__rodape__campo-de-nome input-nao-celular --fw-700 --border-b">
+                    </div>
+                    <div class="ficha__rodape__col-de-categoria">
+                        <label for="input-categoria">Categoria:</label>
+                        <input type="text" id="input-categoria" list="datalist-categorias" class="ficha__rodape__campo-de-categoria input-nao-celular --fw-700 --border-b">
+                        <datalist id="datalist-categorias">
+                            <option value="Médico de Clínica Geral"></option>
+                            <option value="Técnico de Medicina Geral"></option>
+                            <option value="Enfermeiro Geral"></option>
+                            <option value="Técnico de Estatística Sanitária"></option>
+                        </datalist>
                     </div>
                     <div class="ficha__rodape__linha-de-data">
                         <label for="input-data">Data</label>
                         <input type="date" id="input-data" class="input-nao-celular --fw-700 --border-b">
                     </div>
-                </footer>
+                </footer> 
           </div>
             <div class="layout-row layout-row--report-comments layout-row--no-padding">
                 <textarea class="main__campo-de-comentarios input-nao-celular" id="input-comentarios" placeholder="Comentários sobre o resumo (se necessário)." rows=3></textarea>
@@ -640,14 +628,14 @@
         </main>
         <section class="dialog-boxes --no-print">
             <div class="dialog-box-default dialog-box-default--sobre-aqd">
-                <h3 class="dialog-box-default__title">Totalizador de Resumo Mensal de Tuberculose</h3>
+                <h3 class="dialog-box-default__title">Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</h3>
                 <p class="dialog-box-default__p">O totalizador garante um resumo mensal correctamente totalizado, contudo, a qualidade de um resumo mensal não se garante com apenas uma correcta totalização. Factores dependententes do usuário (Profissional de Saúde) como preenchimento correcto dos livros de registo, colheita de dados abrangente a todas as fontes primárias (livros de registo) com informação do mês ou período em alusão, entre outros, influenciam sobremaneira na qualidade de um resumo mensal.</p>
                 <div class="dialog-box-default__btn-container">
                     <button class="dialog-box-default__btn dialog-box-default__btn--aqd">Entendi</button>
                 </div>
             </div>
             <div class="dialog-box-default dialog-box-default--small">
-                <h3 class="dialog-box-default__title">Totalizador de Resumo Mensal de Tuberculose</h3>
+                <h3 class="dialog-box-default__title">Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</h3>
                 <p class="dialog-box-default__p dialog-box-default__p--js-console --display-flex-y-center"></p>
                 <div class="dialog-box-default__btn-container">
                     <button class=dialog-box-default__btn>Fechar <span class="dialog-box-default__output-autoclose-loop"></span></button>
@@ -716,9 +704,9 @@
             <article id="sobre" class="artigo artigo--sobre layout-row layout-row--artigo-sobre">
                 <h2 class="artigo__titulo artigo__titulo--nivel-1">Visão geral sobre o totalizador</h2>
                 <figure>
-                    <img alt="Totalizador de Resumo Mensal de Tuberculose" src=imagens/totalizador-de-resumo-mensal-de-tuberculose.png class="artigo__img artigo__img--center">
+                    <img alt="Totalizador de Resumo Mensal de Notificação de TB e TB/HIV" src=imagens/totalizador-de-resumo-mensal-de-tuberculose.png class="artigo__img artigo__img--center">
                 </figure>
-                <p>O <strong>Totalizador de Resumo Mensal de Tuberculose</strong> é um serviço online gratuito que auxilia na elaboração do resumo mensal de rastreio, notificação de casos de tuberculose (TB) e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV actualmente vigente no Serviço Nacional de Saúde em Moçambique.</p>
+                <p>O <strong>Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</strong> é um serviço online gratuito que auxilia na elaboração do resumo mensal de rastreio, notificação de casos de tuberculose (TB) e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV actualmente vigente no Serviço Nacional de Saúde em Moçambique.</p>
                 <h3 class="artigo__titulo artigo__titulo--nivel-2">Objectivos</h3>
                 <ul class="artigo__lista artigo__lista--ul">
                     <li>Auxiliar os Profissionais de Saúde na totalização do resumo mensal de rastreio, notificação de casos de TB e TB/HIV com exatidão e prontidão;</li>
@@ -765,7 +753,6 @@
                     <p>Comando para limpar parcial ou totalmente a ficha após confirmação da acção na caixa de diálogo subsequente.</p>
                     <figure class="details__moldura details__moldura--margin-l">
                         <img src="imagens/caixa-de-dialogo-para-esvaziamento-da-ficha.png" alt="Caixa de diálogo para esvaziamento da ficha" class="artigo__img"/>
-
                         <figcaption class="details__moldura__legenda"><b>Legenda:</b> Caixa de diálogo para esvaziamento da ficha. Neste caso, os campos de <b>Província, Distrito e US</b> seriam preservados (por ter suas checkboxes desmarcadas). Todos os outros cujas "checkboxes" estão marcadas seriam esvaziados.</figcaption>
                     </figure>
                 </details>
