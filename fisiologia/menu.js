@@ -34,7 +34,7 @@ const menu = {
                 desfoqueDoFundo("focar");
             },
             confirmar() {
-                const inputsCelulares  = document.querySelectorAll(".ficha__col-de-inputs input");
+                const inputsCelulares  = document.querySelectorAll(".ficha__seccao input");
                 const checkboxesParaInputsNaoCelulares = document.querySelectorAll("[data-for]");
                 for (let i = 0; i < inputsCelulares.length; i++) {
                     inputsCelulares[i].value = "";

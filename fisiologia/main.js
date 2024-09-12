@@ -1,7 +1,7 @@
 "use strict"
 const backup = {
     saveGridInputs() {
-        const inputsCelulares = document.querySelectorAll(".ficha__col-de-inputs input");
+        const inputsCelulares = document.querySelectorAll(".ficha__seccao input");
         for (let i = 0; i < inputsCelulares.length; i++) {
             inputsCelulares[i].addEventListener("input", () => {
                 localStorage.setItem(`${keyPrefix}-input${i}`, inputsCelulares[i].value);

@@ -142,7 +142,8 @@
     overflow: hidden;
 }
 [data-totaleixox]:focus,
-.input-nao-celular:focus {
+.input-nao-celular:focus,
+.input-celular--focus:focus {
     border-bottom: 2px solid var(--blue);
     background-color: var(--greenyellow);
     color: var(--cor-de-texto);

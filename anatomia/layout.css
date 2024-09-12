@@ -1,10 +1,10 @@
 :root {
-    --cor-de-borda: #000000;
+    --cor-de-borda: var(--fullblack);
     --cor-de-link: #1558bc;
     --cor-de-texto: #333333;
     --cor-de-risco: #dd0000;
     --cor-de-realce: #dce4f4;
-    --cor-do-rodape: #f0f0f0;
+    --cor-do-rodape: var(--gray--d);
     --heart-color: #f97171;
     --fullred: #ff0000;
     --fullblack: #000000;
@@ -284,6 +284,7 @@
     width: 100%;
     background-color: var(--reference-bgc);
     z-index: 666;
+    display: none;
 }
 .layout-row--of-reference {
     display: grid;

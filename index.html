@@ -20,7 +20,6 @@
         <script src="fisiologia/main.js"></script>
         <script src="fisiologia/multifuncoes.js"></script>
         <script src="fisiologia/db.js"></script>
-        <script src="fisiologia/referencia.js"></script>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-T5T6WR7XGH"></script>
         <script>
@@ -30,7 +29,6 @@
 
         gtag('config', 'G-T5T6WR7XGH');
         </script>
-        
         <noscript>O seu navegador está com o JavaScript desabilitado e isso bloqueia as funcionalidades do totalizador. Habilite-o nas configurações do navegador e recarregue a página.</noscript>
     </head>
     <body id="body" ontouchstart="">
@@ -108,7 +106,7 @@
 						</div>
 						<div class="ficha__col-de-localizacao__linha ficha__col-de-localizacao__linha--border-t --display-flex-y-center">
 							<label for="input-periodo">Mês de Reporte:</label>
-							<input type="month" id="input-periodo" class="input-nao-celular --fw-700 --border-b">
+							<input type="month" id="input-periodo" class="input-nao-celular --fw-700">
 						</div>
 					</div>
 					<div class="ficha__header__col-de-titulo --border-t-thick --border-b-thick">
@@ -410,7 +408,7 @@
                     <h2 class="ficha__seccao__titulo --fw-700">Secção 3: Exame Bacteriológico em Paciente Clinicamente Diagnosticado</h2>
                     <div class="ficha__seccao-3__body">
                         <span class="--display-flex-y-center">Pacientes com TB clinicamente diagnosticados notificados com pelo menos um exame bacteriológico (BK, Genexpert, Truenat, LAM, Cultura) feito e registado no <br> livro de Registo de Pacientes com TB</span>
-                        <input type="number" min="0" class="--border-l --cor-de-fundo-padrao --fw-700">
+                        <input type="number" min="0" class="input-celular--focus --border-l --cor-de-fundo-padrao">
                     </div>
                 </section>
                 <section class="ficha__seccao ficha__seccao--4">
@@ -534,10 +532,10 @@
                         </div>
                     </div>
                     <div class="ficha__seccao-4__pseudo-body grid-template-cols-4 grid-template-cols-4--row-height-greater --border-b">
-                        <input type="number" min="0">
-                        <input type="number" min="0" class="--border-l">
-                        <input type="number" min="0" class="--border-l">
-                        <input type="number" min="0" class="--border-l">
+                        <input type="number" min="0" class="input-celular--focus">
+                        <input type="number" min="0" class="input-celular--focus --border-l">
+                        <input type="number" min="0" class="input-celular--focus --border-l">
+                        <input type="number" min="0" class="input-celular--focus --border-l">
                     </div>
                     <div class="ficha__seccao-4__pseudo-footer --border-b">
                         * Todos os pacientes, incluindo pacientes testados, e que iniciaram TPC e TARV depois dos períodos de reporte anteriores
@@ -778,8 +776,8 @@
                     </ol>
                 </details>
                 <details class="artigo__details artigo__details--border-b artigo__details--motivo-de-celulas-vermelhas">
-                    <summary class="details__summary">Algumas células mudaram de cor de fundo para vermelho</summary>
-                    <p>A maioria das células do totalizador têm um tamanho para conter visivelmente 6 algarismos no máximo, isto é, mostram valores até <span class="number-format">999999</span>, embora outras excepcionalmente possam mostrar números com mais de 22 algarismos. Quando uma célula recebe um número com mais de 6 algarismos, dá um alerta ficando vermelha e abrindo esta mensagem de texto para alertá-lo sobre a omissão dos algarismos e o real motivo.</p>
+                    <summary class="details__summary">Algumas células ficaram vermelhas</summary>
+                    <p>A maioria das células do totalizador têm um tamanho para conter visivelmente 8 algarismos no máximo, isto é, mostram valores até <span class="number-format">99999999</span>, embora algumas excepcionalmente possam mostrar valores com mais de 27 algarismos. Quando uma célula recebe um valor com mais de 8 algarismos, dá um alerta ficando vermelha e abrindo esta mensagem de texto para alertá-lo sobre a omissão dos algarismos e o real motivo.</p>
                     <p class="artigo__p--destaque">Para um país como Moçambique, onde o número de habitantes é de pouco mais de 30 milhões (<a href="https://energypedia.info/wiki/Moçambique:_Informação_sobre_o_País" target="_blank">dados demográficos de 2019</a>), podemos presumir que nenhuma Unidade Sanitária actualmente tem um número mensal de dados de algum indicador, de qualquer que seja a sua natureza, acima de <span class="number-format">999999</span>.</p>
                 </details>
                 <p class="artigo-ajuda__p--contactar-suporte">Se os tópicos acima não cobrem a sua dúvida. Pode ainda solicitar suporte por <a href="mailto:quinamine.aderitofelix@gmail.com?subject=Totalizador%20de%20Resumo%20Mensal%20de%20Tuberculose">Email</a> ou <a href="https://wa.me/258846709901/?text=Olá%2C+Quinamine!+Sobre+o+*totalizador+de+resumo+mensal+de+tuberculose*%2C+tenho+a+seguinte+dúvida%3A%20">WhatsApp</a>.</p>
@@ -807,10 +805,10 @@
                         <li><a href=https://quinamine.github.io/tat-pediatrico/index.html target=_blank class="footer__nav__link">TAT Pediátrico</a></li>
                     </ul>
                 </nav>
-                <p class="footer__p footer__p--created-by">Criado com atenção e <span class="footer__p__heart">❤</span> por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a> | ©&nbsp;<span class="footer__current-year"></span> - Totalizador de Resumo Mensal de <span class="logo__snippet--hide-on-screen-til-359px">Tuberculose</span><span class="logo__snippet--hide-on-screen-from-360">TB</span></p>
+                <p class="footer__p footer__p--created-by">Criado com atenção e <span class="footer__p__heart">❤</span> por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a> | ©&nbsp;<span class="footer__current-year"></span> Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</p>
                 <a href=#root class=footer__link--back-to-top>Rolar para o topo</a>
             </div>
-            <p class="footer__p footer__p--available-since">Disponível desde <time datetime="2024-05-30">30/05/2024</time>.</p>
+            <p class="footer__p footer__p--available-since">Disponível desde <time datetime="2024-05-30">30/05/2024</time>. Última actualização: Setembro/2024.</p>
         </footer>
         <div class="desfoque"></div>
     </body>

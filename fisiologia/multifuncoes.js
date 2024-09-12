@@ -24,21 +24,21 @@ function alertarSobre(msg) {
     dialogBoxDefault.classList.add("--open");
 }
 function destacarCelulasComConteudoOmisso() {
-    const celulas = document.querySelectorAll(".ficha__col-de-inputs input");
+    const celulas = document.querySelectorAll(".ficha__seccao input");
     let celulasSaturadas = 0;
     for(const c of celulas) {
         c.classList.remove("input--font-small");
         c.classList.remove("input--bg-color-danger");
         if(c.clientWidth > 100) {
-            if(c.value.length > 22) {
+            if(c.value.length > 27) {
                 c.classList.add("input--bg-color-danger");
                 celulasSaturadas++;
             }
             
         } else {
-            if(c.value.length === 6) {
+            if(c.value.length === 8) {
                 c.classList.add("input--font-small");
-            } else if(c.value.length > 6) {
+            } else if(c.value.length > 8) {
                 c.classList.add("input--bg-color-danger");
                 celulasSaturadas++;
             }
@@ -54,7 +54,7 @@ function destacarCelulasComConteudoOmisso() {
     }  
 }
 function removerDestaqueDeRedCells() {
-    const celulas = document.querySelectorAll(".ficha__col-de-inputs input");
+    const celulas = document.querySelectorAll(".ficha__seccao input");
     for (const c of celulas) c.classList.remove("input--bg-color-danger");
 }
 const aqd = {
@@ -95,7 +95,7 @@ window.addEventListener("load", () => {
         const readonlyInputsMsg = "Os totais estão inacessíveis para assegurar que não sejam modificados.";
         alertarSobre(readonlyInputsMsg);
     }));
-    const inputsCelulares = document.querySelectorAll(".ficha__col-de-inputs input");
+    const inputsCelulares = document.querySelectorAll(".ficha__seccao input");
     inputsCelulares.forEach (inputCelular => inputCelular.addEventListener("input", destacarCelulasComConteudoOmisso));
     destacarCelulasComConteudoOmisso();
     aqd.mostrarAviso();

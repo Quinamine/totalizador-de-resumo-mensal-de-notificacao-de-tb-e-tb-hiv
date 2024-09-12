@@ -26,8 +26,8 @@ const referencia = {
         const faixaEtariaOutput = document.querySelector(".reference__output--idade");
         let faixaEtaria;
         let inputTargetHasFaixaEtaria = inputTarget.parentElement.dataset.faixaetaria
-        inputTargetHasFaixaEtaria ? 
-        faixaEtaria = inputTarget.parentElement.dataset.faixaetaria : faixaEtaria = "&minus;";
+        inputTargetHasFaixaEtaria ? faixaEtaria = inputTarget.parentElement.dataset.faixaetaria 
+        : faixaEtaria = "&minus;";
         faixaEtariaOutput.innerHTML = faixaEtaria;
     },
     retornarVazio() {
@@ -36,11 +36,10 @@ const referencia = {
     }
 }
 function events() {
-    const inputsCelulares = document.querySelectorAll(".ficha__col-de-inputs input");
+    const inputsCelulares = document.querySelectorAll(".ficha__seccao input");
     inputsCelulares.forEach( inputCelular => {
         inputCelular.addEventListener("focus", () => {
             if(!inputCelular.matches("[readonly]")) {
-                referencia.retornarIndicador(inputCelular);
                 referencia.retornarFaixaEtaria(inputCelular);
             }
         });
