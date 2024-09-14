@@ -1,17 +1,17 @@
-# Totalizador de Resumo Mensal de Tuberculose
+# Totalizador de Resumo Mensal de Notificação de TB e TB/HIV
 
-![Trecho do Totalizador do Resumo Mensal de Tuberculose](imagens/totalizador-de-resumo-mensal-de-tuberculose.png)
+![Trecho do Totalizador do Resumo Mensal de Notificação de TB e TB/HIV](imagens/totalizador-de-resumo-mensal-de-notificacao-de-tb-e-tb-hiv.png)
 
-O **Totalizador de Resumo Mensal de Tuberculose** é um serviço online gratuito que auxilia na elaboração do resumo mensal de rastreio, notificação de casos de tuberculose (TB) e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV actualmente vigente no Serviço Nacional de Saúde em Moçambique.
+O **Totalizador de Resumo Mensal de Notificação de TB e TB/HIV** é um serviço online gratuito que auxilia na elaboração do resumo mensal de notificação de TB e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da respectiva ficha de resumo mensal actualmente vigente no Serviço Nacional de Saúde em Moçambique.
 
 
 ## Objectivos
 
-* Auxiliar os Profissionais de Saúde na totalização do resumo mensal de rastreio, notificação de casos de TB e TB/HIV com exatidão e prontidão;
+* Auxiliar os Profissionais de Saúde na totalização do resumo mensal de notificação de TB e TB/HIV com exatidão e prontidão;
 
 * Minimizar possíveis erros de totalização (por exemplo, somar involuntariamente células não correspondentes ou registar o total da linha A, na linha B);
 
-* Expandir o acesso à ficha de resumo mensal de rastreio, notificação de casos de TB e TB/HIV.
+* Expandir o acesso à ficha de resumo mensal de notificação de TB e TB/HIV.
 
 
 ## O que eu preciso dispor para, e como utilizar o totalizador?
@@ -25,7 +25,7 @@ O **Totalizador de Resumo Mensal de Tuberculose** é um serviço online gratuito
 
 >[!NOTE]
 >
-> O totalizador garante um resumo mensal correctamente totalizado, contudo, a qualidade de um resumo mensal não se garante com apenas uma correcta totalização. Factores dependententes do usuário (Profissional de Saúde) como preenchimento correcto dos livros de registo, colheita de dados abrangente a todas as fontes primárias (livros de registo) com informação do mês ou período em alusão, entre outros, influenciam sobremaneira na qualidade de um resumo mensal.
+> O totalizador garante um resumo mensal correctamente totalizado, contudo, a qualidade de um resumo não se limita apenas à uma correcta totalização. Outros factores não dependententes do totalizador como preenchimento correcto dos livros de registo, colheita de dados abrangente a todas as fontes primárias (livros de registo) com informação do mês ou período em alusão, concordância dos dados, entre outros, influenciam sobremaneira na qualidade de um resumo mensal.
 
 
 ## Qual é o destino dos dados que eu insiro?

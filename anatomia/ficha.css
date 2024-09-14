@@ -210,7 +210,7 @@
     padding: 10px 2px;
     min-height: 40px;
     display: grid;
-    grid-template-columns: 510.50px 1fr 152px;
+    grid-template-columns: 510.50px 1fr 155px;
 }
 .ficha__rodape__campo-de-nome {
     width: 250px;
@@ -225,6 +225,14 @@
     .ficha__rodape input {
         border-bottom: none;
     }
+}
+.ficha__rodape__col-de-data {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.ficha__col-de-data__label {
+    margin-right: 2px;
 }
 /* CLASSES REUTILIZÁVEIS */
 .--cor-de-fundo-padrao {

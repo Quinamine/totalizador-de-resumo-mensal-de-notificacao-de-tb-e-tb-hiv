@@ -284,7 +284,6 @@
     width: 100%;
     background-color: var(--reference-bgc);
     z-index: 666;
-    display: none;
 }
 .layout-row--of-reference {
     display: grid;

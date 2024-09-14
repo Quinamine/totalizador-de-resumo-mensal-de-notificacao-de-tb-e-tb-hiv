@@ -22,7 +22,7 @@ const menu = {
                     input.value.length > 0 && inputFilled++;
                 }
                 if(inputFilled === 0) {
-                    const noInputFilledMsg = "A ficha já se encontra vazia."
+                    const noInputFilledMsg = "Neste momento, a ficha encontra-se vazia."
                     alertarSobre(noInputFilledMsg);
                     return false;
                 } 
@@ -137,9 +137,9 @@ function eventos() {
     btnFecharAjuda.addEventListener("click", () => menu.fecharArtigo("ajuda"));
     // PARTILHAR 
     const data = {
-        title: "Totalizador de Resumo Mensal de Tuberculose",
-        text: "Totaliza automaticamente o resumo mensal de rastreio, notificação de casos de TB e TB/HIV com base nos dados inseridos pelo usuário. Foi desenvolvido de acordo com o modelo da respectiva ficha de resumo mensal actualmente vigente no Serviço Nacional de Saúde em Moçambique.",
-        url: "https://quinamine.github.io/totalizador-de-resumo-mensal-de-tuberculose/index.html"
+        title: "Totalizador de Resumo Mensal de Notificação de TB e TB/HIV",
+        text: "Totaliza automaticamente o resumo mensal de notificação de TB e TB/HIV com base nos dados inseridos pelo usuário. Foi desenvolvido de acordo com o modelo da respectiva ficha de resumo mensal actualmente vigente no Serviço Nacional de Saúde em Moçambique.",
+        url: "https://quinamine.github.io/totalizador-de-resumo-mensal-de-notificacao-de-tb-e-tb-hiv/index.html"
     }
     const btnPartilhar = document.querySelector(".header__menu__btn--partilhar");
     btnPartilhar.addEventListener("click", () => {
