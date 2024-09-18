@@ -1,11 +1,12 @@
 "use strict"
 const referencia = {
-    retornarIndicador(inputTarget) {
+    retornarIndicadorEfaixaEtaria(inputTarget) {
         const indicadorOutput = document.querySelector(".reference__output--indicador");
         const faixaEtariaOutput = document.querySelector(".reference__output--idade");
         const celulaComFocoEirmas = inputTarget.parentElement.children;
         // Seccoes
         let isSection1 = inputTarget.parentElement.parentElement.matches(".ficha__seccao__body--1");
+        let isSection2 = inputTarget.parentElement.parentElement.matches(".ficha__seccao__body--2");
         let isSection3 = inputTarget.parentElement.matches(".ficha__seccao__body--3");
         let isSection4 = inputTarget.parentElement.parentElement.matches(".ficha__seccao__body--4");
         let isSubSection4 = inputTarget.parentElement.matches(".ficha__seccao-4__pseudo-body")
@@ -37,8 +38,11 @@ const referencia = {
             indicadorOutput.textContent = `${tituloDaSeccao.textContent}: ${indicadores[celulaFocadaIndex].textContent}`;
             faixaEtariaOutput.textContent = "-";
         } else {
-            let tituloDaSeccao = document.querySelector("#titulo-da-seccao-2");
-            if(isSection3) {
+            let tituloDaSeccao;
+            if(isSection2) {
+                tituloDaSeccao = document.querySelector("#titulo-da-seccao-2");
+            }
+            else if(isSection3) {
                 tituloDaSeccao = document.querySelector("#titulo-da-seccao-3");
                 let indicador = `${tituloDaSeccao.textContent}: ${celulaComFocoEirmas[0].textContent}`;
                 indicadorOutput.textContent = indicador;
@@ -71,7 +75,7 @@ function events() {
     inputsCelulares.forEach( inputCelular => {
         inputCelular.addEventListener("focus", () => {
             if(!inputCelular.matches("[readonly]")) {
-                referencia.retornarIndicador(inputCelular);
+                referencia.retornarIndicadorEfaixaEtaria(inputCelular);
             }
         });
     });
