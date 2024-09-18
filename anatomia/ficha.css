@@ -182,9 +182,8 @@
 .ficha__seccao-2__grid-template-cols-12 input {
     border-left: 1px solid var(--cor-de-borda);
 }
-.ficha__seccao-3__body {
+.ficha__seccao__body--3 {
     padding-left: 2px;
-    display: grid;
     grid-template-columns: 1fr calc(63px * 2 + 63px / 2 );
     font-size: 11.4px;
 }
@@ -212,19 +211,19 @@
     display: grid;
     grid-template-columns: 510.50px 1fr 155px;
 }
+.ficha__rodape input {
+    font-size: 12px;
+}
+@media print {
+    .ficha__rodape input {
+        border-bottom: none;
+    }
+}
 .ficha__rodape__campo-de-nome {
     width: 250px;
 }
 .ficha__rodape__campo-de-categoria {
-    width: 200px;
-}
-@media print {
-    .ficha__rodape__campo-de-categoria {
-        width: 228px;
-    }
-    .ficha__rodape input {
-        border-bottom: none;
-    }
+    width: 225px;
 }
 .ficha__rodape__col-de-data {
     display: flex;

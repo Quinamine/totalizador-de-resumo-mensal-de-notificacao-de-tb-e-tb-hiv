@@ -6,7 +6,7 @@ const referencia = {
         const celulaComFocoEirmas = inputTarget.parentElement.children;
         // Seccoes
         let isSection1 = inputTarget.parentElement.parentElement.matches(".ficha__seccao__body--1");
-        let isSection3 = inputTarget.parentElement.matches(".ficha__seccao-3__body");
+        let isSection3 = inputTarget.parentElement.matches(".ficha__seccao__body--3");
         let isSection4 = inputTarget.parentElement.parentElement.matches(".ficha__seccao__body--4");
         let isSubSection4 = inputTarget.parentElement.matches(".ficha__seccao-4__pseudo-body")
         if(isSection1) {

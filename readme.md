@@ -18,14 +18,14 @@ O **Totalizador de Resumo Mensal de Notificação de TB e TB/HIV** é um serviç
 
 * Um celular ou computador com acesso à internet.
 
-* Ter colhido os dados de todos os indicadores da ficha nas fontes primárias (livro(s) de registo do sector de TB) da sua Unidade Sanitária.
+* Ter colhido os dados de todos os indicadores da ficha nas fontes primárias (livro(s) de registo) da sua Unidade Sanitária.
 
 * E por fim, preencher os dados nas células correspondentes em função das variáveis (indicador, faixa etária e sexo) e consequentemente os respectivos totais são, em tempo real, correcta e automaticamente calculados.
 
 
 >[!NOTE]
 >
-> O totalizador garante um resumo mensal correctamente totalizado, contudo, a qualidade de um resumo não se limita apenas à uma correcta totalização. Outros factores não dependententes do totalizador como preenchimento correcto dos livros de registo, colheita de dados abrangente a todas as fontes primárias (livros de registo) com informação do mês ou período em alusão, concordância dos dados, entre outros, influenciam sobremaneira na qualidade de um resumo mensal.
+> O totalizador garante um resumo correctamente totalizado, contudo, a qualidade de um resumo não se limita apenas à uma correcta totalização. Outros factores não dependentes do totalizador como preenchimento correcto dos livros de registo, colheita de dados abrangente a todas as fontes primárias (livros de registo) com informação do mês em reporte, concordância de dados, entre outros, influenciam sobremaneira na qualidade de um resumo mensal.
 
 
 ## Qual é o destino dos dados que eu insiro?
