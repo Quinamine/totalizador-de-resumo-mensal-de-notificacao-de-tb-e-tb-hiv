@@ -235,9 +235,8 @@
 }
 /* CLASSES REUTILIZÁVEIS */
 .--cor-de-fundo-padrao {
-    background-color: var(--gray--a);
+    background-color: var(--gray--c);
 }
-
 .--cor-de-fundo-padrao--discreta {
-    background-color: var(--gray--lighter);
+    background-color: var(--gray--d);
 }
