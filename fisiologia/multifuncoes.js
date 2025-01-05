@@ -29,19 +29,19 @@ function destacarCelulasComConteudoOmisso() {
     for(const c of celulas) {
         c.classList.remove("input--font-small");
         c.classList.remove("input--bg-color-danger");
-        if(c.clientWidth > 100) {
-            if(c.value.length > 27) {
-                c.classList.add("input--bg-color-danger");
-                celulasSaturadas++;
-            }
-            
-        } else {
+        if(c.clientWidth < 65) {
             if(c.value.length === 8) {
                 c.classList.add("input--font-small");
             } else if(c.value.length > 8) {
                 c.classList.add("input--bg-color-danger");
                 celulasSaturadas++;
             }
+        } else if(c.clientWidth < 190 && c.value.length > 24) {
+            c.classList.add("input--bg-color-danger");
+            celulasSaturadas++;  
+        } else if(c.clientWidth < 425 && c.value.length > 54) {
+            c.classList.add("input--bg-color-danger");
+            celulasSaturadas++;  
         }
     }
     if(celulasSaturadas > 0) {
@@ -75,12 +75,6 @@ function actualizarAnoDeCopyright() {
     const currentYearOutput = document.querySelector(".footer__current-year");
     currentYearOutput.textContent = anoActual;
 }
-function formatarNumeros() {
-    const numeros = document.querySelectorAll(".number-format");
-    for (const n of numeros) {
-        n.textContent = Number(n.textContent).toLocaleString();
-    }
-}
 function animarCaixaDeDialogo(event) {
     const dialogBox = document.querySelector(".dialog-box-esvaziar-ficha");
     if(dialogBox.matches(".--open")) {
@@ -91,7 +85,9 @@ function animarCaixaDeDialogo(event) {
 function fecharTopoPropaganda(topoPropaganda) {
     const body = document.querySelector("#body");
     topoPropaganda.classList.add("topo-propaganda--off");
-    body.classList.remove("body-com-topo-propaganda")
+    if(!topoPropaganda.matches(".topo-propaganda--festas-felizes")) {
+        body.classList.remove("body-com-topo-propaganda");
+    }
 }
 function omitirLinkDesteServicoNoRodape(){
     const servicosAfins = document.querySelectorAll(".footer__nav__link");
@@ -116,7 +112,6 @@ window.addEventListener("load", () => {
     const dialogBoxAQD__btn = document.querySelector(".dialog-box-default__btn--aqd");
     dialogBoxAQD__btn.addEventListener("click", aqd.salvarCiencia);
     actualizarAnoDeCopyright()
-    formatarNumeros();
     // Animar Caixa de diálogo "Esvaziar ficha"
     const desfoque = document.querySelector(".desfoque");
     desfoque.addEventListener("mousedown", event => animarCaixaDeDialogo(event.type));

@@ -120,7 +120,7 @@
 						</div>
 						<div class="ficha__col-de-localizacao__linha ficha__col-de-localizacao__linha--border-t --display-flex-y-center">
 							<label for="input-periodo">Mês de Reporte:</label>
-							<input type="month" id="input-periodo" class="input-nao-celular --fw-700">
+							<input type="date" id="input-periodo" class="input-nao-celular --fw-700">
 						</div>
 					</div>
 					<div class="ficha__header__col-de-titulo --border-t-thick --border-b-thick">
@@ -642,7 +642,7 @@
         <section class="dialog-boxes --no-print">
             <div class="dialog-box-default dialog-box-default--sobre-aqd">
                 <h3 class="dialog-box-default__title">Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</h3>
-                <p class="dialog-box-default__p">O totalizador garante um resumo mensal correctamente totalizado, porém, um resumo mensal de qualidade não se limita apenas à uma correcta totalização. Outros factores (que não dependem do totalizador) como preenchimento correcto e legível dos livros de registo, colheita de dados de todos os livros de registo com informação do mês em reporte, cruzamento de dados, entre outros, influenciam consideravelmente na qualidade de um resumo mensal.</p>
+                <p class="dialog-box-default__p">O totalizador garante um resumo mensal correctamente totalizado, porém, um resumo mensal de qualidade não se limita apenas à uma correcta totalização. Outros factores (que não dependem do totalizador) como preenchimento correcto e legível dos livros de registo, colheita de dados de todos os livros de registo com informação do mês em reporte, cruzamento e concordância dos dados, entre outros, contribuem sobremaneira para a qualidade de um resumo mensal.</p>
                 <div class="dialog-box-default__btn-container">
                     <button class="dialog-box-default__btn dialog-box-default__btn--aqd">Entendi</button>
                 </div>
@@ -719,7 +719,7 @@
                 <figure>
                     <img alt="Totalizador de Resumo Mensal de Notificação de TB e TB/HIV" src=imagens/totalizador-de-resumo-mensal-de-notificacao-de-tb-e-tb-hiv.png class="artigo__img artigo__img--center">
                 </figure>
-                <p>O <strong>Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</strong> é um serviço online gratuito que auxilia na elaboração do resumo mensal de notificação de TB e TB/HIV, por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da respectiva ficha de resumo mensal actualmente vigente no Serviço Nacional de Saúde em Moçambique.</p>
+                <p>O <strong>Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</strong> é um serviço online gratuito que auxilia na elaboração do resumo mensal de notificação de TB e TB/HIV por meio do cálculo automático dos totais com base nos dados preenchidos pelo usuário. Foi criado de acordo com o modelo da respectiva ficha de resumo mensal actualmente vigente no Serviço Nacional de Saúde em Moçambique.</p>
                 <h3 class="artigo__titulo artigo__titulo--nivel-2">Objectivos</h3>
                 <ul class="artigo__lista artigo__lista--ul">
                     <li>Auxiliar os Profissionais de Saúde na totalização do resumo mensal de notificação de TB e TB/HIV com exatidão e prontidão;</li>
@@ -732,7 +732,7 @@
                     <li>Ter colhido os dados de todos os indicadores da ficha nas respectivas fontes primárias (livro(s) de registo) da sua Unidade Sanitária;</li>
                     <li>E por fim, preencher os dados nas células correspondentes em função das variáveis (indicador, faixa etária e sexo) e consequentemente os respectivos totais são, em tempo real, correcta e automaticamente calculados.</li>
                 </ul>
-                <p class="artigo__p--destaque">O totalizador garante um resumo mensal correctamente totalizado, porém, um resumo mensal de qualidade não se limita apenas à uma correcta totalização. Outros factores (que não dependem do totalizador) como preenchimento correcto e legível dos livros de registo, colheita de dados de todos os livros de registo com informação do mês em reporte, cruzamento de dados, entre outros, influenciam consideravelmente na qualidade de um resumo mensal.</p>
+                <p class="artigo__p--destaque">O totalizador garante um resumo mensal correctamente totalizado, porém, um resumo mensal de qualidade não se limita apenas à uma correcta totalização. Outros factores (que não dependem do totalizador) como preenchimento correcto e legível dos livros de registo, colheita de dados de todos os livros de registo com informação do mês em reporte, cruzamento e concordância dos dados, entre outros, contribuem sobremaneira para a qualidade de um resumo mensal.</p>
                 <h3 class="artigo__titulo artigo__titulo--nivel-2">Qual é o destino dos dados que eu insiro?</h3>
                 <p>São guardados no seu celular ou computador, por meio de um recurso chamado <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API" target="_blank">Web Storage</a> e você tem total controle sobre os dados, podendo mantê-los ou apagá-los por meio da opção "<b>Esvaziar ficha</b>" no menu do totalizador ou excluindo os dados de navegação do seu navegador.</p>
                 <h3 class="artigo__titulo artigo__titulo--nivel-2">Vantagens do totalizador</h3>
@@ -753,6 +753,48 @@
             <article class="artigo artigo--ajuda layout-row layout-row--no-padding">
                 <h2 class="artigo__titulo artigo__titulo--nivel-1 artigo__titulo--ajuda-e-procedimentos">Ajuda e Procedimentos</h2>
                 <details class="artigo__details">
+                    <summary class="details__summary">Instruções de preenchimento</summary>
+                    <h3 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--no-border-t artigo__titulo--margin-t">CABEÇALHO</h3>
+                    <p><b>US, Distrito, Província, Mês de Reporte:</b> Preencha respectivamente o nome da sua unidade sanitária, distrito, província e o mês de reporte do resumo mensal.</p>
+                    <h3 class="artigo__titulo artigo__titulo--nivel-2">SECÇÃO 1: TODOS OS CASOS DE TUBERCULOSE REGISTADAS DURANTE O MÊS (NOVOS E RETRATAMENTOS)</h3>
+                    <h4 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--no-border-t">a) TB pulmonar Bacteriologicament e confirmada</h4>
+                    <p><b>Novos</b>: No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) selecione para cada faixa etária os pacientes com registo <b>"P"</b> na coluna 10  e cruzar com todos os pacientes com registo <b>"X"</b> em <b>"Caso Novo"</b> na coluna 11 e  somar  todos com exame <b>bacteriológico positivo</b> registado na coluna 22 e 23. Deve excluir  todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Recaidas</b>: No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) selecionar para cada faixa etária os pacientes com registo <b>"P"</b> na coluna 10 e cruzar com todos os pacientes com registo <b>"X"</b> em <b>"Recaida"</b> na coluna 11 e  somar  todos com exame <b>bacteriológico positivo</b> registado na coluna 22 e 23. Deve excluir  todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Retratamentos (excluir Recaidas)</b>: No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) selecionar para cada faixa etária os pacientes com registo <b>"P"</b> na coluna 10 e com registo <b>"X"</b> em <b>"Pós Falência de Tratamento"</b> ou <b>"Pós perda de seguimento"</b> na coluna 11 e somar  todos com exame <b>bacteriológico positivo</b> registado na coluna 22 e 23. Deve excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Tratamento Prévio de TB Desconhecido</b>: No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) selecionar para cada faixa etária os pacientes com registo <b>"P"</b> na coluna 10 e com registo <b>"X"</b> em "Tratamento Prévio de TB Descohecido" na coluna 11 e somar  todos com exame <b>bacteriológico positivo</b> registado na coluna 22 e 23. Deve excluir todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <h4 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--no-border-t">b) Tuberculose Pulmonar Clinicamente Diagnosticada</h4>
+                    <p><b>Novos</b>: No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) selecionar para cada faixa etária, os pacientes com registo <b>"P"</b> na coluna 10  e cruzar com todos os pacientes com registo <b>"X"</b> em <b>"Caso Novo"</b> na coluna 11 e  somar  todos sem exame bacteriologico ou com <b>exame Bacteriológico negativo</b> registado na coluna 22 e 23. Deve excluir  todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Recaidas</b>: No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) selecionar para cada faixa etária, os pacientes com registo <b>"P"</b> na coluna 10  e cruzar com todos os pacientes com registo <b>"X"</b> em <b>"Recaídas"</b> na coluna 11 e  somar  todos sem exame bacteriologico ou com <b>exame Bacteriológico negativo</b> registado na coluna 22 e 23. Deve excluir  todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Retratamentos (excluir Recaidas)</b>: No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) selecionar para cada faixa etária, os pacientes com registo <b>"P"</b> na coluna 10  e cruzar com todos os pacientes com registo <b>"X"</b> em <b>"Pós Falência de Tratamento"</b> ou <b>"Pós perda de seguimento"</b>  na coluna 11 e  somar  todos sem exame bacteriologico ou com <b>exame Bacteriológico negativo</b> registado na coluna 22 e 23. Deve excluir  todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Tratamento Prévio de TB Desconhecido</b>: No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) selecionar para cada faixa etária os pacientes com registo <b>"P"</b> na coluna 10  e cruzar com todos os pacientes com registo <b>"X"</b> em "Tratamento Prévio de TB Descohecido"  na coluna 11 e  somar  todos sem exame bacteriologico ou com <b>exame Bacteriológico negativo</b> registado na coluna 22 e 23. Deve excluir  todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <h4 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--no-border-t">b) Tuberculose Pulmonar Clinicamente Diagnosticada</h4>
+                    <p><b>Novos</b>: No livro de Registo de Pacientes com TB (Md.SIS - PNCT 02) selecionar para cada faixa etária, os pacientes com registo <b>"EP"</b> na coluna 10 e somar todos com registo <b>"X"</b> em <b>"Caso Novo"</b> na coluna 11. Deve excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Recaidas</b>: No livro de Registo de Pacientes com TB (Md.SIS - PNCT 02) selecionar para cada faixa etária, os pacientes com registo <b>"EP"</b> na coluna 10 e somar todos com registo <b>"X"</b> em <b>"Recaídas"</b> na coluna 11. Deve excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Retratamentos (excluir Recaidas)</b>: No livro de Registo de Pacientes com TB (Md.SIS - PNCT 02) selecionar para cada faixa etária, os pacientes com registo <b>"EP"</b> na coluna 10 e somar todos com registo <b>"X"</b> em <b>"Retratamentos"</b> na coluna 11. Deve excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Tratamento Prévio de TB Desconhecido</b>: No livro de Registo de Pacientes com TB (Md.SIS - PNCT 02) selecionar para cada faixa etária, os pacientes com registo <b>"EP"</b> na coluna 10 e somar todos com registo <b>"X"</b> em <b>"Tratamento Prévio de TB Desconhecido"</b> na coluna 11. Deve excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <h3 class="artigo__titulo artigo__titulo--nivel-2">SECÇÃO 2: TODOS OS CASOS DE TB - NOVOS E RETRATAMENTOS - (BACTERIOLOGICAMENTE CONFIRMADA E CLINICAMENTE DIAGNOSTICADA) POR FAIXA ETÁRIA E SEXO)</h3>
+                    <p><b>a) Masculino</b>: No livro de Registo de Pacientes com TB (Md.SIS - PNCT 02), contabilizar para cada faixa etária os pacientes do sexo <b>Masculino</b> registado no periodo em reporte. Excluir todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>b) Feminino</b>: No livro de Registo de Pacientes com TB (Md.SIS - PNCT 02), contabilizar para cada faixa etária os pacientes do sexo <b>Feminino</b> registado no periodo em reporte. Excluir todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Total de Notificados que iniciou o tratamento de TB</b>: No livro de Registo de Pacientes com TB (Md.SIS - PNCT 02) selecionar para cada faixa etária, os pacientes com registo <b>"X"</b> na coluna 12 em <b>"Iniciou Tratamento"</b>. Deve excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <h3 class="artigo__titulo artigo__titulo--nivel-2">SECÇÃO 3: EXAME BACTERIOLÓGICO EM PACIENTE CLINICAMENTE DIAGNOSTICADO</h3>
+                    <h4 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--no-border-t">Pacientes com TB clinicamente diagnosticados notificados com pelo menos um exame bacteriológico (BK, GeneXpert, Truenat, LAM, Cultura) feito e registado no livro de Registo de Pacientes com TB</h4>
+                    <p>No livro de Registo de Pacientes com TB (Mod.SIS. PNCT 02) somar todos os pacientes com registo <b>"P"</b> ou <b>"EP"</b>na coluna 10 e que tenham um (1) exame bacteriologico negativo (não deve ter nenhum exame <b>bacteriológico positivo</b>) registado na coluna 22 e 23. Deve excluir todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <h3 class="artigo__titulo artigo__titulo--nivel-2">SECÇÃO 4: ACTIVIDADES COLABORATIVAS TB/HIV</h3>
+                    <h4 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--no-border-t">Pacientes inscritos até ao ultimo dia do período de reporte</h4>
+                    <p><b>Pacientes testados para o HIV</b>: Do total de pacientes registados no livro de Registo de Paciente com TB (Mod.SIS - PNCT 02) somar, para cada etária, os com registo <b>"P"</b>, <b>"N"</b> ou <b>"I"</b> na coluna 17. Excluir todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Pacientes testados dentro do sector da TB</b>: Dos pacientes da linha anterior, para cada faixa etária, somar apenas os com registo <b>"D"</b> em Testado na coluna 17.</p>
+                    <p><b>Pacientes TB/HIV</b>: Dos pacientes da primeira linha (pacientes testados para o HIV) somar, para cada faixa etária, todos com registo <b>"P"</b> em <b>Teste de HIV (1)</b> e <b>Teste de HIV (2)</b> na coluna 17. Excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Paceintes TB/HIV em TPC</b>: Dos pacientes da linha anterior somar, para cada faixa etária, todos com registo <b>"S"</b> ou <b>"D"</b> na coluna 18. Excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Paceintes TB/HIV em TARV</b>: Do total de pacientes com registo <b>"P"</b> na coluna 17, para cada faixa etária, somar todos com registo do <b>"NID"</b> e " Data do Início TARV". Excluir todos os pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <h4 class="artigo__titulo artigo__titulo--nivel-2 artigo__titulo--no-border-t">Pacientes cumulativos inscritos ao longo do Ano em curso*</h4>
+                    <p><b>Pacientes com sero-estado de HIV conhecido</b>: Do total de pacientes registados no livro de Registo de Paciente com TB (Mod.SIS - PNCT 02), somar, para cada faixa etária, os com registo <b>"P"</b>, <b>"N"</b> ou <b>"I"</b> na coluna 17 para todos os meses anteriores (incluindo o mês em reporte) do ano em que estiver reportando. Excluir todos pacientes com registo <b>"T"</b> na coluna 9.</p>
+                    <p><b>Pacientes TB/HIV</b>: Do total da coluna anterior, somar, para cada faixa etária, todos os pacientes com registo <b>"P"</b> na coluna 17.</p>
+                    <p><b>Pacientes TB/HIV em TPC</b>: Do total da coluna anterior, somar, para cada faixa etária, todos os pacientes com registo <b>"S"</b> ou <b>"D"</b> na coluna 18.</p>
+                    <p><b>Pacientes TB/HIV em TARV</b>: Do total de pacientes registados no livro de Registo de Paciente com TB (Mod.SIS - PNCT 02), com registo <b>"P"</b>, na coluna 17 para todos os meses anteriores (incluindo o mês em reporte) do ano em reporte somar todos com registo de <b>"NID"</b> e <b>"Data do Início TARV"</b>.</p>
+                    <h3 class="artigo__titulo artigo__titulo--nivel-2">SECÇÃO 4: TB E DIABETES MELLITUS</h3>
+                    <p><b>Pacientes diagnosticados com TB/Diabetes Mellitus</b>: Do total de pacientes registados no livro de Registo de Paciente com TB (Mod.SIS - PNCT 02), somar, para cada faixa etária, todos pacientes com registo <b>"S"</b> e/ou com <b>"NID"</b> na coluna 20.</p>
+                </details>
+                <details class="artigo__details">
                     <summary class="details__summary">Realçar totais</summary>
                     <p>Adiciona cor de fundo amarela às células dos totais. Essas têm o acesso interdito e a funcionalidade de realçá-las, permite distinguí-las facilmente das outras células. Muito útil em celulares.</p>
                     <p class="artigo__p--destaque --sem-sombra">A cor de realce de fundo  das células não afecta a impressão.</p>
@@ -763,7 +805,7 @@
                 </details>
                 <details class="artigo__details">
                     <summary class="details__summary">Esvaziar ficha</summary>
-                    <p>Comando para limpar parcial ou totalmente a ficha após confirmação da acção na caixa de diálogo subsequente.</p>
+                    <p>Comando para limpar parcial ou completamente a ficha após confirmação da acção na caixa de diálogo subsequente.</p>
                     <figure class="details__moldura details__moldura--margin-l">
                         <img src="imagens/caixa-de-dialogo-para-esvaziamento-da-ficha.png" alt="Caixa de diálogo para esvaziamento da ficha" class="artigo__img"/>
                         <figcaption class="details__moldura__legenda"><b>Legenda:</b> Caixa de diálogo para esvaziamento da ficha. Neste caso, os campos de <b>Província, Distrito e US</b> seriam preservados (por ter suas checkboxes desmarcadas). Todos os outros cujas "checkboxes" estão marcadas seriam esvaziados.</figcaption>
@@ -792,10 +834,9 @@
                 </details>
                 <details class="artigo__details artigo__details--border-b artigo__details--motivo-de-celulas-vermelhas">
                     <summary class="details__summary">Algumas células ficaram vermelhas</summary>
-                    <p>A maioria das células do totalizador têm um tamanho para conter visivelmente 8 algarismos no máximo, isto é, mostram valores até <span class="number-format">99999999</span>, embora algumas excepcionalmente possam mostrar valores com mais de 27 algarismos. Quando uma célula recebe um valor com mais de 8 algarismos, dá um alerta ficando vermelha e abrindo esta mensagem de texto para alertá-lo sobre a omissão dos algarismos e o real motivo.</p>
-                    <p class="artigo__p--destaque">Para um país como Moçambique, onde o número de habitantes é de pouco mais de 30 milhões (<a href="https://energypedia.info/wiki/Moçambique:_Informação_sobre_o_País" target="_blank">dados demográficos de 2019</a>), podemos presumir que nenhuma Unidade Sanitária actualmente tem um número mensal de dados de algum indicador, de qualquer que seja a sua natureza, acima de <span class="number-format">99999999</span>.</p>
+                    <p>Uma célula adopta um fundo vermelho como sinal de alerta para indicar que o valor contido nela, excedeu a largura fixa da célula e, por isso, os últimos algarismos estão omissos, ou seja, estão fora da área visível da célula.</p>
                 </details>
-                <p class="artigo-ajuda__p--contactar-suporte">Se os tópicos acima não cobrem a sua dúvida. Pode ainda solicitar suporte por <a href="mailto:quinamine.aderitofelix@gmail.com?subject=Totalizador%20de%20Resumo%20Mensal%20de%20TB%20e%20TB%2FHIV">Email</a> ou <a href="https://wa.me/258846709901/?text=Olá%2C+Quinamine!+Sobre+o+*totalizador+de+resumo+mensal+de+notificação+de+TB+e+TB%2FHIV*%2C+tenho+a+seguinte+dúvida%3A%20">WhatsApp</a>.</p>
+                <p class="artigo-ajuda__p--contactar-suporte">Se os tópicos acima não cobrem as suas dúvidas, pode ainda solicitar suporte ao Desenvolvedor pelos seguintes endereços: <a href="mailto:quinamine.aderitofelix@gmail.com?subject=Totalizador%20de%20Resumo%20Mensal%20de%20Notificação%20de%20TB%20e%20TB/HIV">Email</a> e/ou <a href="https://wa.me/258846709901/?text=Olá%2C+Quinamine!+Sobre+o+*totalizador+de+resumo+mensal+de+notificação+de+TB+e+TB%2FHIV*%2C+tenho+a+seguinte+dúvida%3A%20">WhatsApp</a>.</p>
                 <button class="artigo__btn-x artigo__btn-x--fechar-ajuda" title="Fechar">&times;</button>
             </article>
         </section>
@@ -834,7 +875,7 @@
                 <p class="footer__p footer__p--created-by">Criado com atenção e <span class="footer__p__heart">❤</span> por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a> | ©&nbsp;<span class="footer__current-year"></span> Totalizador de Resumo Mensal de Notificação de TB e TB/HIV</p>
                 <a href=#root class=footer__link--back-to-top>Rolar para o topo</a>
             </div>
-            <p class="footer__p footer__p--available-since">Disponível desde <time datetime="2024-05-30">30/05/2024</time>. Última actualização: Dezembro/2024.</p>
+            <p class="footer__p footer__p--available-since">Disponível desde <time datetime="2024-05-30">30/05/2024</time>. Última actualização: Janeiro/2025.</p>
         </footer>
         <div class="desfoque"></div>
         <script src="fisiologia/festasfelizes.js"></script>
