@@ -3,6 +3,11 @@
     margin: 30px auto 14px;
     color: var(--black);
 }
+@media print {
+    .ficha {
+        margin-bottom: 5px;
+    }
+}
 .ficha span {
     line-height: 1.2;
 }
